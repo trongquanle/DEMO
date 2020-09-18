@@ -1,0 +1,74 @@
+﻿body {
+    font-family: tahoma_regular;
+    margin: 0;
+    font-size: 13px;
+}
+@font-face {
+    font-family: 'fontello';
+    src: url('/content/fonts/fonts/fontello.woff') format('woff');
+}
+@font-face {
+    font-family: 'tahoma_bold';
+    src: url('/content/fonts/fonts/tahoma_bold.woff') format('woff');
+}
+@font-face {
+    font-family: 'tahoma_regular';
+    src: url('/content/fonts/fonts/tahoma_regular.woff') format('woff');
+}
+.sidebar {
+    width: 200px; 
+    height: 100vh;
+    background-color: #0973b9;
+    float: left;
+}
+.sidebar .logo{
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+.sidebar .menu{
+    width: 100%;
+    height: calc(100% - 50px);
+}
+.logo .icon-left-header {
+    width: 25px;
+    height: 50px;
+    background-image: url('/content/img/images/icon-left-header.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-left: 10px;
+}
+.logo .logo-text {
+    width: calc(100% - 25px);
+    height: 50px;
+    background-image: url('/content/img/images/logo-text.png');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 12px;
+}
+
+/* Menu */
+.menu .menu-item{
+    border-top: 1px solid #0a7cc9;
+    border-bottom: 1px solid #076aac;
+    width: 100%;
+    height: 40px;
+    display: flex;
+}
+.menu .menu-item:hover{
+    background-color: #ff6a00;
+}
+.menu .menu-item-icon {
+    width: 25px;
+    height: 25px;
+    background-image: url('/content/img/images/iconmenu.png');
+    background-repeat: no-repeat;
+    background-position-y: -118px;
+    align-self: center;
+    margin-left: 10px;
+}
+.menu .menu-item-text {
+    color: #ffffff;
+    line-height: 40px;
+    margin-left: 8px;
+}
