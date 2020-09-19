@@ -32,33 +32,44 @@
 
 .content-body .toolbar {
     width: 100%;
-    height: 25px;
-    background-image: linear-gradient(rgb(250, 250, 250), rgb(239, 239, 239));
+    height: 30px;
+    background-image: linear-gradient(rgb(245 245 245 / 1), rgb(230 230 230 / 1));
     display: flex;
     border: 1px solid #ccc;
 }
 .toolbar button {
-    background-image: linear-gradient(rgb(250, 250, 250), rgb(239, 239, 239));
-    height: 100%;
+    background: none;
     display: flex;
     border: 1px solid;
     border-color: transparent;
     cursor: pointer;
-    line-height: 22px;
+    height: 28px;
+    line-height: 25px;
+    margin: 1px;
     padding-right: 7px;
+    outline: none;
 }
-    .toolbar button:hover {
-        background-image: linear-gradient(aqua, aqua);
-        /*background-color: aqua !important;*/
-        border: 1px solid #0973b9;
+.toolbar button:hover {
+        background-color: #fff !important;
+        border-color: #0071c1;
     }
 .icon {
-    background-image: url('/content/img/images/edit16.png');
     background-repeat: no-repeat;
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     margin-top: 2px;
 }
-.icon-add{
-
-}
+    .icon.icon-add {
+        background-image: url('/content/img/images/iconsprite.png');
+        background-position-y: -2512px;
+    }
+    .icon.icon-edit {
+        background-image: url('/content/img/images/edit16.png');
+        background-position: center;
+        background-size: 18px;
+    }
+    .icon.icon-delete {
+        background-image: url('/content/img/images/iconsprite.png');
+        background-size: 17px;
+        background-position-y: -2844px;
+    }
