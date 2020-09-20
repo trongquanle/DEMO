@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    <!--Sidebar-->
     <div class="sidebar">
         <div class="logo">
             <div class="icon-left-header"></div>
@@ -36,19 +37,20 @@
             </div>
         </div>
     </div>
+    <!--Main-->
     <div class="main">
         <div class="header">
-            <div class="left-header">
+            <div class="left-header center-items">
                 <select>
                     <option value="0" selected>Đại dương xanh</option>
-                    <option value="1" >Đại dương xanh 2</option>
-                    <option value="2" >Đại dương xanh 3</option>
-                    <option value="3" >Đại dương xanh 4</option>
-                    <option value="4" >Đại dương xanh 5</option>
+                    <option value="1">Đại dương xanh 2</option>
+                    <option value="2">Đại dương xanh 3</option>
+                    <option value="3">Đại dương xanh 4</option>
+                    <option value="4">Đại dương xanh 5</option>
                 </select>
             </div>
             <div class="right-header">
-                <div class="right-header-language">
+                <div class="right-header-language center-items">
                     <select>
                         <option value="0" selected>Tiếng Việt (Tiếng Việt)</option>
                         <option value="1">Đại dương xanh 2</option>
@@ -59,15 +61,23 @@
                 </div>
                 <div class="right-header-world">
                     <i class="fa fa-globe icon-globe" style="font-size:30px;color:#fff;line-height:50px;margin: 0 auto;"></i>
+                    <span class="badge">3</span>
                 </div>
                 <div class="right-header-answer">
-
+                    <img src="/content/img/Images/logo.svg" alt="Alternate Text" />
                 </div>
                 <div class="right-header-new">
-
+                    <i class="fa fa-globe icon-globe" style="font-size:30px;color:#fff;line-height:50px;margin: 0 auto;"></i>
                 </div>
-                <div class="right-header-profile">
-
+                <div class="right-header-profile center-items">
+                    <img src="/content/img/Images/EmployeeImage.png" alt="Alternate Text" />
+                    <select>
+                        <option value="0" selected>Lê Huy Tuân</option>
+                        <option value="1">Đại dương xanh 2</option>
+                        <option value="2">Đại dương xanh 3</option>
+                        <option value="3">Đại dương xanh 4</option>
+                        <option value="4">Đại dương xanh 5</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -77,8 +87,8 @@
             </div>
             <div class="content-body">
                 <div class="toolbar">
-                    <button><i class="icon icon-add"></i>&nbspThêm</button>
-                    <button><i class="icon icon-edit"></i>&nbspSửa</button>
+                    <button id="btn-add"><i class="icon icon-add"></i>&nbspThêm</button>
+                    <button id="btn-edit"><i class="icon icon-edit"></i>&nbspSửa</button>
                     <button><i class="icon icon-delete"></i>&nbspXóa</button>
                 </div>
                 <div class="grid">
@@ -87,7 +97,7 @@
                             <tr>
                                 <th>Mã nhân viên</th>
                                 <th>Tên nhân viên</th>
-                                <th>Emailk</th>
+                                <th>Email</th>
                                 <th>SDT</th>
                                 <th>Công ty</th>
                             </tr>
@@ -149,5 +159,52 @@
             </div>
         </div>
     </div>
+    <!--Dialog-->
+    <div class="dialog-modal"></div>
+    <div class="dialog">
+        <div class="dialog-title">
+            <div class="dialog-title-text">Thông tin nhân viên</div>
+            <div class="dialog-title-cancel"></div>
+        </div>
+        <div class="dialog-body">
+            <form>
+                <div class="row">
+                    <label>Mã nhân viên</label>
+                    <input type="text" />
+                </div>
+                <div class="row">
+                    <label>Tên nhân viên</label>
+                    <input type="text" />
+                </div>
+                <div class="row">
+                    <label>Email</label>
+                    <input type="text" />
+                </div>
+                <div class="row">
+                    <label>Số điện thoại</label>
+                    <input type="text" />
+                </div>
+                <div class="row">
+                    <label>Công ty</label>
+                    <input type="text" />
+                </div>
+            </form>
+        </div>
+        <div class="dialog-footer">
+            <button id="btn-save">Cất</button>
+            <button id="btn-cancel">Hủy</button>
+        </div>
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btn-add, #btn-edit").click(function () {
+                $(".dialog-modal, .dialog").show();
+            });
+            $(".dialog-modal, #btn-cancel, .dialog-title-cancel").click(function () {
+                $(".dialog-modal, .dialog").hide();
+            });
+        });
+    </script>
 </body>
 </html>
