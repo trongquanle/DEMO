@@ -17,7 +17,78 @@
         position: relative;
     }
 
-.content .page-content h1 {
+button {
+    cursor: pointer;
+}
+
+.center-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center-items-right {
+    justify-content: flex-end !important;
+}
+
+/*Body content*/
+.content .page-content {
+    width: 100%;
+    display: flex;
+}
+
+.page-content .left-page-content {
+    width: 50%;
+    display: flex;
+}
+
+.icon-triangle {
+    position: absolute;
+    font-size: 22px !important;
+    color: #0973b9;
+    padding-left: 10px;
+    top: 17px;
+    left: 102px;
+}
+
+.left-page-content a {
+    color: #0973b9;
+    text-decoration: none;
+    padding-left: 30px;
+    position: absolute;
+    top: 19px;
+    left: 97px;
+    font-size: 16px;
+}
+
+    .left-page-content a:hover {
+        text-decoration: underline;
+    }
+
+.page-content .right-page-content {
+    width: 50%;
+}
+
+.right-page-content button {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    outline: none;
+}
+
+    .right-page-content button:first-child {
+        margin-right: 10px;
+    }
+
+    .right-page-content button:hover {
+        border: 1px solid #0973b9;
+    }
+
+.btn-feedback {
+    display: flex;
+}
+
+.page-content h1 {
     font-size: 20px;
     margin: 5px 0;
 }
@@ -44,7 +115,6 @@
     display: flex;
     border: 1px solid;
     border-color: transparent;
-    cursor: pointer;
     height: 24px;
     line-height: 22px;
     margin: 1px;
@@ -82,6 +152,12 @@
         margin-top: -2px;
     }
 
+    .icon.icon-feedback {
+        background-image: url('/content/img/images/viewemail.png');
+        height: 15px;
+        width: 15px;
+    }
+
 .grid table {
     border: none;
     border-collapse: collapse;
@@ -106,31 +182,41 @@ table tr th:last-child, td:last-child {
     border-right: none;
 }
 
-table tr:hover {
-    background-color: #b8e3ff;
+table tbody tr:nth-child(even) {
+    background-color: rgb(239, 239, 239);
+}
+
+table tbody tr:hover {
+    background-color: #b8e3ff !important;
     cursor: pointer;
+}
+
+tbody tr input {
+    width: 100%;
 }
 
 .main .header {
     display: flex;
 }
 
+.row-selected {
+    background-color: #b8e3ff !important;
+}
+/*End body content*/
+
+/*Left header*/
 .header .left-header {
     height: 100%;
     width: 45%;
     background-color: #0973b9;
     justify-content: left !important;
 }
+    /*End left header*/
 
-.center-items {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.header .left-header select {
-    margin-left: 3%;
-}
+    /*Right header*/
+    .header .left-header select {
+        margin-left: 3%;
+    }
 
 .header select {
     width: 190px;
@@ -154,22 +240,48 @@ table tr:hover {
     width: 55%;
 }
 
-.right-header .right-header-language {
-    width: 190px;
+.right-header ul {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    padding-inline-start: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+ul li:last-child select {
+    background-color: #0973b9 !important;
+    font-size: 15px;
+    width: 150px;
+    padding-left: 2px !important;
+}
+
+.right-header ul li {
+    list-style-type: none;
+    padding: 0 10px;
+}
+
+li .misa-logo {
+    width: 122.5px;
     height: 100%;
 }
 
-.right-header .right-header-world {
-    width: 60px;
-    height: 100%;
-    text-align: center;
+li .profile {
+    background-color: #fafafa;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.right-header-notifications {
     position: relative;
 }
 
 .badge {
     position: absolute;
-    top: 10px;
-    right: 12px;
+    top: 11px;
+    right: 8px;
     color: #fff;
     font-size: 15px;
     font-weight: 700;
@@ -178,41 +290,11 @@ table tr:hover {
     border-radius: 50%;
     background-color: #ff0000;
     cursor: pointer;
-}
-
-.right-header .right-header-answer {
-    width: 130px;
-    height: 100%;
-}
-
-.right-header-answer img {
-    height: 100%;
-}
-
-.right-header .right-header-new {
-    width: 75px;
-    height: 100%;
     text-align: center;
 }
+/*End right header*/
 
-.right-header .right-header-profile {
-    width: calc(100% - 410px);
-    height: 100%;
-}
-
-.right-header-profile img {
-    background-color: #fafafa;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-}
-
-.right-header-profile select {
-    width: 120px;
-    padding-left: 4px !important;
-    background-color: #0973b9 !important;
-}
-
+/*Diglog*/
 .dialog-modal {
     position: absolute;
     top: 0;
@@ -265,29 +347,33 @@ table tr:hover {
         height: calc(100% - 85px);
         padding: 10px;
     }
-    .dialog-body .row{
-        margin-bottom: 8px;
-    }
-    .row input{
-        border: 1px solid #ccc;
-        padding: 4px;
-        outline: none;
-    }
-    .row label{
-        display: block;
-    }
-    .row input:focus{
-        border: 1px solid #0973b9;
-    }
 
-    .dialog .dialog-footer {
-        width: 100%;
-        height: 40px;
-        border-top: 1px solid #ccc;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-    }
+.dialog-body .row {
+    margin-bottom: 8px;
+}
+
+.row input {
+    border: 1px solid #ccc;
+    padding: 4px;
+    outline: none;
+}
+
+.row label {
+    display: block;
+}
+
+.row input:focus {
+    border: 1px solid #0973b9;
+}
+
+.dialog .dialog-footer {
+    width: 100%;
+    height: 40px;
+    border-top: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
 
 .dialog-footer button {
     width: 75px;
@@ -295,7 +381,6 @@ table tr:hover {
     outline: none;
     margin-right: 10px;
     color: #fff;
-    cursor: pointer;
 }
 
 #btn-save {
@@ -305,3 +390,4 @@ table tr:hover {
 #btn-cancel {
     background-color: #808080;
 }
+/*End dialog*/

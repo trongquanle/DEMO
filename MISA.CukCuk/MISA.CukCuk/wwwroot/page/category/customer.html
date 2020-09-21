@@ -28,7 +28,7 @@
                 <div class="menu-item-text">Mua hàng</div>
             </div>
             <div class="menu-item">
-                <div class="menu-item-icon icon-warehouse"></div>
+                <div class="menu-item-icon icon-inventory"></div>
                 <div class="menu-item-text">Kho</div>
             </div>
             <div class="menu-item">
@@ -50,7 +50,38 @@
                 </select>
             </div>
             <div class="right-header">
-                <div class="right-header-language center-items">
+                <ul>
+                    <li class="center-items">
+                        <select>
+                            <option value="0" selected>Tiếng Việt (Tiếng Việt)</option>
+                            <option value="1">Đại dương xanh 2</option>
+                            <option value="2">Đại dương xanh 3</option>
+                            <option value="3">Đại dương xanh 4</option>
+                            <option value="4">Đại dương xanh 5</option>
+                        </select>
+                    </li>
+                    <li class="center-items right-header-notifications">
+                        <i class="fa fa-globe icon-globe" style="font-size:30px;color:#fff;line-height:50px;margin: 0 auto;"></i>
+                        <span class="badge">3</span>
+                    </li>
+                    <li class="center-items">
+                        <img class="misa-logo" src="/content/img/Images/logo.svg" alt="Alternate Text" />
+                    </li>
+                    <li class="center-items">
+                        <i class="fa fa-globe icon-globe" style="font-size:30px;color:#fff;line-height:50px;margin: 0 auto;"></i>
+                    </li>
+                    <li class="center-items">
+                        <img class="profile" src="/content/img/Images/EmployeeImage.png" alt="Alternate Text" />
+                        <select>
+                            <option value="0" selected>NSND Tuân Đz</option>
+                            <option value="1">Đại dương xanh 2</option>
+                            <option value="2">Đại dương xanh 3</option>
+                            <option value="3">Đại dương xanh 4</option>
+                            <option value="4">Đại dương xanh 5</option>
+                        </select>
+                    </li>
+                </ul>
+                <!--<div class="right-header-language center-items">
                     <select>
                         <option value="0" selected>Tiếng Việt (Tiếng Việt)</option>
                         <option value="1">Đại dương xanh 2</option>
@@ -78,80 +109,43 @@
                         <option value="3">Đại dương xanh 4</option>
                         <option value="4">Đại dương xanh 5</option>
                     </select>
-                </div>
+                </div>-->
             </div>
         </div>
         <div class="content">
             <div class="page-content">
-                <h1>Danh mục nhân viên</h1>
+                <div class="left-page-content">
+                    <h1>
+                        Danh mục
+                    </h1>
+                    <i class="fa fa-caret-right icon-triangle"></i>
+                    <a href="#">Nhân viên</a>
+                </div>
+                <div class="right-page-content center-items center-items-right">
+                    <button>Quay lại thiết lập ban đầu</button>
+                    <button class="btn-feedback"><i class="icon icon-feedback"></i>&nbspPhản hồi</button>
+                </div>
             </div>
             <div class="content-body">
                 <div class="toolbar">
-                    <button id="btn-add"><i class="icon icon-add"></i>&nbspThêm</button>
-                    <button id="btn-edit"><i class="icon icon-edit"></i>&nbspSửa</button>
-                    <button><i class="icon icon-delete"></i>&nbspXóa</button>
+                    <button id="btn-add" title="thêm mới nhân viên"><i class="icon icon-add"></i>&nbspThêm</button>
+                    <button id="btn-edit" title="chỉnh sửa nhân viên"><i class="icon icon-edit"></i>&nbspSửa</button>
+                    <button title="xóa nhân viên"><i class="icon icon-delete"></i>&nbspXóa</button>
                 </div>
                 <div class="grid">
                     <table border="1" cellpadding="0">
                         <thead>
                             <tr>
-                                <th>Mã nhân viên</th>
-                                <th>Tên nhân viên</th>
-                                <th>Email</th>
-                                <th>SDT</th>
-                                <th>Công ty</th>
+                                <th style="width: 10%;">Mã nhân viên</th>
+                                <th style="width: 15%;">Tên nhân viên</th>
+                                <th style="width: 15%;">Email</th>
+                                <th style="width: 10%">Mã số thuế</th>
+                                <th style="width: 10%">Số điện thoại</th>
+                                <th style="width: 20%;">Địa chỉ</th>
+                                <th style="width: 20%;">Công ty</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>NV0001</td>
-                                <td>Lê Huy Tuân</td>
-                                <td>tuandz@gmail.com</td>
-                                <td>289734239230</td>
-                                <td>DH GTVT</td>
-                            </tr>
-                            <tr>
-                                <td>NV0001</td>
-                                <td>Lê Huy Tuân</td>
-                                <td>tuandz@gmail.com</td>
-                                <td>289734239230</td>
-                                <td>DH GTVT</td>
-                            </tr>
-                            <tr>
-                                <td>NV0001</td>
-                                <td>Lê Huy Tuân</td>
-                                <td>tuandz@gmail.com</td>
-                                <td>289734239230</td>
-                                <td>DH GTVT</td>
-                            </tr>
-                            <tr>
-                                <td>NV0001</td>
-                                <td>Lê Huy Tuân</td>
-                                <td>tuandz@gmail.com</td>
-                                <td>289734239230</td>
-                                <td>DH GTVT</td>
-                            </tr>
-                            <tr>
-                                <td>NV0001</td>
-                                <td>Lê Huy Tuân</td>
-                                <td>tuandz@gmail.com</td>
-                                <td>289734239230</td>
-                                <td>DH GTVT</td>
-                            </tr>
-                            <tr>
-                                <td>NV0001</td>
-                                <td>Lê Huy Tuân</td>
-                                <td>tuandz@gmail.com</td>
-                                <td>289734239230</td>
-                                <td>DH GTVT</td>
-                            </tr>
-                            <tr>
-                                <td>NV0001</td>
-                                <td>Lê Huy Tuân</td>
-                                <td>tuandz@gmail.com</td>
-                                <td>289734239230</td>
-                                <td>DH GTVT</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -167,26 +161,26 @@
             <div class="dialog-title-cancel"></div>
         </div>
         <div class="dialog-body">
-            <form>
+            <form id="form-employee">
                 <div class="row">
-                    <label>Mã nhân viên</label>
-                    <input type="text" />
+                    <label>Mã nhân viên <span style="color: red">(*)</span></label>
+                    <input type="text" name="EmployeeCode" />
                 </div>
                 <div class="row">
-                    <label>Tên nhân viên</label>
-                    <input type="text" />
+                    <label>Tên nhân viên  <span style="color: red">(*)</span></label>
+                    <input type="text" name="EmployeeName" />
                 </div>
                 <div class="row">
-                    <label>Email</label>
-                    <input type="text" />
+                    <label>Email  <span style="color: red">(*)</span></label>
+                    <input type="text" name="Email" />
                 </div>
                 <div class="row">
                     <label>Số điện thoại</label>
-                    <input type="text" />
+                    <input type="text" name="SDT" />
                 </div>
                 <div class="row">
                     <label>Công ty</label>
-                    <input type="text" />
+                    <input type="text" name="CompanyName" />
                 </div>
             </form>
         </div>
@@ -198,13 +192,80 @@
     <script src="/js/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
-            $("#btn-add, #btn-edit").click(function () {
-                $(".dialog-modal, .dialog").show();
-            });
-            $(".dialog-modal, #btn-cancel, .dialog-title-cancel").click(function () {
-                $(".dialog-modal, .dialog").hide();
-            });
+            const employee = new EmployeeJS();
         });
+        class EmployeeJS {
+            constructor() {
+                this.loadData();
+                this.initEvents();
+            }
+            initEvents() {
+                $("#btn-add, #btn-edit").click(this.onShowDialog.bind(this));
+                $(".dialog-modal, #btn-cancel, .dialog-title-cancel").click(this.onHideDialog.bind(this));
+                $("#btn-save").click(this.onSaveEmployee.bind(this));
+            }
+            static makeTrHtml(item) {
+                return $(`<tr onclick='EmployeeJS.onChangeTrSelected(this)'>
+                                <td title='${item.employeeCode}'>${item.employeeCode}</td>
+                                <td title='${item.employeeName}'>${item.employeeName}</td>
+                                <td title='${item.email}'>${item.email}</td>
+                                <td title='MST120949374'>MST120949374</td>
+                                <td title='${item.sdt}'>${item.sdt}</td>
+                                <td title='Cầu giấy, Láng Thượng, Đống Đa, Hà Nội'>Cầu giấy, Láng Thượng, Đống Đa, Hà Nội</td>
+                                <td title='${item.companyName}'>${item.companyName}</td>
+                            </tr>`);
+            }
+            static onChangeTrSelected(tr) {
+                if ($(tr).hasClass('row-selected')) {
+                    $(tr).removeClass('row-selected');
+                } else {
+                    $("tr").removeClass('row-selected');
+                    $(tr).addClass('row-selected');
+                }
+            }
+            loadData() {
+                $.ajax({
+                    url: '/api/employeeAPI',
+                    method: 'GET',
+                    dataType: 'json'
+                }).done(res => {
+                    $.each(res, (i, item) => {
+                        $(".grid tbody").append(EmployeeJS.makeTrHtml(item));
+                    });
+                    //let x = $('.row-selected');
+                    //$.each(x, (i, item) => {
+                    //    console.log(item.innerHTML);
+                    //});
+                }).fail(err => {
+                    console.log(err);
+                });
+            }
+            onSaveEmployee() {
+                let employee = {};
+                $("#form-employee").serializeArray().forEach(item => {
+                    employee[item.name] = item.value;
+                });
+                $.ajax({
+                    url: '/api/employeeAPI',
+                    method: 'POST',
+                    data: JSON.stringify(employee),
+                    contentType: 'application/json',
+                    dataType: 'json'
+                }).done(res => {
+                    $(".grid tbody").append(EmployeeJS.makeTrHtml(res));
+                    $(".dialog-modal, .dialog").hide();
+                }).fail(err => {
+                    console.log(err);
+                })
+
+            }
+            onShowDialog() {
+                $(".dialog-modal, .dialog").show();
+            }
+            onHideDialog() {
+                $(".dialog-modal, .dialog").hide();
+            }
+        }
     </script>
 </body>
 </html>
