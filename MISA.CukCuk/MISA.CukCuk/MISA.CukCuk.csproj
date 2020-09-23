@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\content\icons\" />
-    <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\page\report\" />
   </ItemGroup>
 

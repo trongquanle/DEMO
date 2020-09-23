@@ -26,10 +26,11 @@
     height: 50px;
     display: flex;
 }
-.sidebar .menu{
-    width: 100%;
-    height: calc(100% - 50px);
-}
+    .sidebar .menu {
+        width: 100%;
+        height: calc(100% - 50px);
+        overflow: auto;
+    }
 .logo .icon-left-header {
     width: 25px;
     height: 50px;

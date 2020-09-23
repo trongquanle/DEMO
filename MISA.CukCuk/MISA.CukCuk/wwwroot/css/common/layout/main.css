@@ -100,6 +100,7 @@ button {
     right: 10px;
     bottom: 10px;
     border: 1px solid #ccc;
+    /*overflow-y: auto;*/
 }
 
 .content-body .toolbar {
@@ -157,44 +158,54 @@ button {
         height: 15px;
         width: 15px;
     }
-
-.grid table {
+    .icon.icon-save {
+        background-image: url('/content/img/images/iconsprite.png');
+        height: 17px;
+        background-position-y: -767px;
+    }
+    .icon.icon-cancel {
+        background-image: url('/content/img/images/iconsprite.png');
+        height: 17px;
+        background-position-y: -1951px;
+    }
+    .grid {
+        height: calc(100% - 26px);
+        overflow: auto;
+    }
+.grid > table {
     border: none;
     border-collapse: collapse;
     width: 100%;
 }
 
-table th, td {
-    border: 1px solid #ccc;
-    padding: 4px;
-}
+    .grid > table th, td {
+        border: 1px solid #ccc;
+        padding: 4px 8px;
+        /*text-align: center;*/
+    }
 
-table th {
-    background-color: rgb(239, 239, 239);
-    border-top: none;
-}
+    .grid > table th {
+        background-color: rgb(239, 239, 239);
+        border-top: none;
+    }
 
-table tr th:first-child, td:first-child {
-    border-left: none;
-}
+    .grid > table tr th:first-child, td:first-child {
+        border-left: none;
+    }
 
-table tr th:last-child, td:last-child {
-    border-right: none;
-}
+    .grid > table tr th:last-child, td:last-child {
+        border-right: none;
+    }
 
-table tbody tr:nth-child(even) {
-    background-color: rgb(239, 239, 239);
-}
+    .grid > table tbody tr:nth-child(even) {
+        background-color: rgb(239, 239, 239);
+    }
 
-table tbody tr:hover {
+.grid > table tbody tr:hover {
     background-color: #b8e3ff !important;
     cursor: pointer;
 }
-
-tbody tr input {
-    width: 100%;
-}
-
+    
 .main .header {
     display: flex;
 }
@@ -307,11 +318,11 @@ li .profile {
 }
 
 .dialog {
-    width: 600px;
-    height: 400px;
+    width: 800px;
+    height: 450px;
     position: absolute;
-    top: calc(50% - 200px);
-    left: calc(50% - 300px);
+    top: calc(50% - 225px);
+    left: calc(50% - 400px);
     z-index: 1000;
     background-color: #fff;
     border: 3px solid #0973b9;
@@ -347,20 +358,37 @@ li .profile {
         height: calc(100% - 85px);
         padding: 10px;
     }
-
-.dialog-body .row {
-    margin-bottom: 8px;
+    .dialog table{
+        width: 100%;
+    }
+#form-data tbody td {
+    border: none;
+    padding: 4px;
 }
-
-.row input {
+#form-data input:focus, textarea:focus{
+    border: 1px solid #0973b9;
+}
+.error {
+    border: 1px solid #ff0000 !important;
+}
+/*.valid {
+    border: 1px solid green !important;
+}*/
+/*.dialog-body .row {
+    margin-bottom: 8px;
+}*/
+.dialog input, textarea {
+    width: 100%;
     border: 1px solid #ccc;
     padding: 4px;
     outline: none;
+    margin-left: -20px;
+    resize: vertical;
 }
 
-.row label {
+/*.row label {
     display: block;
-}
+}*/
 
 .row input:focus {
     border: 1px solid #0973b9;
@@ -380,14 +408,17 @@ li .profile {
     padding: 4px;
     outline: none;
     margin-right: 10px;
-    color: #fff;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+.dialog-footer button:hover {
+    border: 1px solid #0973b9;
 }
 
 #btn-save {
-    background-color: #0973b9;
 }
 
 #btn-cancel {
-    background-color: #808080;
+
 }
 /*End dialog*/
