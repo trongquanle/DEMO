@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Entities\Entities.csproj" />
-    <ProjectReference Include="..\Mapper\Mapper.csproj" />
+    <ProjectReference Include="..\Entities\MISA.Entities.csproj" />
+    <ProjectReference Include="..\Mapper\MISA.Mapper.csproj" />
   </ItemGroup>
 
 </Project>
