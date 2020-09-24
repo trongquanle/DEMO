@@ -119,6 +119,10 @@ li .profile {
     cursor: pointer;
     text-align: center;
 }
+.icon-support{
+    width: 62px;
+    cursor: pointer;
+}
 /*End right header*/
 
 /*Body content*/
