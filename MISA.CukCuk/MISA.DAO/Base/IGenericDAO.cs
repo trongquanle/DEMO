@@ -1,9 +1,9 @@
-﻿using Mapper;
+﻿using MISA.Mapper;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DAO.Base
+namespace MISA.DAO.Base
 {
     public interface IGenericDAO<T>
     {

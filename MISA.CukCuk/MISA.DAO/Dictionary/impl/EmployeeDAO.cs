@@ -1,12 +1,12 @@
-﻿using DAO.Base.impl;
-using Entities;
-using Mapper.impl;
+﻿using MISA.DAO.Base.impl;
+using MISA.Entities;
+using MISA.Mapper.impl;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DAO.Dictionary.impl
+namespace MISA.DAO.Dictionary.impl
 {
     public class EmployeeDAO : AbstractDAO<Employee>, IEmployeeDAO
     {

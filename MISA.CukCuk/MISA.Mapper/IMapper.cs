@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
 
-namespace Mapper
+namespace MISA.Mapper
 {
     public interface IMapper<T>
     {

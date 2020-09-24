@@ -5,9 +5,8 @@ using System.Text;
 
 namespace MISA.Service.Dictionary
 {
-    public interface IEmployeeService
+    public interface ICustomerService
     {
-        IEnumerable<Employee> GetEmployees();
-        Employee GetEmployees(string id);
+        IEnumerable<Customer> GetCustomers();
     }
 }

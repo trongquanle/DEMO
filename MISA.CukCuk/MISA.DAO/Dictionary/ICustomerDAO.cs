@@ -5,9 +5,8 @@ using System.Text;
 
 namespace MISA.DAO.Dictionary
 {
-    public interface IEmployeeDAO
+    public interface ICustomerDAO
     {
-        IEnumerable<Employee> GetEmployees();
-        Employee GetEmployeeById(string id);
+        IEnumerable<Customer> GetCustomers();
     }
 }

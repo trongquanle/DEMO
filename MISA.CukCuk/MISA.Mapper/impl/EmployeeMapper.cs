@@ -1,10 +1,10 @@
-﻿using Entities;
+﻿using MISA.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
 
-namespace Mapper.impl
+namespace MISA.Mapper.impl
 {
     public class EmployeeMapper : IMapper<Employee>
     {
@@ -13,7 +13,7 @@ namespace Mapper.impl
             while (sqlDataReader.Read())
             {
                 var employee = new Employee();
-                for(int i=0; i< sqlDataReader.FieldCount; i++)
+                for (int i = 0; i < sqlDataReader.FieldCount; i++)
                 {
                     // Lấy ra cột hiện tại
                     string colName = sqlDataReader.GetName(i);
@@ -21,7 +21,7 @@ namespace Mapper.impl
                     var value = sqlDataReader.GetValue(i);
                     // Lấy ra property giống với tên cột thì gán dữ liệu tương ứng
                     var property = employee.GetType().GetProperty(colName);
-                    if(property != null && value != DBNull.Value)
+                    if (property != null && value != DBNull.Value)
                     {
                         property.SetValue(employee, value, null);
                     }

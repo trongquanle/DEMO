@@ -17,8 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Entities\MISA.Entities.csproj" />
-    <ProjectReference Include="..\Service\MISA.Service.csproj" />
+    <ProjectReference Include="..\MISA.Entities\MISA.Entities.csproj" />
+    <ProjectReference Include="..\MISA.Service\MISA.Service.csproj" />
   </ItemGroup>
 
 

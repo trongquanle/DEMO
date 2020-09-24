@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Entities
+namespace MISA.Entities
 {
     public class Customer
     {

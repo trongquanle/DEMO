@@ -1,11 +1,11 @@
-﻿using Mapper;
+﻿using MISA.Mapper;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 
-namespace DAO.Base.impl
+namespace MISA.DAO.Base.impl
 {
     public class AbstractDAO<T> : IGenericDAO<T>, IDisposable
     {
@@ -80,7 +80,7 @@ namespace DAO.Base.impl
         }
         public void Dispose()
         {
-            if(sqlDataReader != null)
+            if (sqlDataReader != null)
             {
                 sqlDataReader.Close();
             }

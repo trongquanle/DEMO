@@ -1,16 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DAO\MISA.DAO.csproj" />
-    <ProjectReference Include="..\Entities\MISA.Entities.csproj" />
+    <Folder Include="Base\impl\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Base\" />
+    <ProjectReference Include="..\MISA.DAO\MISA.DAO.csproj" />
+    <ProjectReference Include="..\MISA.Entities\MISA.Entities.csproj" />
   </ItemGroup>
 
 </Project>
