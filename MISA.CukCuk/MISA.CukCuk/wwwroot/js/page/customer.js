@@ -38,15 +38,34 @@ class EmployeeJS {
             }
         });
     }
+    /**
+     * Hàm format Date
+     * @param {Date} date
+     * Author: LTQuan
+     */
+    formatDate(date) {
+        return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    }
+    /**
+     * Hàm format Address
+     * @param {string} address
+     * Author: LTQuan
+     */
+    formatAddress(address) {
+        return address.length > 26 ? `${address.substr(0, 26)}...` : address;
+    }
     makeTrHtml(item) {
         return $(`<tr onclick='EmployeeJS.onChangeTrSelected(this)'>
                     <td title='${item.customerCode}'>${item.customerCode}</td>
-                    <td title='${item.customerName}'>${item.customerName}</td>
-                    <td title='${item.companyName}'>${item.companyName}</td>
-                    <td title='${item.taxCode}'>${item.taxCode}</td>
-                    <td title='${item.address}'>${item.address}</td>
+                    <td title='${item.customerName}'>${item.customerName || ""}</td>
+                    <td style="text-align:center;" title='${item.gender}'>${item.gender}</td>
+                    <td title='${this.formatDate(new Date(item.dateOfBrith))}'>${this.formatDate(new Date(item.dateOfBrith))}</td>
+                    <td title='${item.address}'>${this.formatAddress(item.address)}</td>
                     <td title='${item.sdt}'>${item.sdt}</td>
                     <td title='${item.email}'>${item.email}</td>
+                    <td style='text-align: end;' title='${item.debtMoney.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")}  VND'>
+                        ${item.debtMoney.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")} VND
+                    </td>
                 </tr>`);
     }
     static onChangeTrSelected(element) {
@@ -57,7 +76,14 @@ class EmployeeJS {
             $(element).addClass('row-selected');
         }
     }
+    /**
+     * Ham make row cho table
+     * @param {any} item doi tuong customer
+     * Author: LTQuan (24/9/2020)
+     * Edit: ...
+     */
     loadData() {
+        $(".grid tbody").empty();
         let context = this;
         $.ajax({
             url: '/api/CustomerAPI',

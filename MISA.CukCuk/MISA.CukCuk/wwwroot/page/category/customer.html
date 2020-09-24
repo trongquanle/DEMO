@@ -94,7 +94,7 @@
                         Danh mục
                     </h1>
                     <i class="fa fa-caret-right icon-triangle"></i>
-                    <a href="#">Nhân viên</a>
+                    <a href="#">Khách hàng</a>
                 </div>
                 <div class="right-page-content center-items center-items-right">
                     <button>Quay lại thiết lập ban đầu</button>
@@ -114,30 +114,39 @@
                     <table border="1" cellpadding="0">
                         <thead>
                             <tr>
-                                <th style="width: 10%">
+                                <th style="width: 12%;">
                                     Mã khách hàng
                                 </th>
-                                <th style="width: 12%">
+                                <th>
                                     Tên khách hàng
                                 </th>
-                                <th>
-                                    Tên công ty
+                                <th style="width: 10%;">
+                                    Giới tính
                                 </th>
-                                <th style="width: 15%">
-                                    Mã số thuế
+                                <th style="width: 10%;">
+                                    Ngày sinh
                                 </th>
-                                <th>
+                                <th style="width: 17%;">
                                     Địa chỉ
                                 </th>
-                                <th style="width: 10%">
-                                    Số điện thoại
+                                <th title="Số điện thoại">
+                                    SDT
                                 </th>
-                                <th style="width: 15%">
+                                <th>
                                     Email
+                                </th>
+                                <th style="width: 12%;">
+                                    Số tiền nợ
                                 </th>
                             </tr>
                             <!--Fliter-->
                             <tr>
+                                <th>
+                                    <div class="filter">
+                                        <button>*</button>
+                                        <input type="text" />
+                                    </div>
+                                </th>
                                 <th>
                                     <div class="filter">
                                         <button>*</button>
@@ -227,6 +236,7 @@
         <div class="dialog-body">
             <form id="form-data">
                 <table>
+                    <!-- mkh, tkh, gt, ns, sdt, email, stn -->
                     <tbody>
                         <tr>
                             <td colspan="1">
