@@ -31,6 +31,7 @@ namespace MISA.CukCuk.Controllers
         [HttpPost]
         public JsonResult SaveCustomer([FromBody] Customer customer)
         {
+            Customer.Customers.Add(customer);
             return new JsonResult(customer);
         }
 
