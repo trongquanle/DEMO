@@ -3,15 +3,17 @@
 });
 class EmployeeJS {
     constructor() {
-        this.loadData();
+        this.url = '/api/CustomerAPI';
+        this.method = 'GET';
         this.initEvents();
+        this.loadData();
     }
     initEvents() {
         $("#btn-add").click(this.onShowDialog.bind(this));
         $("#btn-edit").click(this.onEditCustomer.bind(this));
         $(".dialog-modal, #btn-cancel, .dialog-title-cancel").click(this.onHideDialog.bind(this));
         $("#btn-save").click(this.onSaveCustomer.bind(this));
-        $("#btn-delete").click(this.onDeleteCustomer);
+        $("#btn-delete").click(this.onDeleteCustomer.bind(this));
         $("#form-data").validate({
             onfocusout: function (element) {
                 $(element).valid();
@@ -40,11 +42,11 @@ class EmployeeJS {
     }
     /**
      * Hàm format Date
-     * @param {Date} date
+     * @param {string} date
      * Author: LTQuan
      */
     formatDate(date) {
-        return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+        return date.split("T")[0].split("-").reverse().join("/");
     }
     /**
      * Hàm format Address
@@ -59,7 +61,7 @@ class EmployeeJS {
                     <td title='${item.customerCode}'>${item.customerCode}</td>
                     <td title='${item.customerName}'>${item.customerName || ""}</td>
                     <td style="text-align:center;" title='${item.gender}'>${item.gender}</td>
-                    <td title='${this.formatDate(new Date(item.dateOfBrith))}'>${this.formatDate(new Date(item.dateOfBrith))}</td>
+                    <td title='${this.formatDate(item.dateOfBrith)}'>${this.formatDate(item.dateOfBrith)}</td>
                     <td title='${item.address}'>${this.formatAddress(item.address)}</td>
                     <td title='${item.sdt}'>${item.sdt}</td>
                     <td title='${item.email}'>${item.email}</td>
@@ -84,10 +86,11 @@ class EmployeeJS {
      */
     loadData() {
         $(".grid tbody").empty();
+        this.method = 'GET';
         let context = this;
         $.ajax({
-            url: '/api/CustomerAPI',
-            method: 'GET',
+            url: context.url,
+            method: context.method,
             dataType: 'json'
         }).done(res => {
             $.each(res, (i, item) => {
@@ -98,39 +101,44 @@ class EmployeeJS {
         });
     }
     onEditCustomer() {
+        this.method = 'GET';
         if (!$('.row-selected').length) {
             alert("Vui lòng chọn khách hàng để sửa!");
         } else {
-            let cells = $('.row-selected').children().toArray().map(item => item.textContent);
-            //$.ajax({
-            //    url: `/api/CustomerAPI/${cells[0]}`,
-            //    method: 'GET',
-            //    dataType: 'json'
-            //}).done(res => {
-            //    console.log(res);
-            //}).fail(err => {
-            //    console.log(err);
-            //});
-            this.setInputDialog(cells);
+            let id = this.getId();
+            $.ajax({
+                url: `${this.url}/${id}`,
+                method: this.method,
+                dataType: 'json'
+            }).done(res => {
+                this.setInputDialog(res);
+            }).fail(err => {
+                console.log(err);
+            });
             this.onShowDialog();
         }
     }
     onSaveCustomer() {
-        let context = this;
+        this.method = 'POST';
+        //let context = this;
         if ($('#form-data').valid()) {
             let employee = {};
             $("#form-data").serializeArray().forEach(item => {
-                employee[item.name] = item.value;
+                if (item.name == "DebtMoney") {
+                    employee[item.name] = parseFloat(item.value);
+                } else {
+                    employee[item.name] = item.value;
+                }
             });
             $.ajax({
-                url: '/api/CustomerAPI',
-                method: 'POST',
+                url: this.url,
+                method: this.method,
                 data: JSON.stringify(employee),
                 contentType: 'application/json',
                 dataType: 'json'
             }).done(res => {
-                $(".grid tbody").append(context.makeTrHtml(res));
-                context.onHideDialog();
+                this.loadData();
+                this.onHideDialog();
             }).fail(err => {
                 console.log(err);
             })
@@ -140,16 +148,21 @@ class EmployeeJS {
         if (!$('.row-selected').length) {
             alert("Vui lòng chọn khách hàng để xóa khỏi hệ thống!")
         } else {
+            this.method = 'DELETE';
             $.ajax({
-                url: `/api/customerAPI/nv001`,
-                method: 'DELETE',
+                url: `${this.url}/${this.getId()}`,
+                method: this.method,
                 dataType: 'text'
             }).done(res => {
-                $('.row-selected').remove();
+                debugger;
+                this.loadData();
             }).fail(err => {
                 console.log(err);
             });
         }
+    }
+    getId() {
+        return $(".row-selected td")[0].innerText;
     }
     onShowDialog() {
         $(".dialog-modal, .dialog").show();
@@ -159,12 +172,13 @@ class EmployeeJS {
         $("#form-data input, textarea").val('').removeClass('error').removeAttr('title');
     }
     setInputDialog(cells) {
-        $("#txtCustomerCode").val(cells[0]);
-        $("#txtCustomerName").val(cells[1]);
-        $("#txtCompanyName").val(cells[2]);
-        $("#txtTaxCode").val(cells[3]);
-        $("#txtAddress").val(cells[4]);
-        $("#txtSDT").val(cells[5]);
-        $("#txtEmail").val(cells[6]);
+        $("#txtCustomerCode").val(cells.customerCode);
+        $("#txtCustomerName").val(cells.customerName);
+        //$("#txtGender").val(cells[2]);
+        $("#txtDateOfBrith").val(cells.dateOfBrith.split("T")[0]);
+        $("#txtAddress").val(cells.address);
+        $("#txtSDT").val(cells.sdt);
+        $("#txtEmail").val(cells.email);
+        $("#txtDebtMoney").val(cells.debtMoney);
     }
 }

@@ -35,11 +35,22 @@ namespace MISA.CukCuk.Controllers
             return new JsonResult(customer);
         }
 
+        //public int EditCustomer([FromBody] Customer customer)
+        //{
+
+        //}
+
         [Route("{id}")]
         [HttpDelete]
-        public string DeleteCustomer([FromRoute]string id)
+        public int DeleteCustomer([FromRoute]string id)
         {
-            return id;
+            var customer = Customer.Customers.Where(x => x.CustomerCode == id).FirstOrDefault();
+            if (customer != null)
+            {
+                Customer.Customers.Remove(customer);
+                return 1;
+            }
+            return 0;
         }
     }
 }
