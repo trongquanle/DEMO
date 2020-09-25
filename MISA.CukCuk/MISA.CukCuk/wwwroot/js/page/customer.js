@@ -14,6 +14,7 @@ class EmployeeJS {
         $(".dialog-modal, #btn-cancel, .dialog-title-cancel").click(this.onHideDialog.bind(this));
         $("#btn-save").click(this.onSaveCustomer.bind(this));
         $("#btn-delete").click(this.onDeleteCustomer.bind(this));
+        $("#table-data tbody").on('click', 'tr', this.onChangeTrSelected);
         $("#form-data").validate({
             onfocusout: function (element) {
                 $(element).valid();
@@ -56,53 +57,69 @@ class EmployeeJS {
     formatAddress(address) {
         return address.length > 26 ? `${address.substr(0, 26)}...` : address;
     }
+
+    /**
+     * Hàm format tiền tệ VND
+     * @param {number} money
+     * Author: LTQuan
+     * */
+    formatMoney(money) {
+        return money.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
+    }
+    /**
+     * Hàm set giới tính
+     * @param {number} gender
+     * Author: LTQuan
+     */
+    setGender(gender) {
+        return gender == 1 ? "Nam" : (gender == 0 ? "Nữ" : "");
+    }
+    /**
+     * Hàm binding data cho row
+     * @param {any} item doi tuong customer
+     * Author: LTQuan (24/9/2020)
+     * Edit: ...
+     **/
     makeTrHtml(item) {
-        return $(`<tr onclick='EmployeeJS.onChangeTrSelected(this)'>
+        return $(`<tr>
                     <td title='${item.customerCode}'>${item.customerCode}</td>
-                    <td title='${item.customerName}'>${item.customerName || ""}</td>
-                    <td style="text-align:center;" title='${item.gender}'>${item.gender}</td>
+                    <td title='${item.customerName || ""}'>${item.customerName || ""}</td>
+                    <td title='${this.setGender(item.gender)}'>${this.setGender(item.gender)}</td>
                     <td title='${this.formatDate(item.dateOfBrith)}'>${this.formatDate(item.dateOfBrith)}</td>
                     <td title='${item.address}'>${this.formatAddress(item.address)}</td>
                     <td title='${item.sdt}'>${item.sdt}</td>
                     <td title='${item.email}'>${item.email}</td>
-                    <td style='text-align: end;' title='${item.debtMoney.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")}  VND'>
-                        ${item.debtMoney.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")} VND
+                    <td style='text-align: end;' title='${this.formatMoney(item.debtMoney)}  VND'>
+                        ${this.formatMoney(item.debtMoney)} VND
                     </td>
                 </tr>`);
     }
-    static onChangeTrSelected(element) {
-        if ($(element).hasClass('row-selected')) {
-            $(element).removeClass('row-selected');
+    onChangeTrSelected() {
+        if ($(this).hasClass('row-selected')) {
+            $(this).removeClass('row-selected');
         } else {
-            $(element).siblings().removeClass('row-selected');
-            $(element).addClass('row-selected');
+            $(this).siblings().removeClass('row-selected');
+            $(this).addClass('row-selected');
         }
     }
-    /**
-     * Ham make row cho table
-     * @param {any} item doi tuong customer
-     * Author: LTQuan (24/9/2020)
-     * Edit: ...
-     */
     loadData() {
         $(".grid tbody").empty();
         this.method = 'GET';
         let context = this;
-        try {
-            $.ajax({
-                url: context.url,
-                method: context.method,
-                dataType: 'json'
-            }).done(res => {
-                $.each(res, (i, item) => {
+        $.ajax({
+            url: context.url,
+            method: context.method,
+            dataType: 'json'
+        }).done(res => {
+            $.each(res, (i, item) => {
+                try {
                     $(".grid tbody").append(context.makeTrHtml(item));
-                });
-            }).fail(err => {
-                console.log(err);
+                } catch (e) {
+                }
             });
-        } catch (e) {
-
-        }
+        }).fail(err => {
+            console.log(err);
+        });
     }
     onEditCustomer() {
         this.method = 'GET';
@@ -128,7 +145,7 @@ class EmployeeJS {
         if ($('#form-data').valid()) {
             let employee = {};
             $("#form-data").serializeArray().forEach(item => {
-                if (item.name == "DebtMoney") {
+                if (item.name == "DebtMoney" || item.name == "Gender") {
                     employee[item.name] = parseFloat(item.value);
                 } else {
                     employee[item.name] = item.value;
@@ -158,13 +175,16 @@ class EmployeeJS {
                 method: this.method,
                 dataType: 'text'
             }).done(res => {
-                debugger;
                 this.loadData();
             }).fail(err => {
                 console.log(err);
             });
         }
     }
+    /**
+     * Hàm lấy id của customer
+     * Author: LTQuan (25/09/2020)
+     * */
     getId() {
         return $(".row-selected td")[0].innerText;
     }
@@ -173,16 +193,18 @@ class EmployeeJS {
     }
     onHideDialog() {
         $(".dialog-modal, .dialog").hide();
-        $("#form-data input, textarea").val('').removeClass('error').removeAttr('title');
+        $("#form-data input[type='text'], textarea").val('').removeClass('error').removeAttr('title');
+        $("#txtDateOfBrith").val(null);
+        $("#form-data input[value='1']").prop('checked', true);
     }
-    setInputDialog(cells) {
-        $("#txtCustomerCode").val(cells.customerCode);
-        $("#txtCustomerName").val(cells.customerName);
-        //$("#txtGender").val(cells[2]);
-        $("#txtDateOfBrith").val(cells.dateOfBrith.split("T")[0]);
-        $("#txtAddress").val(cells.address);
-        $("#txtSDT").val(cells.sdt);
-        $("#txtEmail").val(cells.email);
-        $("#txtDebtMoney").val(cells.debtMoney);
+    setInputDialog(customer) {
+        $("#txtCustomerCode").val(customer.customerCode);
+        $("#txtCustomerName").val(customer.customerName);
+        $(`#form-data input[value=${customer.gender}]`).prop('checked', true);
+        $("#txtDateOfBrith").val(customer.dateOfBrith.split("T")[0]);
+        $("#txtAddress").val(customer.address);
+        $("#txtSDT").val(customer.sdt);
+        $("#txtEmail").val(customer.email);
+        $("#txtDebtMoney").val(customer.debtMoney);
     }
 }

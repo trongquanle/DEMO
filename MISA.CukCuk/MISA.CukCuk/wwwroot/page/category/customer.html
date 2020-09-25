@@ -112,7 +112,7 @@
                 </div>
                 <!--End toolbar-->
                 <div class="grid">
-                    <table border="1" cellpadding="0">
+                    <table id="table-data" border="1" cellpadding="0">
                         <thead>
                             <tr>
                                 <th style="width: 12%;">
@@ -121,7 +121,7 @@
                                 <th>
                                     Tên khách hàng
                                 </th>
-                                <th style="width: 10%;">
+                                <th style="width: 8%;">
                                     Giới tính
                                 </th>
                                 <th style="width: 10%;">
@@ -130,7 +130,7 @@
                                 <th style="width: 17%;">
                                     Địa chỉ
                                 </th>
-                                <th title="Số điện thoại">
+                                <th style="width: 12%;" title="Số điện thoại">
                                     SDT
                                 </th>
                                 <th>
@@ -201,14 +201,14 @@
                 <div class="paging">
                     <div class="left-paging">
                         <ul>
-                            <li class="center-items"><button class="btn-page btn-page-first"></button></li>
-                            <li class="center-items"><button class="btn-page btn-page-prev"></button><span style="color:#ccc;">|</span></li>
+                            <li class="center-items"><button class="btn-page btn-page-first" title="trang đầu tiên"></button></li>
+                            <li class="center-items"><button class="btn-page btn-page-prev" title="trang trước"></button><span style="color:#ccc;">|</span></li>
                             <li>Trang</li>
                             <li class="center-items"><input type="text" value="5" /></li>
                             <li>trên 1</li>
-                            <li class="center-items"><span style="color:#ccc;">|</span><button class="btn-page btn-page-next"></button></li>
-                            <li class="center-items"><button class="btn-page btn-page-last"></button><span style="color:#ccc;">|</span></li>
-                            <li class="center-items"><button class="btn-page btn-page-refresh"></button><span style="color:#ccc;">|</span></li>
+                            <li class="center-items"><span style="color:#ccc;">|</span><button class="btn-page btn-page-next" title="trang kế tiếp"></button></li>
+                            <li class="center-items"><button class="btn-page btn-page-last" title="trang cuối"></button><span style="color:#ccc;">|</span></li>
+                            <li class="center-items"><button class="btn-page btn-page-refresh" title="tải lại"></button><span style="color:#ccc;">|</span></li>
                             <li>Số bản ghi</li>
                             <li class="center-items">
                                 <select>
@@ -272,6 +272,17 @@
                             </td>
                             <td colspan="2">
                                 <input type="text" />
+                            </td>
+                            <td colspan="1">
+                                <label>Giới tính</label>
+                            </td>
+                            <td colspan="2" style="display: flex;">
+                                <input type="radio" id="checkbox-male" checked name="Gender" value="1" />
+                                <label class="radio-label" for="checkbox-male">Nam</label>
+                                <input type="radio" id="checkbox-female" name="Gender" value="0" />
+                                <label class="radio-label" for="checkbox-female">Nữ</label>
+                                <input type="radio" id="checkbox-none" name="Gender" value="-1" />
+                                <label class="radio-label" for="checkbox-none">Không xác định</label>
                             </td>
                         </tr>
                         <tr>

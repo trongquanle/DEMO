@@ -443,13 +443,22 @@ li .profile {
 /*.dialog-body .row {
     margin-bottom: 8px;
 }*/
-.dialog input, textarea {
+.dialog input[type="text"], input[type="date"], textarea {
     width: 100%;
     border: 1px solid #ccc;
     padding: 4px;
     outline: none;
-    margin-left: -20px;
+    margin-left: -10px;
     resize: vertical;
+}
+
+.dialog input[type="radio"] {
+    margin-top: 7px;
+}
+
+.dialog label.radio-label {
+    padding: 0 25px 0 5px;
+    line-height: 27px;
 }
 
 /*.row label {
