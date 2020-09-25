@@ -1,0 +1,74 @@
+﻿
+.grid > table {
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    .grid > table th, td {
+        border: 1px solid #ccc;
+        padding: 4px 8px;
+        /*text-align: center;*/
+    }
+
+    .grid > table th {
+        background-color: rgb(239, 239, 239);
+        border-top: none;
+    }
+
+    .grid > table tr th:first-child, td:first-child {
+        border-left: none;
+        padding: 6px;
+    }
+
+    .grid > table thead tr:first-child th {
+        border-bottom: none;
+    }
+
+    .grid > table thead tr:last-child th {
+        padding: 1px;
+    }
+
+    .grid > table tr th:last-child, td:last-child {
+        border-right: none;
+    }
+
+    .grid > table tbody tr:nth-child(even) {
+        background-color: rgb(239, 239, 239);
+    }
+
+    .grid > table tbody tr:hover {
+        background-color: #b8e3ff !important;
+        cursor: pointer;
+    }
+
+    .grid > table tbody tr.row-selected {
+        background-color: #b8e3ff !important;
+    }
+
+    .grid > table .filter {
+        display: flex;
+    }
+
+    .grid > table th p {
+        margin-block-start: .2em;
+        margin-block-end: .5em;
+    }
+
+    .grid > table .filter button, input {
+        border: 1px solid #ccc;
+        outline: none;
+        padding: 4px;
+    }
+
+    .grid > table .filter button {
+        width: 30px;
+        height: 26px;
+        line-height: 23px;
+        background-color: #fff;
+        border-right: none;
+    }
+
+    .grid > table .filter input {
+        width: 90%;
+    }

@@ -74,7 +74,7 @@ class EmployeeJS {
         if ($(element).hasClass('row-selected')) {
             $(element).removeClass('row-selected');
         } else {
-            $("tr").removeClass('row-selected');
+            $(element).siblings().removeClass('row-selected');
             $(element).addClass('row-selected');
         }
     }
@@ -88,17 +88,21 @@ class EmployeeJS {
         $(".grid tbody").empty();
         this.method = 'GET';
         let context = this;
-        $.ajax({
-            url: context.url,
-            method: context.method,
-            dataType: 'json'
-        }).done(res => {
-            $.each(res, (i, item) => {
-                $(".grid tbody").append(context.makeTrHtml(item));
+        try {
+            $.ajax({
+                url: context.url,
+                method: context.method,
+                dataType: 'json'
+            }).done(res => {
+                $.each(res, (i, item) => {
+                    $(".grid tbody").append(context.makeTrHtml(item));
+                });
+            }).fail(err => {
+                console.log(err);
             });
-        }).fail(err => {
-            console.log(err);
-        });
+        } catch (e) {
+
+        }
     }
     onEditCustomer() {
         this.method = 'GET';
