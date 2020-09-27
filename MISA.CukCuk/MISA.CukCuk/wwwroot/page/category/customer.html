@@ -115,28 +115,28 @@
                     <table id="table-data" border="1" cellpadding="0">
                         <thead>
                             <tr>
-                                <th style="width: 12%;">
+                                <th fieldname="customerCode" style="width: 12%;">
                                     Mã khách hàng
                                 </th>
-                                <th>
+                                <th fieldname="customerName">
                                     Tên khách hàng
                                 </th>
-                                <th style="width: 8%;">
+                                <th fieldname="gender" format="gender" style="width: 8%;">
                                     Giới tính
                                 </th>
-                                <th style="width: 10%;">
+                                <th fieldname="dateOfBrith" format="date" style="width: 10%;">
                                     Ngày sinh
                                 </th>
-                                <th style="width: 17%;">
+                                <th fieldname="address" format="limit_string" style="width: 17%;">
                                     Địa chỉ
                                 </th>
-                                <th style="width: 12%;" title="Số điện thoại">
+                                <th fieldname="sdt" style="width: 12%;" title="Số điện thoại">
                                     SDT
                                 </th>
-                                <th>
+                                <th fieldname="email">
                                     Email
                                 </th>
-                                <th style="width: 12%;">
+                                <th fieldname="debtMoney" format="number" style="width: 12%;">
                                     Số tiền nợ
                                 </th>
                             </tr>
@@ -277,11 +277,11 @@
                                 <label>Giới tính</label>
                             </td>
                             <td colspan="2" style="display: flex;">
-                                <input type="radio" id="checkbox-male" checked name="Gender" value="1" />
+                                <input type="radio" id="checkbox-male" format="number" checked name="Gender" value="1" />
                                 <label class="radio-label" for="checkbox-male">Nam</label>
-                                <input type="radio" id="checkbox-female" name="Gender" value="0" />
+                                <input type="radio" id="checkbox-female" format="number" name="Gender" value="0" />
                                 <label class="radio-label" for="checkbox-female">Nữ</label>
-                                <input type="radio" id="checkbox-none" name="Gender" value="-1" />
+                                <input type="radio" id="checkbox-none" format="number" name="Gender" value="-1" />
                                 <label class="radio-label" for="checkbox-none">Không xác định</label>
                             </td>
                         </tr>
@@ -314,7 +314,7 @@
                                 <label>Số tiền nợ</label>
                             </td>
                             <td colspan="2">
-                                <input type="text" id="txtDebtMoney" name="DebtMoney" />
+                                <input type="text" id="txtDebtMoney" format="number" name="DebtMoney" />
                             </td>
                             <td>
                                 <label>Email</label>
@@ -351,6 +351,8 @@
     <!--End dialog-->
     <script src="/js/plugins/jquery.min.js"></script>
     <script src="/js/plugins/jquery.validate.min.js"></script>
-    <script src="/js/page/customer.js"></script>
+    <script src="/js/common/common.js"></script>
+    <script src="/js/page/base/base.js"></script>
+    <script src="/js/page/dictionary/customer.js"></script>
 </body>
 </html>
