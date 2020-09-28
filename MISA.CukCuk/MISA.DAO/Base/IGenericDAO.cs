@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MISA.DAO.Base
 {
-    public interface IGenericDAO<T>
+    public interface IGenericDAO<T> : IDisposable
     {
         int Query(string query, T model);
         IEnumerable<T> GetData(string query, IMapper<T> mapper);

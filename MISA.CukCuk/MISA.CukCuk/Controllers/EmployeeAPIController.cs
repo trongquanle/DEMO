@@ -12,25 +12,99 @@ namespace MISA.CukCuk.Controllers
     [ApiController]
     public class EmployeeAPIController : ControllerBase
     {
-        //[Route("")]
-        //[HttpGet]
-        //public JsonResult GetEmployees()
-        //{
-        //    var employees = new List<Employee>()
-        //    {
-        //        new Employee(){ EmployeeCode="NV001", EmployeeName="Lê Huy Tuân", Email="tuandz@gmail.com", SDT="12356214521", CompanyName="Công ty cổ phần MISA"},
-        //        new Employee(){ EmployeeCode="NV002", EmployeeName="Nguyễn Anh Tuấn", Email="tuanna@gmail.com", SDT="23641721278", CompanyName="Đại học Bách Khoa"},
-        //        new Employee(){ EmployeeCode="NV003", EmployeeName="Trương Xuấn Chiểu", Email="chieuz@gmail.com", SDT="76234622332", CompanyName="Đại học Quốc Gia Hà Nội"},
-        //        new Employee(){ EmployeeCode="NV004", EmployeeName="Chu Trần Đại", Email="daidz@gmail.com", SDT="23654121277", CompanyName="Đại học Công Nghiệp Hà Nội"},
-        //        new Employee(){ EmployeeCode="NV005", EmployeeName="Đoàn Văn Lực", Email="lucdz@gmail.com", SDT="34578756348", CompanyName="Đại học Giao Thông Vận Tải"},
-        //    };
-        //    return new JsonResult(employees);
-        //}
+        /**
+         * Hàm load employeee, /api/EmployeeAPI
+         * @returns {List<Employee>}
+         * Author: LTQuan (28/09/2020)
+         * */
+        [Route("")]
+        [HttpGet]
+        public List<Employee> GetEmployees()
+        {
+            return Employee.Employees;
+        }
+
+        /**
+         * Hàm load employee với employeeCode
+         * @param {int} code
+         * @returns {Employee}
+         * Author: LTQuan (28/09/2020)
+         * */
+        [Route("{code}")]
+        public Employee GetEmployeeByCode([FromRoute] string code)
+        {
+            return Employee.Employees.Where(x => x.EmployeeCode == code).FirstOrDefault();
+        }
+
+        /**
+         * Hàm thêm mới employee
+         * @param {Employee} employee
+         * @returns {int}
+         * Author: LTQuan (28/09/2020)
+         * */
         [Route("")]
         [HttpPost]
-        public JsonResult SaveEmployee([FromBody] Employee employee)
+        public int SaveEmployee([FromBody] Employee employee)
         {
-            return new JsonResult(employee);
+            try
+            {
+                Employee.Employees.Add(employee);
+                return 1;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+
+        /**
+         * Hàm xóa employee theo code
+         * @param {string} code
+         * @returns {int}
+         * Author: LTQuan (28/09/2020)
+         * */
+        [Route("{code}")]
+        [HttpDelete]
+        public bool DeleteEmployeeByCode([FromRoute] string code)
+        {
+            try
+            {
+                var employee = Employee.Employees.Where(x => x.EmployeeCode == code).FirstOrDefault();
+                Employee.Employees.Remove(employee);
+                return Employee.Employees.Remove(employee); ;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        /**
+         * Hàm cập nhật employee
+         * @param {Employee} code
+         * @return {int}
+         * Author: LTQuan (28/09/2020)
+         * */
+        [Route("")]
+        [HttpPut]
+        public int UpdateEmployee([FromBody] Employee employee)
+        {
+            try
+            {
+                for (int i = 0; i < Employee.Employees.Count; i++)
+                {
+                    if (Employee.Employees[i].EmployeeCode == employee.EmployeeCode)
+                    {
+                        Employee.Employees[i] = employee;
+                        break;
+                    }
+                }
+                return 1;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
     }
 }

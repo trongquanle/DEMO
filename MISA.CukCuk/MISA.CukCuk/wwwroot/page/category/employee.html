@@ -2,9 +2,349 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>CukCuk</title>
+    <link href="/css/common/layout/main.css" rel="stylesheet" />
+    <link href="/css/element/table.css" rel="stylesheet" />
+    <link href="/css/common/layout/sidebar.css" rel="stylesheet" />
+    <link href="/content/fonts/font-anwesome/css/all.min.css" rel="stylesheet" />
 </head>
 <body>
-
+    <!--Sidebar-->
+    <div class="sidebar">
+        <div class="logo">
+            <div class="icon-left-header"></div>
+            <div class="logo-text"></div>
+        </div>
+        <div class="menu">
+            <div class="menu-item">
+                <div class="menu-item-icon icon-dashboard"></div>
+                <div class="menu-item-text">Tổng quan</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-icon icon-report"></div>
+                <div class="menu-item-text">Báo cáo</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-icon icon-cart"></div>
+                <div class="menu-item-text">Mua hàng</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-icon icon-inventory"></div>
+                <div class="menu-item-text">Kho</div>
+            </div>
+            <a href="customer.html" class="menu-item">
+                <div class="menu-item-icon icon-category"></div>
+                <div class="menu-item-text">Khách hàng</div>
+            </a>
+            <a href="employee.html" class="menu-item">
+                <div class="menu-item-icon icon-category"></div>
+                <div class="menu-item-text">Nhân viên</div>
+            </a>
+        </div>
+    </div>
+    <!--End sidebar-->
+    <!--Main-->
+    <div class="main">
+        <!--Header-->
+        <div class="header">
+            <div class="left-header center-items">
+                <select>
+                    <option value="0" selected>Đại dương xanh</option>
+                    <option value="1">Đại dương xanh 2</option>
+                    <option value="2">Đại dương xanh 3</option>
+                    <option value="3">Đại dương xanh 4</option>
+                    <option value="4">Đại dương xanh 5</option>
+                </select>
+            </div>
+            <div class="right-header">
+                <ul>
+                    <li class="center-items">
+                        <select>
+                            <option value="0" selected>Tiếng Việt (Tiếng Việt)</option>
+                            <option value="1">Đại dương xanh 2</option>
+                            <option value="2">Đại dương xanh 3</option>
+                            <option value="3">Đại dương xanh 4</option>
+                            <option value="4">Đại dương xanh 5</option>
+                        </select>
+                    </li>
+                    <li class="center-items right-header-notifications">
+                        <i class="fa fa-globe-americas icon-globe" style="font-size:30px;color:#fff;line-height:50px;margin: 0 auto;"></i>
+                        <span class="badge">3</span>
+                    </li>
+                    <li class="center-items">
+                        <img class="misa-logo" src="/content/img/Images/logo.svg" alt="Alternate Text" />
+                    </li>
+                    <li class="center-items">
+                        <img src="/content/img/Images/ic_support.svg" class="icon-support" />
+                    </li>
+                    <li class="center-items">
+                        <img class="profile" src="/content/img/Images/EmployeeImage.png" alt="Alternate Text" />
+                        <select>
+                            <option value="0" selected>NSND Tuân Đz</option>
+                            <option value="1">Đại dương xanh 2</option>
+                            <option value="2">Đại dương xanh 3</option>
+                            <option value="3">Đại dương xanh 4</option>
+                            <option value="4">Đại dương xanh 5</option>
+                        </select>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--End header-->
+        <div class="content">
+            <!--Page header-->
+            <div class="page-content">
+                <div class="left-page-content">
+                    <h1>
+                        Danh mục
+                    </h1>
+                    <i class="fa fa-caret-right icon-triangle"></i>
+                    <a href="employee.html">Nhân viên</a>
+                </div>
+                <div class="right-page-content center-items center-items-right">
+                    <button>Quay lại thiết lập ban đầu</button>
+                    <button class="btn-feedback"><i class="icon icon-feedback"></i>&nbspPhản hồi</button>
+                </div>
+            </div>
+            <!--End page header-->
+            <div class="content-body">
+                <!--Tooldbar-->
+                <div class="toolbar">
+                    <button id="btn-add" title="thêm mới khách hàng"><i class="icon icon-add"></i>&nbsp;Thêm</button>
+                    <button id="btn-edit" title="chỉnh sửa khách hàng"><i class="icon icon-edit"></i>&nbsp;Sửa</button>
+                    <button id="btn-delete" title="xóa khách hàng khỏi hệ thống"><i class="icon icon-delete"></i>&nbsp;Xóa</button>
+                </div>
+                <!--End toolbar-->
+                <div class="grid">
+                    <table id="table-data" border="1" cellpadding="0">
+                        <thead>
+                            <tr>
+                                <th fieldname="employeeCode" style="width: 12%;">
+                                    Mã nhân viên
+                                </th>
+                                <th fieldname="employeeName">
+                                    Tên nhân viên
+                                </th>
+                                <th fieldname="gender" format="gender">
+                                    Giới tính
+                                </th>
+                                <th fieldname="dateOfBrith" format="date">
+                                    Ngày sinh
+                                </th>
+                                <th fieldname="email">
+                                    Email
+                                </th>
+                                <th fieldname="possionName">
+                                    Vị trí
+                                </th>
+                                <th fieldname="departmentName">
+                                    Phòng ban
+                                </th>
+                                <th fieldname="salary" format="number">
+                                    Mức lương
+                                </th>
+                                <th fieldname="workStatus">
+                                    Tình trạng công việc
+                                </th>
+                            </tr>
+                            <!--Fliter-->
+                            <tr>
+                                <th>
+                                    <div class="filter">
+                                        <button>*</button>
+                                        <input type="text" />
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="filter">
+                                        <button>*</button>
+                                        <input type="text" />
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="filter">
+                                        <button>*</button>
+                                        <input type="text" />
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="filter">
+                                        <button>*</button>
+                                        <input type="text" />
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="filter">
+                                        <button>*</button>
+                                        <input type="text" />
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="filter">
+                                        <button>*</button>
+                                        <input type="text" />
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="filter">
+                                        <button>*</button>
+                                        <input type="text" />
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="filter">
+                                        <button>*</button>
+                                        <input type="text" />
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="filter">
+                                        <button>*</button>
+                                        <input type="text" />
+                                    </div>
+                                </th>
+                            </tr>
+                            <!--End filter-->
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <!--Paging-->
+                <div class="paging">
+                    <div class="left-paging">
+                        <ul>
+                            <li class="center-items"><button class="btn-page btn-page-first" title="trang đầu tiên"></button></li>
+                            <li class="center-items"><button class="btn-page btn-page-prev" title="trang trước"></button><span style="color:#ccc;">|</span></li>
+                            <li>Trang</li>
+                            <li class="center-items"><input type="text" value="5" /></li>
+                            <li>trên 1</li>
+                            <li class="center-items"><span style="color:#ccc;">|</span><button class="btn-page btn-page-next" title="trang kế tiếp"></button></li>
+                            <li class="center-items"><button class="btn-page btn-page-last" title="trang cuối"></button><span style="color:#ccc;">|</span></li>
+                            <li class="center-items"><button class="btn-page btn-page-refresh" title="tải lại"></button><span style="color:#ccc;">|</span></li>
+                            <li>Số bản ghi</li>
+                            <li class="center-items">
+                                <select>
+                                    <option value="5" selected>5</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="right-paging">Hiển thị 1 - 5  trên 5 kết quả</div>
+                </div>
+                <!--End paging-->
+            </div>
+        </div>
+    </div>
+    <!--Dialog-->
+    <div class="dialog-modal"></div>
+    <div class="dialog" style="height: 350px;">
+        <div class="dialog-title">
+            <div class="dialog-title-text">Thông tin nhân viên</div>
+            <div class="dialog-title-cancel"></div>
+        </div>
+        <div class="dialog-body">
+            <form id="form-data">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">
+                                <label>Mã nhân viên <span style="color: red">(*)</span></label>
+                            </td>
+                            <td colspan="2">
+                                <input type="text" id="txtEmployeeCode" name="employeeCode" />
+                            </td>
+                            <td>
+                                <label>Tên nhân viên <span style="color: red">(*)</span></label>
+                            </td>
+                            <td colspan="2">
+                                <input type="text" id="txtEmployeeName" name="employeeName" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                <label>Ngày sinh <span style="color: red">(*)</span></label>
+                            </td>
+                            <td colspan="2">
+                                <input type="date" id="txtDateOfBrith" format="date" name="dateOfBrith" style="resize: none;" />
+                            </td>
+                            <td colspan="1">
+                                <label>Mức lương <span style="color: red">(*)</span></label>
+                            </td>
+                            <td colspan="2">
+                                <input type="text" id="txtSalary" format="number" name="salary" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                <label>Tình trạng công việc</label>
+                            </td>
+                            <td colspan="2">
+                                <input type="text" name="workStatus" />
+                            </td>
+                            <td colspan="1">
+                                <label>Giới tính</label>
+                            </td>
+                            <td colspan="2" style="display: flex;">
+                                <input type="radio" id="checkbox-male" format="number" checked name="gender" value="1" />
+                                <label class="radio-label" for="checkbox-male">Nam</label>
+                                <input type="radio" id="checkbox-female" format="number" name="gender" value="0" />
+                                <label class="radio-label" for="checkbox-female">Nữ</label>
+                                <input type="radio" id="checkbox-none" format="number" name="gender" value="-1" />
+                                <label class="radio-label" for="checkbox-none">Không xác định</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                <label>Số điện thoại</label>
+                            </td>
+                            <td colspan="2">
+                                <input type="text" id="txtSDT" name="mobile" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                <label>Tên vị trí</label>
+                            </td>
+                            <td colspan="2">
+                                <input type="text" name="possionName" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                <label>Tên bộ phận</label>
+                            </td>
+                            <td colspan="2">
+                                <input type="text" name="departmentName" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                <label>Email</label>
+                            </td>
+                            <td colspan="2">
+                                <input type="text" id="txtEmail" name="email" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <div class="dialog-footer">
+            <button id="btn-save" class="center-items"><i class="icon icon-save"></i>&nbsp;Cất</button>
+            <button id="btn-cancel" class="center-items"><i class="icon icon-cancel"></i>&nbsp;Hủy</button>
+        </div>
+    </div>
+    <!--<div class="dialog-message"></div>-->
+    <!--End dialog-->
+    <script src="/js/plugins/jquery.min.js"></script>
+    <script src="/js/plugins/jquery.validate.min.js"></script>
+    <script src="/js/common/common.js"></script>
+    <script src="/js/page/base/base.js"></script>
+    <script src="/js/page/dictionary/employee.js"></script>
 </body>
 </html>

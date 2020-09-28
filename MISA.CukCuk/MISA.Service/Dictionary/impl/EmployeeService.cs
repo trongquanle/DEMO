@@ -1,4 +1,5 @@
-﻿using MISA.DAO.Dictionary.impl;
+﻿using MISA.DAO.Dictionary;
+using MISA.DAO.Dictionary.impl;
 using MISA.Entities;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace MISA.Service.Dictionary.impl
             // Logic
 
             // Gọi xuống tầng DAO
-            using (EmployeeDAO employeeDAO = new EmployeeDAO())
+            using (IEmployeeDAO employeeDAO = new EmployeeDAO())
             {
                 return employeeDAO.GetEmployees();
             }
@@ -21,7 +22,7 @@ namespace MISA.Service.Dictionary.impl
 
         public Employee GetEmployees(string id)
         {
-            using (EmployeeDAO employeeDAO = new EmployeeDAO())
+            using (IEmployeeDAO employeeDAO = new EmployeeDAO())
             {
                 return employeeDAO.GetEmployeeById(id);
             }

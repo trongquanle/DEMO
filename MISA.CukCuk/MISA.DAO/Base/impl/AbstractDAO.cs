@@ -7,7 +7,7 @@ using System.Text;
 
 namespace MISA.DAO.Base.impl
 {
-    public class AbstractDAO<T> : IGenericDAO<T>, IDisposable
+    public class AbstractDAO<T> : IGenericDAO<T>
     {
         private SqlConnection sqlConnection;
         private SqlCommand sqlCommand;

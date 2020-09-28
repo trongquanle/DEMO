@@ -11,7 +11,7 @@ namespace MISA.Service.Dictionary.impl
     {
         public IEnumerable<Customer> GetCustomers()
         {
-            using(CustomerDAO customerDAO = new CustomerDAO())
+            using(ICustomerDAO customerDAO = new CustomerDAO())
             {
                 return customerDAO.GetCustomers();
             }
