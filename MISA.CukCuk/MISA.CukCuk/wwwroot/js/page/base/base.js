@@ -29,7 +29,7 @@
     }
 
     /**
-     * Hàm validate form-data
+     * Hàm khởi tạo validate form-data
      * @returns {void}
      * Author: LTQuan (28/09/2020)
      * */

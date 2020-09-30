@@ -8,7 +8,10 @@ class EmployeeJS extends BaseJS {
     initValidate() {
         $("#form-data").validate({
             onfocusout: function (element) {
-                $(element).valid();
+                if (element.tagName === "TEXTAREA" || (element.tagName === "INPUT" && element.type !== "password")) {
+                    element.value = $.trim(element.value);
+                }
+                return $(element).valid();
             },
             rules: {
                 employeeCode: 'required',
