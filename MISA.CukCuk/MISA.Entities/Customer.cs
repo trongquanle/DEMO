@@ -16,10 +16,10 @@ namespace MISA.Entities
         public string CustomerCode { get; set; }
         public string CustomerName { get; set; }
         public int Gender { get; set; }
-        public DateTime DateOfBrith { get; set; }
+        public DateTime? DateOfBrith { get; set; }
         public string Address { get; set; }
         public string SDT { get; set; }
         public string Email { get; set; }
-        public double DebtMoney { get; set; }
+        public double? DebtMoney { get; set; }
     }
 }

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MISA.Entities;
-using Microsoft.AspNetCore.Http;
+﻿using MISA.Entities;
 using Microsoft.AspNetCore.Mvc;
-using MISA.Service.Dictionary.impl;
+using MISA.Service.Dictionary;
+using System.Collections.Generic;
 
 namespace MISA.CukCuk.Controllers
 {
@@ -13,67 +9,52 @@ namespace MISA.CukCuk.Controllers
     [ApiController]
     public class CustomerAPIController : ControllerBase
     {
-        [Route("")]
-        [HttpGet]
-        public JsonResult GetCustomers()
+
+        private readonly ICustomerService _customerService;
+
+        public CustomerAPIController(ICustomerService customerService)
         {
-            return new JsonResult(Customer.Customers);
+            _customerService = customerService;
         }
 
-        [Route("{id}")]
+        [Route("")]
         [HttpGet]
-        public JsonResult GetCustomer([FromRoute]string id)
+        public IEnumerable<Customer> GetCustomers()
         {
-            return new JsonResult(Customer.Customers.Where(x => x.CustomerCode == id).FirstOrDefault());
+            return _customerService.GetCustomers();
+        }
+
+        [Route("{code}")]
+        [HttpGet]
+        public Customer GetCustomer([FromRoute]string code)
+        {
+            return _customerService.GetCustomerByCode(code);
         }
 
         [Route("")]
         [HttpPost]
-        public JsonResult SaveCustomer([FromBody] Customer customer)
+        public int SaveCustomer([FromBody] Customer customer)
         {
-            Customer.Customers.Add(customer);
-            return new JsonResult(customer);
+            return _customerService.AddCustomer(customer);
         }
 
-        /**
-         * Hàm update customer
-         * param {customer} customer
-         * returns {int}
-         * Author: LTQuan (28/09/2020)
-         * */
+        /// <summary>
+        /// Hàm update cusstomer
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
         [Route("")]
         [HttpPut]
         public int UpdateCustomer([FromBody] Customer customer)
         {
-            try
-            {
-                for (int i = 0; i < Customer.Customers.Count; i++)
-                {
-                    if (Customer.Customers[i].CustomerCode == customer.CustomerCode)
-                    {
-                        Customer.Customers[i] = customer;
-                        return 1;
-                    }
-                }
-                return -1;
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
+            return _customerService.UpdateCustomer(customer);
         }
 
-        [Route("{id}")]
+        [Route("{code}")]
         [HttpDelete]
-        public int DeleteCustomer([FromRoute]string id)
+        public int DeleteCustomer([FromRoute]string code)
         {
-            var customer = Customer.Customers.Where(x => x.CustomerCode == id).FirstOrDefault();
-            if (customer != null)
-            {
-                Customer.Customers.Remove(customer);
-                return 1;
-            }
-            return 0;
+            return _customerService.DeleteCustomer(code);
         }
     }
 }

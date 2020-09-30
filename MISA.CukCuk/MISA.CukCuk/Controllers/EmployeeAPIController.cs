@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using MISA.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MISA.Service.Dictionary;
 
 namespace MISA.CukCuk.Controllers
 {
@@ -12,99 +11,74 @@ namespace MISA.CukCuk.Controllers
     [ApiController]
     public class EmployeeAPIController : ControllerBase
     {
-        /**
-         * Hàm load employeee, /api/EmployeeAPI
-         * @returns {List<Employee>}
-         * Author: LTQuan (28/09/2020)
-         * */
-        [Route("")]
-        [HttpGet]
-        public List<Employee> GetEmployees()
+        private readonly IEmployeeService _employeeService;
+
+        public EmployeeAPIController(IEmployeeService employeeService)
         {
-            return Employee.Employees;
+            _employeeService = employeeService;
         }
 
-        /**
-         * Hàm load employee với employeeCode
-         * @param {int} code
-         * @returns {Employee}
-         * Author: LTQuan (28/09/2020)
-         * */
+        /// <summary>
+        /// Hàm xử lý request lấy danh sách employee, nhận req GET
+        /// </summary>
+        /// Author: LTQuan (30/09/2020)
+        /// <returns></returns>
+        [Route("")]
+        [HttpGet]
+        public IEnumerable<Employee> GetEmployees()
+        {
+            return _employeeService.GetEmployees();
+        }
+
+        /// <summary>
+        /// Hàm xử lý request load employee với employeeCode
+        /// </summary>
+        /// Author: LTQuan (30/09/2020)
+        /// <param name="code"></param>
+        /// <returns></returns>
         [Route("{code}")]
         public Employee GetEmployeeByCode([FromRoute] string code)
         {
-            return Employee.Employees.Where(x => x.EmployeeCode == code).FirstOrDefault();
+            return _employeeService.GetEmployeeByCode(code);
         }
 
-        /**
-         * Hàm thêm mới employee
-         * @param {Employee} employee
-         * @returns {int}
-         * Author: LTQuan (28/09/2020)
-         * */
+        /// <summary>
+        /// Hàm xử lý request thêm mới employee, nhận req POST
+        /// </summary>
+        /// Author: LTQuan (30/09/2020)
+        /// <param name="employee"></param>
+        /// <returns></returns>
         [Route("")]
         [HttpPost]
         public int SaveEmployee([FromBody] Employee employee)
         {
-            try
-            {
-                Employee.Employees.Add(employee);
-                return 1;
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
+            return _employeeService.AddEmployee(employee);
         }
 
-        /**
-         * Hàm xóa employee theo code
-         * @param {string} code
-         * @returns {int}
-         * Author: LTQuan (28/09/2020)
-         * */
+        /// <summary>
+        /// Hàm xử lý request xóa employee, method: DELETE
+        /// </summary>
+        /// Author: LTQuan (30/09/2020)
+        /// <param name="code"></param>
+        /// <returns></returns>
         [Route("{code}")]
         [HttpDelete]
-        public bool DeleteEmployeeByCode([FromRoute] string code)
+        public int DeleteEmployeeByCode([FromRoute] string code)
         {
-            try
-            {
-                var employee = Employee.Employees.Where(x => x.EmployeeCode == code).FirstOrDefault();
-                Employee.Employees.Remove(employee);
-                return Employee.Employees.Remove(employee); ;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            return _employeeService.DeleteEmployee(code);
         }
 
-        /**
-         * Hàm cập nhật employee
-         * @param {Employee} code
-         * @return {int}
-         * Author: LTQuan (28/09/2020)
-         * */
+        /// <summary>
+        /// Hàm xử lý request cập nhật employee, method: PUT
+        /// </summary>
+        /// Author: LTQuan (30/09/2020)
+        /// <param name="employee"></param>
+        /// <returns></returns>
         [Route("")]
         [HttpPut]
         public int UpdateEmployee([FromBody] Employee employee)
         {
-            try
-            {
-                for (int i = 0; i < Employee.Employees.Count; i++)
-                {
-                    if (Employee.Employees[i].EmployeeCode == employee.EmployeeCode)
-                    {
-                        Employee.Employees[i] = employee;
-                        break;
-                    }
-                }
-                return 1;
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
+            return _employeeService.UpdateEmployee(employee);
         }
     }
 }

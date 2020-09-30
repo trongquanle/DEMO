@@ -1,11 +1,12 @@
-﻿const commonJS = {
+﻿//#region Helper
+const commonJS = {
     /**
      * Hàm format tiền tệ VND
      * @param {number} money
      * Author: LTQuan
      * */
-    formatMonney : (money) => {
-        return money.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
+    formatMonney: (money) => {
+        return !money ? "" : `${money.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")} VND`;
     },
     /**
      * Hàm format Date
@@ -13,7 +14,7 @@
      * Author: LTQuan
      */
     formatDate: (date) => {
-        return date.split("T")[0].split("-").reverse().join("/");
+        return !date ? "" : date.split("T")[0].split("-").reverse().join("/");
     },
     /**
      * Hàm format Address
@@ -22,8 +23,32 @@
      */
     formatAddress: (address) => {
         return address.length > 26 ? `${address.substr(0, 26)}...` : address;
+    },
+    /**
+     * Hàm format giá trị từ input 
+     * @param {any} value
+     * @param {string} type
+     * Author: LTQuan (30/09/2020)
+     **/
+    formatValue: (value, type) => {
+        switch (type) {
+            case formatField.NUMBER:
+                value = !value ? null : parseFloat(value);
+                break;
+            case formatField.DATE:
+                value = !value ? null : value;
+                break;
+            default:
+                break;
+        }
+        return value;
     }
 }
+
+//#endregion Helper
+
+//#region Prototype
+
 /**
  * Hàm format địa chỉ nếu quá dài so với mỗi tr
  * Author: LTQuan (25/09/2020)
@@ -49,6 +74,11 @@ Number.prototype.formatMoney = function () {
 Number.prototype.setGender = function () {
     return this == 1 ? "Nam" : (this == 0 ? "Nữ" : "");
 }
+
+
+//#endregion Prototype
+
+//#region CONST
 
 /**
  * Constaint url
@@ -104,3 +134,5 @@ const message = {
     },
     ERROR: 'Có lỗi xảy ra, vui lòng kiểm tra lại!'
 }
+
+//#endregion CONST

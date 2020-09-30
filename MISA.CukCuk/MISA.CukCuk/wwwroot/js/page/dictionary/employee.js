@@ -16,9 +16,9 @@ class EmployeeJS extends BaseJS {
                     required: true,
                     minlength: 6
                 },
-                dateOfBrith: 'required',
+                //dateOfBrith: 'required',
                 salary: {
-                    required: true,
+                    //required: true,
                     number: true
                 }
             },
@@ -28,9 +28,9 @@ class EmployeeJS extends BaseJS {
                     required: 'tên nhân viên không được để trống',
                     minlength: 'tên nhân viên quá ngắn'
                 },
-                dateOfBrith: 'ngày sinh không được bỏ trống',
+                //dateOfBrith: 'ngày sinh không được bỏ trống',
                 salary: {
-                    required: 'tiền lương không được để trống',
+                    //required: 'tiền lương không được để trống',
                     number: 'tiền lương không hợp lệ'
                 }
             },

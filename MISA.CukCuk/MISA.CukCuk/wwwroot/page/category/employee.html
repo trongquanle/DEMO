@@ -110,9 +110,9 @@
             <div class="content-body">
                 <!--Tooldbar-->
                 <div class="toolbar">
-                    <button id="btn-add" title="thêm mới khách hàng"><i class="icon icon-add"></i>&nbsp;Thêm</button>
-                    <button id="btn-edit" title="chỉnh sửa khách hàng"><i class="icon icon-edit"></i>&nbsp;Sửa</button>
-                    <button id="btn-delete" title="xóa khách hàng khỏi hệ thống"><i class="icon icon-delete"></i>&nbsp;Xóa</button>
+                    <button id="btn-add" title="thêm mới nhân viên"><i class="icon icon-add"></i>&nbsp;Thêm</button>
+                    <button id="btn-edit" title="chỉnh sửa nhân viên"><i class="icon icon-edit"></i>&nbsp;Sửa</button>
+                    <button id="btn-delete" title="xóa nhân viên khỏi hệ thống"><i class="icon icon-delete"></i>&nbsp;Xóa</button>
                 </div>
                 <!--End toolbar-->
                 <div class="grid">
@@ -125,7 +125,7 @@
                                 <th fieldname="employeeName">
                                     Tên nhân viên
                                 </th>
-                                <th fieldname="gender" format="gender">
+                                <th fieldname="gender" format="gender" style="width: 7%;">
                                     Giới tính
                                 </th>
                                 <th fieldname="dateOfBrith" format="date">
@@ -143,8 +143,8 @@
                                 <th fieldname="salary" format="number">
                                     Mức lương
                                 </th>
-                                <th fieldname="workStatus">
-                                    Tình trạng công việc
+                                <th fieldname="workStatus" title="Tình trạng công việc" style="width: 7%;">
+                                    TTCV
                                 </th>
                             </tr>
                             <!--Fliter-->
@@ -267,13 +267,13 @@
                         </tr>
                         <tr>
                             <td colspan="1">
-                                <label>Ngày sinh <span style="color: red">(*)</span></label>
+                                <label>Ngày sinh</label>
                             </td>
                             <td colspan="2">
                                 <input type="date" id="txtDateOfBrith" format="date" name="dateOfBrith" style="resize: none;" />
                             </td>
                             <td colspan="1">
-                                <label>Mức lương <span style="color: red">(*)</span></label>
+                                <label>Mức lương</label>
                             </td>
                             <td colspan="2">
                                 <input type="text" id="txtSalary" format="number" name="salary" />

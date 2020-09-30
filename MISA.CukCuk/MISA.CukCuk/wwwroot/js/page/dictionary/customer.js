@@ -20,6 +20,9 @@ class CustomerJS extends BaseJS {
                 customerName: {
                     required: true,
                     minlength: 6
+                },
+                debtMoney: {
+                    number: true
                 }
             },
             messages: {
@@ -27,7 +30,8 @@ class CustomerJS extends BaseJS {
                 customerName: {
                     required: 'tên khách hàng không được để trống',
                     minlength: 'tên khách hàng quá ngắn'
-                }
+                },
+                debtMoney: 'số tiền nợ không hợp lệ'
             },
             errorPlacement: function (error, element) {
                 element.attr('title', error.text());

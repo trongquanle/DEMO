@@ -12,12 +12,18 @@
         this.fetchData();
         this.initEvents();
     }
+
+    /**
+     * Hàm khởi tạo sự kiện cho các control
+     * @returns {void}
+     * Author: LTQuan (26/09/2020)
+     * */
     initEvents() {
-        $("#btn-add").click(this.onAdd.bind(this));
-        $("#btn-edit").click(this.onEdit.bind(this));
-        $(".dialog-modal, #btn-cancel, .dialog-title-cancel").click(this.onHideDialog.bind(this));
-        $("#btn-save").click(this.onSave.bind(this));
-        $("#btn-delete").click(this.onDeleteRowSelected.bind(this));
+        $("#btn-add").click(() => this.onAdd());
+        $("#btn-edit").click(() => this.onEdit());
+        $(".dialog-modal, #btn-cancel, .dialog-title-cancel").click(() => this.onHideDialog());
+        $("#btn-save").click(() => this.onSave());
+        $("#btn-delete").click(() => this.onDeleteRowSelected());
         $("#table-data tbody").on('click', 'tr', this.onChangeTrSelected);
         this.initValidate();
     }
@@ -49,12 +55,16 @@
         });
     }
 
+    /**
+     * Hàm nạp data khi fetch về từ server
+     * Author: LTQuan (26/09/2020)
+     * @param {any} data
+     */
     loadData(data) {
         $(".grid tbody").empty();
-        let self = this;
         data.forEach((item) => {
             try {
-                $('.grid tbody').append(self.makeTrHtml(item));
+                $('.grid tbody').append(this.makeTrHtml(item));
             } catch (e) {
                 console.log(e);
             }
@@ -90,14 +100,14 @@
             }
         });
         let trHtml = $(`<tr></tr>`);
-        // Duyệt fields để binding data từ item
+        // Duyệt fields để binding value từ item
         fields.forEach(field => {
             switch (field.format) {
                 case formatField.NUMBER:
-                    trHtml.append(`<td style='text-align: end' title='${item[field.fieldName].formatMoney()}'>${item[field.fieldName].formatMoney()}</td>`);
+                    trHtml.append(`<td style='text-align: end' title='${commonJS.formatMonney(item[field.fieldName])}'>${commonJS.formatMonney(item[field.fieldName])}</td>`);
                     break;
                 case formatField.DATE:
-                    trHtml.append(`<td style='text-align: center' title='${item[field.fieldName].formatDate()}'>${item[field.fieldName].formatDate()}</td>`);
+                    trHtml.append(`<td style='text-align: center' title='${commonJS.formatDate(item[field.fieldName])}'>${commonJS.formatDate(item[field.fieldName])}</td>`);
                     break;
                 case formatField.GENDER:
                     trHtml.append(`<td title='${item[field.fieldName].setGender()}'>${item[field.fieldName].setGender()}</td>`);
@@ -155,7 +165,7 @@
     }
 
     /**
-     * Hàm thực thêm/sửa obj
+     * Hàm thực hiện thêm/sửa obj
      * @returns {void}
      * Author: LTQuan (27/09/2020)
      * */
@@ -163,9 +173,7 @@
         if ($('#form-data').valid()) {
             let obj = $("#form-data").serializeArray().reduce((result, item) => {
                 let format = $(`#form-data input[name='${item.name}']`).attr("format");
-                if (format == formatField.NUMBER)
-                    item.value = parseFloat(item.value);
-                return { ...result, [item.name]: item.value };
+                return { ...result, [item.name]: commonJS.formatValue(item.value, format)};
             }, {});
             $.ajax({
                 url: this.url,
@@ -260,6 +268,8 @@
         });
     }
 
+    //#region SHOW/HIDE Dialog
+
     /**
      * Hàm show dialog
      * @returns {void}
@@ -281,4 +291,6 @@
         $("#txtDateOfBrith").val(null);
         $("#form-data input[type='radio']:first").prop('checked', true);
     }
+
+    //#endregion SHOW/HIDE Dialog
 }

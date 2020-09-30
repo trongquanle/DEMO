@@ -75,7 +75,7 @@ namespace MISA.DAO.Base.impl
         {
             foreach (var prop in model.GetType().GetProperties())
             {
-                sqlCommand.Parameters.AddWithValue("@" + prop.Name, prop.GetValue(model, null));
+                sqlCommand.Parameters.AddWithValue($"@{prop.Name}", prop.GetValue(model, null));
             }
         }
         public void Dispose()
