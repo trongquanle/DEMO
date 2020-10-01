@@ -38,7 +38,7 @@ namespace MISA.Entities
             {
                 EmployeeCode="NV003",
                 EmployeeName="Trương Xuấn Chiểu",
-                Gender=1,
+                Gender=null,
                 DateOfBrith=DateTime.Now,
                 Mobile="76234717247",
                 PossionName="Nhân viên",
@@ -64,7 +64,7 @@ namespace MISA.Entities
             {
                 EmployeeCode="NV005",
                 EmployeeName="Đoàn Văn Lực",
-                Gender=1,
+                Gender=0,
                 DateOfBrith=DateTime.Now,
                 Mobile="76234717247",
                 PossionName="Nhân viên",
@@ -76,7 +76,7 @@ namespace MISA.Entities
         };
         public string EmployeeCode { get; set; }
         public string EmployeeName { get; set; }
-        public int Gender { get; set; }
+        public int? Gender { get; set; }
         public DateTime? DateOfBrith { get; set; }
         public string Mobile { get; set; }
         public string PossionName { get; set; }

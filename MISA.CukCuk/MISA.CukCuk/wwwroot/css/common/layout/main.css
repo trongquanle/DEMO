@@ -454,12 +454,29 @@ li .profile {
 
 .dialog input[type="radio"] {
     margin-top: 7px;
+    margin-left: 35px;
+}
+.dialog input[type="radio"]:last-child {
+    display: none;
 }
 
 .dialog label.radio-label {
-    padding: 0 25px 0 5px;
     line-height: 27px;
+    margin-left: 5px;
 }
+
+.dialog .cls-money{
+    /*display: flex;*/
+    /*position: relative;*/
+}
+.dialog .cls-money input {
+    width: 75%;
+}
+    .dialog .cls-money span {
+        border: 1px solid #ccc;
+        padding: 4px;
+        /*position: absolute;*/
+    }
 
 /*.row label {
     display: block;

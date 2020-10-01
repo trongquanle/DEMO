@@ -249,7 +249,7 @@
                             <td colspan="2">
                                 <input type="text" id="txtCustomerCode" name="customerCode" />
                             </td>
-                            <td>
+                            <td colspan="1">
                                 <label>Tên khách hàng <span style="color: red">(*)</span></label>
                             </td>
                             <td colspan="2">
@@ -281,12 +281,11 @@
                                 <label>Giới tính</label>
                             </td>
                             <td colspan="2" style="display: flex;">
-                                <input type="radio" id="checkbox-male" format="number" checked name="gender" value="1" />
+                                <input type="radio" id="checkbox-male" format="number" name="gender" value="1" />
                                 <label class="radio-label" for="checkbox-male">Nam</label>
                                 <input type="radio" id="checkbox-female" format="number" name="gender" value="0" />
                                 <label class="radio-label" for="checkbox-female">Nữ</label>
-                                <input type="radio" id="checkbox-none" format="number" name="gender" value="-1" />
-                                <label class="radio-label" for="checkbox-none">Không xác định</label>
+                                <input type="radio" id="checkbox-none" checked format="number" name="gender" value="" />
                             </td>
                         </tr>
                         <tr>
@@ -320,7 +319,7 @@
                             <td colspan="2">
                                 <input type="text" id="txtDebtMoney" format="number" name="debtMoney" />
                             </td>
-                            <td>
+                            <td colspan="1">
                                 <label>Email</label>
                             </td>
                             <td colspan="2">

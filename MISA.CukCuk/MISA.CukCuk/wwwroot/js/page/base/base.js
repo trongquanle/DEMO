@@ -110,7 +110,7 @@
                     trHtml.append(`<td style='text-align: center' title='${commonJS.formatDate(item[field.fieldName])}'>${commonJS.formatDate(item[field.fieldName])}</td>`);
                     break;
                 case formatField.GENDER:
-                    trHtml.append(`<td title='${item[field.fieldName].setGender()}'>${item[field.fieldName].setGender()}</td>`);
+                    trHtml.append(`<td title='${commonJS.setGender(item[field.fieldName])}'>${commonJS.setGender(item[field.fieldName])}</td>`);
                     break;
                 case formatField.LIMIT_STRING:
                     trHtml.append(`<td title='${item[field.fieldName]}'>${item[field.fieldName].formatAddress()}</td>`);
@@ -254,7 +254,7 @@
                 // Gán giá trị cho thẻ input
                 switch (type) {
                     case typeInput.RADIO:
-                        $(`#form-data input[value=${obj.gender}]`).prop('checked', true);
+                        $(`#form-data input[value='${obj.gender}']`).prop('checked', true);
                         break;
                     case typeInput.DATE:
                         element.val(obj.dateOfBrith.split('T')[0]);
@@ -289,7 +289,7 @@
         $(".dialog-modal, .dialog").hide();
         $("#form-data input[type='text'], #form-data input[type='date'], #form-data textarea").val('').removeClass('error').removeAttr('title');
         $("#txtDateOfBrith").val(null);
-        $("#form-data input[type='radio']:first").prop('checked', true);
+        $("#form-data input[type='radio']:last").prop('checked', true);
     }
 
     //#endregion SHOW/HIDE Dialog

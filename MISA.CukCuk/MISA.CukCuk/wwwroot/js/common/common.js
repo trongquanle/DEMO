@@ -42,6 +42,9 @@ const commonJS = {
                 break;
         }
         return value;
+    },
+    setGender: (gender) => {
+        return gender == null ? "" : (gender == 1 ? "Nam" : "Nữ");
     }
 }
 
@@ -64,6 +67,7 @@ String.prototype.formatAddress = function () {
 String.prototype.formatDate = function () {
     return this.split("T")[0].split("-").reverse().join("/")||'';
 }
+
 /**
  * Hàm format giá tiền
  * Author: LTQuan (25/09/2020)
@@ -71,6 +75,11 @@ String.prototype.formatDate = function () {
 Number.prototype.formatMoney = function () {
     return `${this.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")} VND`;
 }
+
+/**
+ * Hàm format giới tính
+ * Author: LTQuan (25/09/2020)
+ * */
 Number.prototype.setGender = function () {
     return this == 1 ? "Nam" : (this == 0 ? "Nữ" : "");
 }
