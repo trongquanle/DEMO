@@ -154,7 +154,7 @@ const formatField = {
     DATE: 'date',
     STRING: 'string',
     LIMIT_STRING: 'limit_string',
-    GENDER: 'gender'
+    GENDER: 'gender',
 }
 
 /**
@@ -164,7 +164,9 @@ const formatField = {
 const typeInput = {
     RADIO: 'radio',
     DATE: 'date',
-    TEXT: 'text'
+    TEXT: 'text',
+    EMAIL: 'email',
+    NUMBER: 'number'
 }
 
 /**

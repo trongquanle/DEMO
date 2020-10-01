@@ -1,4 +1,12 @@
 ﻿const validate = {
+    /**
+     * Hàm khởi tạo check required
+     * @param {object} selector
+     * Author: LTQuan (01/10/2020)
+     * */
+    initRequired() {
+        validate.checkRequired(this);
+    },
 
     /**
      * Hàm check xem giá có nhập giá trị hay không

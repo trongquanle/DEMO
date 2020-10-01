@@ -25,31 +25,50 @@
         $("#btn-save").click(this.onSave.bind(this));
         $("#btn-delete").click(() => this.onDeleteRowSelected());
         $("#table-data tbody").on('click', 'tr', this.onChangeTrSelected);
-        $("input[required]").blur(this.validateData.bind(this));
+        //$("input[required]").blur(validate.initRequired);
+        this.initValidate();
     }
 
-    // TODO: vali....
-    validateData() {
-        let inputRequireds = $("input[required]");
-        let isValid = true;
-        $.each(inputRequireds, function (i, input) {
-            if (!validate.checkRequired(input)) {
+    /// TODO: vali....
+    //validateData() {
+    //    let inputRequireds = $("input[required]");
+    //    let isValid = true;
+    //    // Kiểm tra rỗng
+    //    $.each(inputRequireds, function (i, input) {
+    //        if (!validate.checkRequired(input)) {
+    //            isValid = false;
+    //        }
+    //    });
+    //    // Kiểm tra nâng cao
+    //    if (isValid) {
+    //        // Validate email
+    //        let emailInput = $("input[format='email']");
+    //        if (emailInput && !validate.isEmail(emailInput.val())) {
+    //            isValid = false;
+    //            emailInput.addClass('error').attr('title', 'email không hợp lệ');
+    //        } else {
+    //            emailInput.removeClass('error').removeAttr('title');
+    //        }
 
-            }
-        });
-        // Kiểm tra rỗng
-
-        // Kiểm tra nâng cao
-
-        return
-    }
+    //        // Validate money
+    //        let moneyInput = $("input[format='number']");
+    //        debugger
+    //        if (moneyInput.val() || (moneyInput && !validate.isNumber(moneyInput.val()))) {
+    //            isValid = false;
+    //            moneyInput.addClass('error').attr('title', 'số tiền không hợp lệ');
+    //        } else {
+    //            moneyInput.removeClass('error').removeAttr('title');
+    //        }
+    //    }
+    //    return false;
+    //}
 
     /**
      * Hàm khởi tạo validate form-data
      * @returns {void}
      * Author: LTQuan (28/09/2020)
      * */
-    initValidate() {}
+    initValidate() { }
 
     //#region LOAD DATA
 
@@ -130,7 +149,7 @@
                 this.fetchData();
                 let messageStatus;
                 if (res) {
-                   messageStatus = this.message.DELETE_SUCCESS;
+                    messageStatus = this.message.DELETE_SUCCESS;
                 } else {
                     messageStatus = this.message.NOT_EXISTS;
                 }
@@ -148,11 +167,13 @@
      * Author: LTQuan (27/09/2020)
      * */
     onSave() {
-        if (this.validateData()) {
+        if ($("#form-data").valid()) {
+            // Sử dụng reduce để chuyển đổi array sinh ra từ hàm serializeArray thành object
             let obj = $("#form-data").serializeArray().reduce((result, item) => {
                 let format = $(`#form-data input[name='${item.name}']`).attr("format");
-                return { ...result, [item.name]: commonJS.formatValue(item.value, format)};
-            }, {});
+                // Return các properties trong current value và nạp thuộc tính mới
+                return { ...result, [item.name]: commonJS.formatValue(item.value, format) };
+            }, {}); // Giá trị khởi tạo của result
             $.ajax({
                 url: this.url,
                 method: this.method,
@@ -242,7 +263,7 @@
                         break;
                 }
             }
-            catch (e) {}
+            catch (e) { }
         });
     }
 

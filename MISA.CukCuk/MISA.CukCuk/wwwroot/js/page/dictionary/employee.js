@@ -5,7 +5,18 @@ class EmployeeJS extends BaseJS {
     constructor() {
         super(api.EMPLOYEE_API, message.employee);
     }
+
+    //#region Validate sử dụng lib validation
+
+    /**
+     * Khởi tạo validate employee
+     * Author: LTQuan (01/10/2020)
+     * */
     initValidate() {
+        // Custom rule email valid
+        $.validator.addMethod("validEmail", function (value, element) {
+            return this.optional(element) || /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(value);
+        }, 'Please enter a valid email address.');
         $("#form-data").validate({
             onfocusout: function (element) {
                 if (element.tagName === "TEXTAREA" || (element.tagName === "INPUT" && element.type !== "password")) {
@@ -23,6 +34,10 @@ class EmployeeJS extends BaseJS {
                 salary: {
                     //required: true,
                     number: true
+                },
+                email: {
+                    required: true,
+                    validEmail: true
                 }
             },
             messages: {
@@ -35,6 +50,10 @@ class EmployeeJS extends BaseJS {
                 salary: {
                     //required: 'tiền lương không được để trống',
                     number: 'tiền lương không hợp lệ'
+                },
+                email: {
+                    required: 'email không được bỏ trống',
+                    validEmail: 'email không hợp lệ'
                 }
             },
             errorPlacement: function (error, element) {
@@ -46,4 +65,5 @@ class EmployeeJS extends BaseJS {
         });
     }
 
+    //#endregion
 }
