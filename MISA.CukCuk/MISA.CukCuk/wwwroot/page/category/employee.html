@@ -256,13 +256,13 @@
                                 <label>Mã nhân viên <span style="color: red">(*)</span></label>
                             </td>
                             <td colspan="2">
-                                <input type="text" id="txtEmployeeCode" name="employeeCode" />
+                                <input type="text" id="txtEmployeeCode" required name="employeeCode" />
                             </td>
                             <td>
                                 <label>Tên nhân viên <span style="color: red">(*)</span></label>
                             </td>
                             <td colspan="2">
-                                <input type="text" id="txtEmployeeName" name="employeeName" />
+                                <input type="text" id="txtEmployeeName" required name="employeeName" />
                             </td>
                         </tr>
                         <tr>
@@ -326,7 +326,7 @@
                                 <label>Email</label>
                             </td>
                             <td colspan="2">
-                                <input type="text" id="txtEmail" name="email" />
+                                <input type="text" id="txtEmail" required name="email" />
                             </td>
                         </tr>
                     </tbody>
@@ -343,6 +343,7 @@
     <script src="/js/plugins/jquery.min.js"></script>
     <script src="/js/plugins/jquery.validate.min.js"></script>
     <script src="/js/common/common.js"></script>
+    <script src="/js/common/validate.js"></script>
     <script src="/js/page/base/base.js"></script>
     <script src="/js/page/dictionary/employee.js"></script>
 </body>

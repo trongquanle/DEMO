@@ -22,10 +22,26 @@
         $("#btn-add").click(() => this.onAdd());
         $("#btn-edit").click(() => this.onEdit());
         $(".dialog-modal, #btn-cancel, .dialog-title-cancel").click(() => this.onHideDialog());
-        $("#btn-save").click(() => this.onSave());
+        $("#btn-save").click(this.onSave.bind(this));
         $("#btn-delete").click(() => this.onDeleteRowSelected());
         $("#table-data tbody").on('click', 'tr', this.onChangeTrSelected);
-        this.initValidate();
+        $("input[required]").blur(this.validateData.bind(this));
+    }
+
+    // TODO: vali....
+    validateData() {
+        let inputRequireds = $("input[required]");
+        let isValid = true;
+        $.each(inputRequireds, function (i, input) {
+            if (!validate.checkRequired(input)) {
+
+            }
+        });
+        // Kiểm tra rỗng
+
+        // Kiểm tra nâng cao
+
+        return
     }
 
     /**
@@ -64,7 +80,7 @@
         $(".grid tbody").empty();
         data.forEach((item) => {
             try {
-                $('.grid tbody').append(this.makeTrHtml(item));
+                $('.grid tbody').append(commonJS.makeTrHtml(item));
             } catch (e) {
                 console.log(e);
             }
@@ -83,44 +99,6 @@
             $(this).siblings().removeClass('row-selected');
             $(this).addClass('row-selected');
         }
-    }
-
-    /**
-     * Hàm binding data từ đối tượng sang tr
-     * @param {object} item
-     * @returns {InnerHTML} trHtml
-     * Author: LTQuan (27/09/2020)
-     * */
-    makeTrHtml(item) {
-        // Lấy ra fieldName và format cho từng field
-        let fields = $(".grid thead tr:first th").toArray().map(item => {
-            return {
-                fieldName: $(item).attr('fieldname'),
-                format: $(item).attr('format') || 'string'
-            }
-        });
-        let trHtml = $(`<tr></tr>`);
-        // Duyệt fields để binding value từ item
-        fields.forEach(field => {
-            switch (field.format) {
-                case formatField.NUMBER:
-                    trHtml.append(`<td style='text-align: end' title='${commonJS.formatMonney(item[field.fieldName])}'>${commonJS.formatMonney(item[field.fieldName])}</td>`);
-                    break;
-                case formatField.DATE:
-                    trHtml.append(`<td style='text-align: center' title='${commonJS.formatDate(item[field.fieldName])}'>${commonJS.formatDate(item[field.fieldName])}</td>`);
-                    break;
-                case formatField.GENDER:
-                    trHtml.append(`<td title='${commonJS.setGender(item[field.fieldName])}'>${commonJS.setGender(item[field.fieldName])}</td>`);
-                    break;
-                case formatField.LIMIT_STRING:
-                    trHtml.append(`<td title='${item[field.fieldName]}'>${item[field.fieldName].formatAddress()}</td>`);
-                    break;
-                default:
-                    trHtml.append(`<td title='${item[field.fieldName]||""}'>${item[field.fieldName]||""}</td>`);
-                    break;
-            }
-        });
-        return trHtml;
     }
 
     //#endregion LOAD DATA
@@ -170,7 +148,7 @@
      * Author: LTQuan (27/09/2020)
      * */
     onSave() {
-        if ($('#form-data').valid()) {
+        if (this.validateData()) {
             let obj = $("#form-data").serializeArray().reduce((result, item) => {
                 let format = $(`#form-data input[name='${item.name}']`).attr("format");
                 return { ...result, [item.name]: commonJS.formatValue(item.value, format)};

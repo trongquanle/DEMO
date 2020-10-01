@@ -8,6 +8,7 @@ const commonJS = {
     formatMonney: (money) => {
         return !money ? "" : `${money.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")} VND`;
     },
+
     /**
      * Hàm format Date
      * @param {string} date
@@ -16,14 +17,16 @@ const commonJS = {
     formatDate: (date) => {
         return !date ? "" : date.split("T")[0].split("-").reverse().join("/");
     },
+
     /**
      * Hàm format Address
      * @param {string} address
      * Author: LTQuan
-     */
+     **/
     formatAddress: (address) => {
         return address.length > 26 ? `${address.substr(0, 26)}...` : address;
     },
+
     /**
      * Hàm format giá trị từ input 
      * @param {any} value
@@ -43,8 +46,52 @@ const commonJS = {
         }
         return value;
     },
+
+    /**
+     * Hàm set giới tính
+     * @param {number} gender
+     * Author: LTQuan (01/10/2020)
+     **/
     setGender: (gender) => {
         return gender == null ? "" : (gender == 1 ? "Nam" : "Nữ");
+    },
+
+    /**
+     * Hàm binding data từ đối tượng sang tr
+     * @param {object} item
+     * @returns {InnerHTML} trHtml
+     * Author: LTQuan (27/09/2020)
+     **/
+    makeTrHtml: (item) => {
+        // Lấy ra fieldName và format cho từng field
+        let fields = $(".grid thead tr:first th").toArray().map(item => {
+            return {
+                fieldName: $(item).attr('fieldname'),
+                format: $(item).attr('format') || 'string'
+            }
+        });
+        let trHtml = $(`<tr></tr>`);
+        // Duyệt fields để binding value từ item
+        fields.forEach(field => {
+            switch (field.format) {
+                case formatField.NUMBER:
+                    trHtml.append(`<td style='text-align: end' title='${commonJS.formatMonney(item[field.fieldName])}'>${commonJS.formatMonney(item[field.fieldName])}</td>`);
+                    break;
+                case formatField.DATE:
+                    trHtml.append(`<td style='text-align: center' title='${commonJS.formatDate(item[field.fieldName])}'>${commonJS.formatDate(item[field.fieldName])}</td>`);
+                    break;
+                case formatField.GENDER:
+                    trHtml.append(`<td title='${commonJS.setGender(item[field.fieldName])}'>${commonJS.setGender(item[field.fieldName])}</td>`);
+                    break;
+                case formatField.LIMIT_STRING:
+                    trHtml.append(`<td title='${item[field.fieldName]}'>${item[field.fieldName].formatAddress()}</td>`);
+                    break;
+                default:
+                    trHtml.append(`<td title='${item[field.fieldName] || ""}'>${item[field.fieldName] || ""}</td>`);
+                    break;
+            }
+        });
+        return trHtml;
     }
 }
 
