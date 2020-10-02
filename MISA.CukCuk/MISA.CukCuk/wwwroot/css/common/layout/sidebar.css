@@ -67,7 +67,6 @@
     background-repeat: no-repeat;
     align-self: center;
     margin-left: 10px;
-    background-image: url('/content/img/images/iconmenu.png');
 }
 .menu .menu-item-text {
     color: #ffffff;
@@ -76,17 +75,49 @@
 }
 
 .icon-dashboard {
+    background-image: url('/content/img/images/iconmenu.png');
     background-position-y: 0;
 }
 .icon-report {
+    background-image: url('/content/img/images/iconmenu.png');
     background-position-y: -191px;
 }
 .icon-cart {
+    background-image: url('/content/img/images/iconmenu.png');
     background-position-y: -375px;
 }
 .icon-inventory {
+    background-image: url('/content/img/images/iconmenu.png');
     background-position-y: -38px;
 }
 .icon-category {
+    background-image: url('/content/img/images/iconmenu.png');
     background-position-y: -155px;
+}
+.icon-cash {
+    background-image: url('/content/img/images/iconmenu.png');
+    background-position-y: -78px;
+}
+.icon-deposit {
+    background-image: url('/content/img/images/icon-deposit.png');
+}
+.icon-cost {
+    background-image: url('/content/img/images/icon-cost.png'); 
+}
+.icon-promotion {
+    background-image: url('/content/img/images/iconmenu.png');
+    background-position-y: -117px;
+}
+.icon-menu {
+    background-image: url('/content/img/images/ic_hoadon.png');
+}
+.icon-system-setting {
+    background-image: url('/content/img/images/iconmenu.png');
+    background-position-y: -232px;
+}
+.icon-help {
+    background-image: url('/content/img/images/iconhelp.png');
+}
+.icon-subscriber {
+    background-image: url('/content/img/images/icon-subscriber.png');
 }

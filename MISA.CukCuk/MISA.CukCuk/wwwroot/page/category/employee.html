@@ -40,11 +40,45 @@
                 <div class="menu-item-icon icon-category"></div>
                 <div class="menu-item-text">Nhân viên</div>
             </a>
+            <a href="#" class="menu-item">
+                <div class="menu-item-icon icon-cash"></div>
+                <div class="menu-item-text">Quỹ tiền mặt</div>
+            </a>
+            <a href="#" class="menu-item">
+                <div class="menu-item-icon icon-deposit"></div>
+                <div class="menu-item-text">Quỹ tiền gửi</div>
+            </a>
+            <a href="#" class="menu-item">
+                <div class="menu-item-icon icon-cost"></div>
+                <div class="menu-item-text">Chi phí</div>
+            </a>
+            <a href="#" class="menu-item">
+                <div class="menu-item-icon icon-promotion"></div>
+                <div class="menu-item-text">Khuyến mại</div>
+            </a>
+            <a href="#" class="menu-item">
+                <div class="menu-item-icon icon-menu"></div>
+                <div class="menu-item-text">Thực đơn</div>
+            </a>
+            <a href="#" class="menu-item">
+                <div class="menu-item-icon icon-system-setting"></div>
+                <div class="menu-item-text">Thiết lập hệ thống</div>
+            </a>
+            <a href="#" class="menu-item">
+                <div class="menu-item-icon icon-help"></div>
+                <div class="menu-item-text">Trợ giúp</div>
+            </a>
+            <a href="#" class="menu-item">
+                <div class="menu-item-icon icon-subscriber"></div>
+                <div class="menu-item-text">Thuê bao</div>
+            </a>
         </div>
     </div>
     <!--End sidebar-->
+
     <!--Main-->
     <div class="main">
+
         <!--Header-->
         <div class="header">
             <div class="left-header center-items">
@@ -91,6 +125,8 @@
             </div>
         </div>
         <!--End header-->
+
+
         <div class="content">
             <!--Page header-->
             <div class="page-content">
@@ -107,7 +143,9 @@
                 </div>
             </div>
             <!--End page header-->
+
             <div class="content-body">
+
                 <!--Tooldbar-->
                 <div class="toolbar">
                     <button id="btn-add" title="thêm mới nhân viên"><i class="icon icon-add"></i>&nbsp;Thêm</button>
@@ -115,6 +153,7 @@
                     <button id="btn-delete" title="xóa nhân viên khỏi hệ thống"><i class="icon icon-delete"></i>&nbsp;Xóa</button>
                 </div>
                 <!--End toolbar-->
+
                 <div class="grid">
                     <table id="table-data" border="1" cellpadding="0">
                         <thead>
@@ -210,6 +249,7 @@
                         </tbody>
                     </table>
                 </div>
+
                 <!--Paging-->
                 <div class="paging">
                     <div class="left-paging">
@@ -237,12 +277,17 @@
                     <div class="right-paging">Hiển thị 1 - 5  trên 5 kết quả</div>
                 </div>
                 <!--End paging-->
+
             </div>
         </div>
     </div>
+    <!--End main-->
+
     <!--Dialog-->
     <div class="dialog-modal"></div>
-    <div class="dialog" style="height: 350px;">
+
+    <!--Dialog data-->
+    <div id="dialog-data" class="dialog dialog-detail" style="height: 350px;">
         <div class="dialog-title">
             <div class="dialog-title-text">Thông tin nhân viên</div>
             <div class="dialog-title-cancel"></div>
@@ -335,15 +380,34 @@
         </div>
         <div class="dialog-footer">
             <button id="btn-save" class="center-items"><i class="icon icon-save"></i>&nbsp;Cất</button>
-            <button id="btn-cancel" class="center-items"><i class="icon icon-cancel"></i>&nbsp;Hủy</button>
+            <button class="btn-cancel center-items"><i class="icon icon-cancel"></i>&nbsp;Hủy</button>
         </div>
     </div>
-    <!--<div class="dialog-message"></div>-->
+    <!--End dialog data-->
+
+    <!--Dialog message-->
+    <div class="dialog dialog-message">
+        <div class="dialog-title">
+            <div class="dialog-title-text">MISA - CukCuk</div>
+            <div class="dialog-title-cancel"></div>
+        </div>
+        <div class="dialog-body dialog-message-body">
+            <div id="message-icon" class="icon-warning"></div>
+            <div id="mesage-text"></div>
+        </div>
+        <div class="dialog-footer">
+            <button id="btn-accept" class="center-items"><i class="icon icon-save"></i>&nbsp;Cất</button>
+            <button class="btn-cancel center-items"><i class="icon icon-cancel"></i>&nbsp;Hủy</button>
+            <button class="btn-close center-items"><i class="icon icon-close"></i>&nbsp;Đóng</button>
+        </div>
+    </div>
+    <!--End dialog message-->
+
     <!--End dialog-->
+
     <script src="/js/plugins/jquery.min.js"></script>
     <script src="/js/plugins/jquery.validate.min.js"></script>
     <script src="/js/common/common.js"></script>
-    <script src="/js/common/validate.js"></script>
     <script src="/js/page/base/base.js"></script>
     <script src="/js/page/dictionary/employee.js"></script>
 </body>

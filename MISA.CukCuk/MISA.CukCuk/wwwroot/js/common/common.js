@@ -23,7 +23,7 @@ const commonJS = {
      * @param {string} address
      * Author: LTQuan
      **/
-    formatAddress: (address) => {
+    formatLimitString: (address) => {
         return address.length > 26 ? `${address.substr(0, 26)}...` : address;
     },
 
@@ -64,7 +64,7 @@ const commonJS = {
      **/
     makeTrHtml: (item) => {
         // Lấy ra fieldName và format cho từng field
-        let fields = $(".grid thead tr:first th").toArray().map(item => {
+        let fields = $(".grid table thead tr:first th").toArray().map(item => {
             return {
                 fieldName: $(item).attr('fieldname'),
                 format: $(item).attr('format') || 'string'
@@ -84,13 +84,14 @@ const commonJS = {
                     trHtml.append(`<td title='${commonJS.setGender(item[field.fieldName])}'>${commonJS.setGender(item[field.fieldName])}</td>`);
                     break;
                 case formatField.LIMIT_STRING:
-                    trHtml.append(`<td title='${item[field.fieldName]}'>${item[field.fieldName].formatAddress()}</td>`);
+                    trHtml.append(`<td title='${item[field.fieldName]}'>${commonJS.formatLimitString(item[field.fieldName])}</td>`);
                     break;
                 default:
                     trHtml.append(`<td title='${item[field.fieldName] || ""}'>${item[field.fieldName] || ""}</td>`);
                     break;
             }
         });
+        //trHtml.data('id', 'NV1');
         return trHtml;
     }
 }
@@ -178,7 +179,7 @@ const message = {
         ADD_SUCCESS: 'Thêm mới khách hàng thành công!',
         EDIT_NONE: 'Vui lòng chọn khách hàng để sửa!',
         EDIT_SUCCESS: 'Cập nhật thành công!',
-        DELETE_NONE: 'Vui lòng chọn khách hàng để xóa khỏi hệ thống!',
+        DELETE_NONE: 'Vui lòng chọn khách hàng để thực hiện xóa!',
         DELETE_SUCCESS: 'Xóa thành công!',
         NOT_EXISTS: 'Khách hàng này không còn tồn tại trong hệ thống!'
     },
@@ -186,11 +187,21 @@ const message = {
         ADD_SUCCESS: 'Thêm mới nhân viên thành công!',
         EDIT_NONE: 'Vui lòng chọn nhân viên để sửa!',
         EDIT_SUCCESS: 'Cập nhật thành công!',
-        DELETE_NONE: 'Vui lòng chọn nhân viên để xóa khỏi hệ thống!',
+        COMFIRM_DELETE: 'Bạn có chắc chắn xóa nhân viên này?',
+        DELETE_NONE: 'Vui lòng chọn nhân viên để thực hiện xóa!',
         DELETE_SUCCESS: 'Xóa thành công!',
         NOT_EXISTS: 'Nhân viên này không còn tồn tại trong hệ thống!'
     },
     ERROR: 'Có lỗi xảy ra, vui lòng kiểm tra lại!'
+}
+
+/**
+ * Constant icon type
+ * Author: LTQuan (02/10/2020)
+ * */
+const iconType = {
+    ICON_SUCCESS: 'icon-success',
+    ICON_WARNING: 'icon-warning'
 }
 
 //#endregion CONST

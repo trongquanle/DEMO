@@ -21,9 +21,10 @@
     initEvents() {
         $("#btn-add").click(() => this.onAdd());
         $("#btn-edit").click(() => this.onEdit());
-        $(".dialog-modal, #btn-cancel, .dialog-title-cancel").click(() => this.onHideDialog());
+        $(".dialog-modal, .btn-cancel, .dialog-title-cancel, .btn-close").click(() => this.onHideDialog());
         $("#btn-save").click(this.onSave.bind(this));
-        $("#btn-delete").click(() => this.onDeleteRowSelected());
+        $("#btn-delete").click(() => this.onCheckSelectedRow());
+        $("#btn-accept").click(() => this.onDeleteRow());
         $("#table-data tbody").on('click', 'tr', this.onChangeTrSelected);
         //$("input[required]").blur(validate.initRequired);
         this.initValidate();
@@ -128,37 +129,48 @@
      * Author: LTQuan (25/09/2020)
      * */
     getId() {
-        return $(".row-selected td")[0].innerText;
+        return $(".grid table#table-data .row-selected td")[0].innerText;
+    }
+
+    /**
+     * Hàm check row selected
+     * @returns {void}
+     * Author: LTQuan (27/09/2020)
+     * */
+    onCheckSelectedRow() {
+        if (!$('.row-selected').length) {
+            this.onShowDialogMessage(this.message.DELETE_NONE, iconType.ICON_WARNING);
+        } else {
+            this.method = 'DELETE';
+            this.onShowDialogMessage(this.message.COMFIRM_DELETE, iconType.ICON_WARNING, true);
+        }
     }
 
     /**
      * Hàm xóa row selected
-     * @returns {void}
-     * Author: LTQuan (27/09/2020)
+     * Author: LTQuan (02/10/2020)
      * */
-    onDeleteRowSelected() {
-        if (!$('.row-selected').length) {
-            alert(this.message.DELETE_NONE);
-        } else {
-            this.method = 'DELETE';
-            $.ajax({
-                url: `${this.url}/${this.getId()}`,
-                method: this.method,
-                dataType: 'text'
-            }).done(res => {
-                this.fetchData();
-                let messageStatus;
-                if (res) {
-                    messageStatus = this.message.DELETE_SUCCESS;
-                } else {
-                    messageStatus = this.message.NOT_EXISTS;
-                }
-                alert(messageStatus)
-            }).fail(err => {
-                console.log(err);
-                alert(message.ERROR);
-            });
-        }
+    onDeleteRow() {
+        $.ajax({
+            url: `${this.url}/${this.getId()}`,
+            method: this.method,
+            dataType: 'text'
+        }).done(res => {
+            this.fetchData();
+            let messageStatus;
+            let type;
+            if (res) {
+                messageStatus = this.message.DELETE_SUCCESS;
+                type = iconType.ICON_SUCCESS;
+            } else {
+                messageStatus = this.message.NOT_EXISTS;
+                type = iconType.ICON_WARNING;
+            }
+            this.onShowDialogMessage(messageStatus, type);
+        }).fail(err => {
+            console.log(err);
+            this.onShowDialogMessage(message.ERROR, iconType.ICON_WARNING);
+        });
     }
 
     /**
@@ -182,21 +194,25 @@
                 dataType: 'json'
             }).done(res => {
                 let messageStatus;
+                let type;
                 if (res) {
                     if (this.method == 'POST') {
                         messageStatus = this.message.ADD_SUCCESS;
+                        type = iconType.ICON_SUCCESS;
                     } else {
                         messageStatus = this.message.EDIT_SUCCESS;
+                        type = iconType.ICON_SUCCESS;
                     }
                 } else {
                     messageStatus = this.message.NOT_EXISTS;
+                    type = iconType.ICON_WARNING;
                 }
                 this.fetchData();
                 this.onHideDialog();
-                alert(messageStatus);
+                this.onShowDialogMessage(messageStatus, type);
             }).fail(err => {
                 console.log(err);
-                alert(message.ERROR);
+                this.onShowDialogMessage(message.ERROR,iconType.ICON_WARNING);
             })
         }
     }
@@ -219,7 +235,7 @@
     onEdit() {
         this.method = 'GET';
         if (!$('.row-selected').length) {
-            alert(this.message.EDIT_NONE);
+            this.onShowDialogMessage(this.message.EDIT_NONE, iconType.ICON_WARNING);
         } else {
             $.ajax({
                 url: `${this.url}/${this.getId()}`,
@@ -275,8 +291,31 @@
      * Author: LTQuan (28/09/2020)
      * */
     onShowDialog() {
-        $(".dialog-modal, .dialog").show();
+        $(".dialog-modal, #dialog-data").show();
         $("#form-data input:first").focus();
+    }
+
+    /**
+     * Hàm show dialog message, icon: kiểu thông báo
+     * @param {string} message
+     * @param {string} icon: loại thông báo
+     * @param {boolean} isComfirm: check các trạng thái thông báo/comfirm
+     * Author: LTQuan (02/10/2020)
+     */
+    onShowDialogMessage(message, icon, isComfirm = false) {
+        // Set kiểu icon cảnh báo
+        $("#message-icon").removeClass().addClass(icon);
+        // Check để ẩn/hiện btn-accept, btn-cancel, btn-close
+        if (!isComfirm) {
+            $("#btn-accept, .dialog-message .btn-cancel").hide();
+            $(".btn-close").show();
+            setTimeout(() => this.onHideDialogMessage(), 2000);
+        } else {
+            $(".btn-close").hide();
+            $("#btn-accept, .dialog-message, .dialog-message .btn-cancel").show();
+        }
+        $(".dialog-message #mesage-text").text(message);
+        $(".dialog-modal, .dialog-message").show();
     }
 
     /**
@@ -285,10 +324,18 @@
      * Author: LTQuan (28/09/2020)
      * */
     onHideDialog() {
-        $(".dialog-modal, .dialog").hide();
+        $(".dialog-modal, #dialog-data, .dialog-message").hide();
         $("#form-data input[type='text'], #form-data input[type='date'], #form-data textarea").val('').removeClass('error').removeAttr('title');
         $("#txtDateOfBrith").val(null);
         $("#form-data input[type='radio']:last").prop('checked', true);
+    }
+
+    /**
+     * Hàm hide dialog message
+     * Author: LTQuan (02/10/2020)
+     * */
+    onHideDialogMessage() {
+        $(".dialog-modal, .dialog-message").hide();
     }
 
     //#endregion SHOW/HIDE Dialog

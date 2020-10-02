@@ -62,10 +62,10 @@ namespace MISA.Service.Dictionary.impl
                     if (Employee.Employees[i].EmployeeCode == employee.EmployeeCode)
                     {
                         Employee.Employees[i] = employee;
-                        break;
+                        return 1;
                     }
                 }
-                return 1;
+                return 0;
             }
             catch (Exception)
             {
