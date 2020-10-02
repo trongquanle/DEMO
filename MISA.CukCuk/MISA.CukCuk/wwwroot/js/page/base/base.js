@@ -291,7 +291,7 @@
      * Author: LTQuan (28/09/2020)
      * */
     onShowDialog() {
-        $(".dialog-modal, #dialog-data").show();
+        $(".dialog-modal, .dialog-detail").show();
         $("#form-data input:first").focus();
     }
 
@@ -324,7 +324,7 @@
      * Author: LTQuan (28/09/2020)
      * */
     onHideDialog() {
-        $(".dialog-modal, #dialog-data, .dialog-message").hide();
+        $(".dialog-modal, .dialog-detail, .dialog-message").hide();
         $("#form-data input[type='text'], #form-data input[type='date'], #form-data textarea").val('').removeClass('error').removeAttr('title');
         $("#txtDateOfBrith").val(null);
         $("#form-data input[type='radio']:last").prop('checked', true);
