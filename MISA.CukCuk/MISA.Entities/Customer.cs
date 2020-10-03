@@ -7,12 +7,13 @@ namespace MISA.Entities
     {
         public static List<Customer> Customers = new List<Customer>()
         {
-            new Customer(){ CustomerCode="NV001", CustomerName="Lê Huy Tuân", Gender=1, DateOfBrith=DateTime.Now, Address="Số 3 Cầu Giấy, Láng Thượng, Đống Đa, Hà Nội", Email="tuandz@gmail.com", SDT="12356214521", DebtMoney=1000000},
-            new Customer(){ CustomerCode="NV002", CustomerName="Nguyễn Anh Tuấn", Gender=0, DateOfBrith=DateTime.Now, Address="Số 3 Cầu Giấy, Láng Thượng, Đống Đa, Hà Nội", Email="tuanna@gmail.com", SDT="23641721278", DebtMoney=1000000},
-            new Customer(){ CustomerCode="NV003", CustomerName="Trương Xuấn Chiểu", Gender=null, DateOfBrith=DateTime.Now, Address="Số 3 Cầu Giấy, Láng Thượng, Đống Đa, Hà Nội", Email="chieuz@gmail.com", SDT="76234622332", DebtMoney=1000000},
-            new Customer(){ CustomerCode="NV004", CustomerName="Chu Trần Đại", Gender=1, DateOfBrith=new DateTime(1997, 1, 1), Address="Số 3 Cầu Giấy, Láng Thượng, Đống Đa, Hà Nội", Email="daidz@gmail.com", SDT="23654121277", DebtMoney=1000000},
-            new Customer(){ CustomerCode="NV005", CustomerName="Đoàn Văn Lực", Gender=0, DateOfBrith=new DateTime(1997, 10, 4), Address="Số 3 Cầu Giấy, Láng Thượng, Đống Đa, Hà Nội", Email="lucdz@gmail.com", SDT="34578756348", DebtMoney=1000000},
+            new Customer(){ CustomerID=Guid.NewGuid(), CustomerCode="NV001", CustomerName="Lê Huy Tuân", Gender=1, DateOfBrith=DateTime.Now, Address="Số 3 Cầu Giấy, Láng Thượng, Đống Đa, Hà Nội", Email="tuandz@gmail.com", SDT="12356214521", DebtMoney=1000000},
+            new Customer(){ CustomerID=Guid.NewGuid(), CustomerCode="NV002", CustomerName="Nguyễn Anh Tuấn", Gender=0, DateOfBrith=DateTime.Now, Address="Số 3 Cầu Giấy, Láng Thượng, Đống Đa, Hà Nội", Email="tuanna@gmail.com", SDT="23641721278", DebtMoney=1000000},
+            new Customer(){ CustomerID=Guid.NewGuid(), CustomerCode="NV003", CustomerName="Trương Xuấn Chiểu", Gender=null, DateOfBrith=DateTime.Now, Address="Số 3 Cầu Giấy, Láng Thượng, Đống Đa, Hà Nội", Email="chieuz@gmail.com", SDT="76234622332", DebtMoney=1000000},
+            new Customer(){ CustomerID=Guid.NewGuid(), CustomerCode="NV004", CustomerName="Chu Trần Đại", Gender=1, DateOfBrith=new DateTime(1997, 1, 1), Address="Số 3 Cầu Giấy, Láng Thượng, Đống Đa, Hà Nội", Email="daidz@gmail.com", SDT="23654121277", DebtMoney=1000000},
+            new Customer(){ CustomerID=Guid.NewGuid(), CustomerCode="NV005", CustomerName="Đoàn Văn Lực", Gender=0, DateOfBrith=new DateTime(1997, 10, 4), Address="Số 3 Cầu Giấy, Láng Thượng, Đống Đa, Hà Nội", Email="lucdz@gmail.com", SDT="34578756348", DebtMoney=1000000},
         };
+        public Guid CustomerID { get; set; }
         public string CustomerCode { get; set; }
         public string CustomerName { get; set; }
         public int? Gender { get; set; }

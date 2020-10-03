@@ -10,6 +10,7 @@ namespace MISA.Entities
         {
             new Employee()
             {
+                EmployeeID=Guid.NewGuid(),
                 EmployeeCode="NV001",
                 EmployeeName="Lê Huy Tuân",
                 Gender=1,
@@ -23,6 +24,7 @@ namespace MISA.Entities
             },
             new Employee()
             {
+                EmployeeID=Guid.NewGuid(),
                 EmployeeCode="NV002",
                 EmployeeName="Nguyễn Anh Tuấn",
                 Gender=1,
@@ -36,6 +38,7 @@ namespace MISA.Entities
             },
             new Employee()
             {
+                EmployeeID=Guid.NewGuid(),
                 EmployeeCode="NV003",
                 EmployeeName="Trương Xuấn Chiểu",
                 Gender=null,
@@ -49,6 +52,7 @@ namespace MISA.Entities
             },
             new Employee()
             {
+                EmployeeID=Guid.NewGuid(),
                 EmployeeCode="NV004",
                 EmployeeName="Chu Trần Đại",
                 Gender=1,
@@ -62,6 +66,7 @@ namespace MISA.Entities
             },
             new Employee()
             {
+                EmployeeID=Guid.NewGuid(),
                 EmployeeCode="NV005",
                 EmployeeName="Đoàn Văn Lực",
                 Gender=0,
@@ -74,6 +79,7 @@ namespace MISA.Entities
                 WorkStatus="Tốt"
             },
         };
+        public Guid EmployeeID { get; set; }
         public string EmployeeCode { get; set; }
         public string EmployeeName { get; set; }
         public int? Gender { get; set; }

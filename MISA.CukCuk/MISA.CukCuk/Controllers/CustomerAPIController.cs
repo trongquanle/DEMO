@@ -24,11 +24,11 @@ namespace MISA.CukCuk.Controllers
             return _customerService.GetCustomers();
         }
 
-        [Route("{code}")]
+        [Route("{id}")]
         [HttpGet]
-        public Customer GetCustomer([FromRoute]string code)
+        public Customer GetCustomer([FromRoute]string id)
         {
-            return _customerService.GetCustomerByCode(code);
+            return _customerService.GetCustomerById(id);
         }
 
         [Route("")]
@@ -52,9 +52,9 @@ namespace MISA.CukCuk.Controllers
 
         [Route("{code}")]
         [HttpDelete]
-        public int DeleteCustomer([FromRoute]string code)
+        public int DeleteCustomer([FromRoute]string id)
         {
-            return _customerService.DeleteCustomer(code);
+            return _customerService.DeleteCustomer(id);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace MISA.Service.Dictionary
         /// Hàm lấy danh sách employee
         /// </summary>
         /// Author: LTQuan (30/09/2020)
-        /// <returns></returns>
+        /// <returns>Danh sách employee</returns>
         IEnumerable<Employee> GetEmployees();
 
         /// <summary>
@@ -17,15 +17,15 @@ namespace MISA.Service.Dictionary
         /// </summary>
         /// Author: LTQuan (30/09/2020)
         /// <param name="code"></param>
-        /// <returns></returns>
-        Employee GetEmployeeByCode(string code);
+        /// <returns>Đối tượng employee</returns>
+        Employee GetEmployeeById(string id);
 
         /// <summary>
         /// Hàm thêm mới employee
         /// </summary>
         /// Author: LTQuan (30/09/2020)
         /// <param name="employee"></param>
-        /// <returns></returns>
+        /// <returns>1: thao tác thành công, 0: fail</returns>
         int AddEmployee(Employee employee);
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace MISA.Service.Dictionary
         /// </summary>
         /// Author: LTQuan (30/09/2020)
         /// <param name="employee"></param>
-        /// <returns></returns>
+        /// <returns>1: thao tác thành công, 0: fail</returns>
         int UpdateEmployee(Employee employee);
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace MISA.Service.Dictionary
         /// </summary>
         /// Author: LTQuan (30/09/2020)
         /// <param name="code"></param>
-        /// <returns></returns>
-        int DeleteEmployee(string code);
+        /// <returns>1: thao tác thành công, 0: fail</returns>
+        int DeleteEmployee(string id);
     }
 }

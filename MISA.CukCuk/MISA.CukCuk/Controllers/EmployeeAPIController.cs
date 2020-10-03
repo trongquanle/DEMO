@@ -36,10 +36,10 @@ namespace MISA.CukCuk.Controllers
         /// Author: LTQuan (30/09/2020)
         /// <param name="code"></param>
         /// <returns></returns>
-        [Route("{code}")]
-        public Employee GetEmployeeByCode([FromRoute] string code)
+        [Route("{id}")]
+        public Employee GetEmployeeByCode([FromRoute] string id)
         {
-            return _employeeService.GetEmployeeByCode(code);
+            return _employeeService.GetEmployeeById(id);
         }
 
         /// <summary>

@@ -20,9 +20,9 @@ namespace MISA.Service.Dictionary.impl
             }
         }
 
-        public int DeleteCustomer(string code)
+        public int DeleteCustomer(string id)
         {
-            var customer = Customer.Customers.Where(x => x.CustomerCode == code).FirstOrDefault();
+            var customer = Customer.Customers.Where(x => x.CustomerID.ToString() == id).FirstOrDefault();
             if(customer != null)
             {
                 Customer.Customers.Remove(customer);
@@ -31,9 +31,9 @@ namespace MISA.Service.Dictionary.impl
             return 0;
         }
 
-        public Customer GetCustomerByCode(string code)
+        public Customer GetCustomerById(string id)
         {
-            return Customer.Customers.Where(x => x.CustomerCode == code).FirstOrDefault();
+            return Customer.Customers.Where(x => x.CustomerID.ToString() == id).FirstOrDefault();
         }
 
         public IEnumerable<Customer> GetCustomers()
@@ -51,7 +51,7 @@ namespace MISA.Service.Dictionary.impl
             {
                 for (int i = 0; i < Customer.Customers.Count; i++)
                 {
-                    if (Customer.Customers[i].CustomerCode == customer.CustomerCode)
+                    if (Customer.Customers[i].CustomerID == customer.CustomerID)
                     {
                         Customer.Customers[i] = customer;
                         return 1;

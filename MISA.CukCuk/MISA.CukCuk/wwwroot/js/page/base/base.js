@@ -124,15 +124,6 @@
     //#endregion LOAD DATA
 
     /**
-     * Hàm lấy id của obj
-     * @returns {string} id
-     * Author: LTQuan (25/09/2020)
-     * */
-    getId() {
-        return $(".grid table#table-data .row-selected td")[0].innerText;
-    }
-
-    /**
      * Hàm check row selected
      * @returns {void}
      * Author: LTQuan (27/09/2020)
@@ -152,7 +143,7 @@
      * */
     onDeleteRow() {
         $.ajax({
-            url: `${this.url}/${this.getId()}`,
+            url: `${this.url}/${commonJS.getId()}`,
             method: this.method,
             dataType: 'text'
         }).done(res => {
@@ -185,7 +176,8 @@
                 let format = $(`#form-data input[name='${item.name}']`).attr("format");
                 // Return các properties trong current value và nạp thuộc tính mới
                 return { ...result, [item.name]: commonJS.formatValue(item.value, format) };
-            }, {}); // Giá trị khởi tạo của result
+            }, { [commonJS.getKeyId()]: commonJS.getId() }); // Giá trị khởi tạo của result
+            // Thực hiện gọi req đến server
             $.ajax({
                 url: this.url,
                 method: this.method,
@@ -238,10 +230,11 @@
             this.onShowDialogMessage(this.message.EDIT_NONE, iconType.ICON_WARNING);
         } else {
             $.ajax({
-                url: `${this.url}/${this.getId()}`,
+                url: `${this.url}/${commonJS.getId()}`,
                 method: this.method,
                 dataType: 'json'
             }).done(res => {
+                console.log(res);
                 this.setInputDialog(res);
                 this.onShowDialog();
                 this.method = 'PUT';

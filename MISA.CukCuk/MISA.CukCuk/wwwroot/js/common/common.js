@@ -70,7 +70,11 @@ const commonJS = {
                 format: $(item).attr('format') || 'string'
             }
         });
+        // Lấy keyId để gán cho thẻ tr
+        let keyId = commonJS.getKeyId();
         let trHtml = $(`<tr></tr>`);
+        // Gán keyId cho tr
+        trHtml.data(keyId, item[keyId]);
         // Duyệt fields để binding value từ item
         fields.forEach(field => {
             switch (field.format) {
@@ -91,8 +95,25 @@ const commonJS = {
                     break;
             }
         });
-        //trHtml.data('id', 'NV1');
         return trHtml;
+    },
+
+    /**
+     * Hàm lấy keyId cho Obj
+     * Author: LTQUAN (03/10/2020)
+     * @returns {string} keyId
+     * */
+    getKeyId: () => {
+        return $(".grid table thead tr:first").attr('keyId');
+    },
+
+    /**
+     * Hàm lấy id của obj
+     * @returns {string} id
+     * Author: LTQuan (25/09/2020)
+     * */
+    getId: () => {
+        return $(".grid table#table-data .row-selected").data(commonJS.getKeyId());
     }
 }
 

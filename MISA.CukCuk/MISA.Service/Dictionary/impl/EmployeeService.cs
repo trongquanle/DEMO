@@ -20,9 +20,9 @@ namespace MISA.Service.Dictionary.impl
             }
         }
 
-        public int DeleteEmployee(string code)
+        public int DeleteEmployee(string id)
         {
-            var employee = Employee.Employees.Where(x => x.EmployeeCode == code).FirstOrDefault();
+            var employee = Employee.Employees.Where(x => x.EmployeeID.ToString() == id).FirstOrDefault();
             if(employee != null)
             {
                 Employee.Employees.Remove(employee);
@@ -31,13 +31,13 @@ namespace MISA.Service.Dictionary.impl
             return 0;
         }
 
-        public Employee GetEmployeeByCode(string code)
+        public Employee GetEmployeeById(string id)
         {
             //using (IEmployeeDAO employeeDAO = new EmployeeDAO())
             //{
             //    return employeeDAO.GetEmployeeById(code);
             //}
-            return Employee.Employees.Where(x => x.EmployeeCode == code).FirstOrDefault();
+            return Employee.Employees.Where(x => x.EmployeeID.ToString() == id).FirstOrDefault();
         }
 
         public IEnumerable<Employee> GetEmployees()
@@ -59,7 +59,7 @@ namespace MISA.Service.Dictionary.impl
             {
                 for (int i = 0; i < Employee.Employees.Count; i++)
                 {
-                    if (Employee.Employees[i].EmployeeCode == employee.EmployeeCode)
+                    if (Employee.Employees[i].EmployeeID == employee.EmployeeID)
                     {
                         Employee.Employees[i] = employee;
                         return 1;
