@@ -157,7 +157,7 @@
                 <div class="grid">
                     <table id="table-data" border="1" cellpadding="0">
                         <thead>
-                            <tr>
+                            <tr keyId="customerID">
                                 <th fieldname="customerCode" style="width: 12%;">
                                     Mã khách hàng
                                 </th>
@@ -277,7 +277,7 @@
     <div class="dialog-modal"></div>
 
     <!--Dialog data-->
-    <div id="dialog-data" class="dialog dialog-detail">
+    <div class="dialog dialog-detail">
         <div class="dialog-title">
             <div class="dialog-title-text">Thông tin nhân viên</div>
             <div class="dialog-title-cancel"></div>
@@ -396,6 +396,24 @@
         </div>
     </div>
     <!--End dialog data-->
+
+    <!--Dialog message-->
+    <div class="dialog dialog-message">
+        <div class="dialog-title">
+            <div class="dialog-title-text">MISA - CukCuk</div>
+            <div class="dialog-title-cancel"></div>
+        </div>
+        <div class="dialog-body dialog-message-body">
+            <div id="message-icon" class="icon-warning"></div>
+            <div id="mesage-text"></div>
+        </div>
+        <div class="dialog-footer">
+            <button id="btn-accept" class="center-items"><i class="icon icon-save"></i>&nbsp;Cất</button>
+            <button class="btn-cancel center-items"><i class="icon icon-cancel"></i>&nbsp;Hủy</button>
+            <button class="btn-close center-items"><i class="icon icon-close"></i>&nbsp;Đóng</button>
+        </div>
+    </div>
+    <!--End dialog message-->
 
     <!--End dialog-->
     <script src="/js/plugins/jquery.min.js"></script>

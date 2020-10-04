@@ -1,4 +1,6 @@
-﻿using MISA.Entities;
+﻿using MISA.DAO.Dictionary;
+using MISA.DAO.Dictionary.impl;
+using MISA.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,59 +11,42 @@ namespace MISA.Service.Dictionary.impl
     {
         public int AddCustomer(Customer customer)
         {
-            try
+            using (ICustomerDAO customerDAO = new CustomerDAO())
             {
-                Customer.Customers.Add(customer);
-                return 1;
-            }
-            catch (Exception)
-            {
-                return 0;
+                return customerDAO.AddCustomer(customer);
             }
         }
 
         public int DeleteCustomer(string id)
         {
-            var customer = Customer.Customers.Where(x => x.CustomerID.ToString() == id).FirstOrDefault();
-            if(customer != null)
+            using(ICustomerDAO customerDAO = new CustomerDAO())
             {
-                Customer.Customers.Remove(customer);
-                return 1;
+                return customerDAO.DeleteCustomer(id);
             }
-            return 0;
         }
 
         public Customer GetCustomerById(string id)
         {
-            return Customer.Customers.Where(x => x.CustomerID.ToString() == id).FirstOrDefault();
+            using (ICustomerDAO customerDAO = new CustomerDAO())
+            {
+                return customerDAO.GetCustomerByID(id);
+            }
+            //return Customer.Customers.Where(x => x.CustomerID.ToString() == id).FirstOrDefault();
         }
 
         public IEnumerable<Customer> GetCustomers()
         {
-            //using(ICustomerDAO customerDAO = new CustomerDAO())
-            //{
-            //    return customerDAO.GetCustomers();
-            //}
-            return Customer.Customers;
+            using (ICustomerDAO customerDAO = new CustomerDAO())
+            {
+                return customerDAO.GetCustomers();
+            }
         }
 
         public int UpdateCustomer(Customer customer)
         {
-            try
+            using(ICustomerDAO customerDAO = new CustomerDAO())
             {
-                for (int i = 0; i < Customer.Customers.Count; i++)
-                {
-                    if (Customer.Customers[i].CustomerID == customer.CustomerID)
-                    {
-                        Customer.Customers[i] = customer;
-                        return 1;
-                    }
-                }
-                return -1;
-            }
-            catch (Exception)
-            {
-                return 0;
+                return customerDAO.UpdateCustomer(customer);
             }
         }
     }

@@ -200,6 +200,7 @@ const message = {
         ADD_SUCCESS: 'Thêm mới khách hàng thành công!',
         EDIT_NONE: 'Vui lòng chọn khách hàng để sửa!',
         EDIT_SUCCESS: 'Cập nhật thành công!',
+        COMFIRM_DELETE: 'Bạn có chắc chắn xóa khách hàng này?',
         DELETE_NONE: 'Vui lòng chọn khách hàng để thực hiện xóa!',
         DELETE_SUCCESS: 'Xóa thành công!',
         NOT_EXISTS: 'Khách hàng này không còn tồn tại trong hệ thống!'

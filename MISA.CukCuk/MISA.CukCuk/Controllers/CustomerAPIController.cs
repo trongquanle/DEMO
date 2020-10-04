@@ -50,7 +50,7 @@ namespace MISA.CukCuk.Controllers
             return _customerService.UpdateCustomer(customer);
         }
 
-        [Route("{code}")]
+        [Route("{id}")]
         [HttpDelete]
         public int DeleteCustomer([FromRoute]string id)
         {
