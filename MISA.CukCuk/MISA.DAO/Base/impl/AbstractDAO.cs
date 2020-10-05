@@ -8,8 +8,8 @@ namespace MISA.DAO.Base.impl
     public class AbstractDAO<T> : IGenericDAO<T>
     {
 
-        private readonly MySqlConnection sqlConnection;
-        private readonly MySqlCommand sqlCommand;
+        private MySqlConnection sqlConnection;
+        private MySqlCommand sqlCommand;
         private MySqlDataReader sqlDataReader;
         private MySqlTransaction transaction;
 
@@ -94,17 +94,17 @@ namespace MISA.DAO.Base.impl
             transaction = sqlConnection.BeginTransaction();
             sqlCommand.Transaction = transaction;
             // Chạy truy vấn và trả về kết quả
+            int result = 0;
             try
             {
-                var result =  sqlCommand.ExecuteNonQuery();
+                result = sqlCommand.ExecuteNonQuery();
                 transaction.Commit();
-                return result;
             }
             catch (Exception)
             {
                 transaction.Rollback();
-                return 0;
             }
+            return result;
         }
 
         public int DeleteByID(string query, string id)
@@ -117,17 +117,17 @@ namespace MISA.DAO.Base.impl
             transaction = sqlConnection.BeginTransaction();
             sqlCommand.Transaction = transaction;
             // Chạy truy vấn và trả về kết quả
+            int result = 0;
             try
             {
-                var result = sqlCommand.ExecuteNonQuery();
+                result = sqlCommand.ExecuteNonQuery();
                 transaction.Commit();
-                return result;
             }
             catch (Exception)
             {
                 transaction.Rollback();
-                return 0;
             }
+            return result;
         }
 
         /// TODO: Cần xử lý tiếp...

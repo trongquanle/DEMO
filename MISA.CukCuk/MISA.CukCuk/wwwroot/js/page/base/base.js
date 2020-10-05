@@ -26,6 +26,7 @@
         $("#btn-delete").click(() => this.onCheckSelectedRow());
         $("#btn-accept").click(() => this.onDeleteRow());
         $("#table-data tbody").on('click', 'tr', this.onChangeTrSelected);
+        $("#form-data input[type='checkbox']").click(this.onChangeSelectedCheckbox);
         //$("input[required]").blur(validate.initRequired);
         this.initValidate();
     }
@@ -66,8 +67,8 @@
 
     /**
      * Hàm khởi tạo validate form-data
-     * @returns {void}
      * Author: LTQuan (28/09/2020)
+     * @returns {void}
      * */
     initValidate() { }
 
@@ -121,12 +122,20 @@
         }
     }
 
+    /**
+     * Hàm bắt sự kiện thay đổi của checkbox
+     * Author: LTQUAN (05/10/2020)
+     * */
+    onChangeSelectedCheckbox() {
+        $(this).prop('checked', true).siblings("input[type='checkbox']").prop('checked', false);
+    }
+
     //#endregion LOAD DATA
 
     /**
      * Hàm check row selected
-     * @returns {void}
      * Author: LTQuan (27/09/2020)
+     * @returns {void}
      * */
     onCheckSelectedRow() {
         if (!$('.row-selected').length) {
@@ -166,13 +175,14 @@
 
     /**
      * Hàm thực hiện thêm/sửa obj
-     * @returns {void}
      * Author: LTQuan (27/09/2020)
+     * @returns {void}
      * */
     onSave() {
         if ($("#form-data").valid()) {
             // Sử dụng reduce để chuyển đổi array sinh ra từ hàm serializeArray thành object
             let obj = $("#form-data").serializeArray().reduce((result, item) => {
+                /// TODO: ,,,
                 let format = $(`#form-data input[name='${item.name}']`).attr("format");
                 // Return các properties trong current value và nạp thuộc tính mới
                 return { ...result, [item.name]: commonJS.formatValue(item.value, format) };
@@ -253,7 +263,8 @@
     setInputDialog(obj) {
         // Lấy ra name của các thẻ input trong form
         // Name của các thẻ input phải giống với các field của object
-        $("#form-data").serializeArray().forEach(item => {
+        let x = $("#form-data").serializeArray();
+        x.forEach(item => {
             // Lấy ra thẻ input với name tương ứng
             let element = $(`#form-data input[name='${item.name}']`);
             // Kiểm tra kiểu của các thẻ input để binding dữ liệu phù hợp
@@ -261,6 +272,9 @@
             try {
                 // Gán giá trị cho thẻ input
                 switch (type) {
+                    case typeInput.CHECKBOX:
+                        $(`#form-data input[value='${obj.gender}']`).prop('checked', true).siblings(`input[type='${typeInput.CHECKBOX}']`).prop('checked', false);
+                        break;
                     case typeInput.RADIO:
                         $(`#form-data input[value='${obj.gender}']`).prop('checked', true);
                         break;
@@ -284,7 +298,7 @@
      * Author: LTQuan (28/09/2020)
      * */
     onShowDialog() {
-        $(".dialog-modal, .dialog-detail").show();
+        $(".dialog-modal, .dialog-detail").fadeIn(400);
         $("#form-data input:first").focus();
     }
 
@@ -305,10 +319,10 @@
             setTimeout(() => this.onHideDialogMessage(), 2000);
         } else {
             $(".btn-close").hide();
-            $("#btn-accept, .dialog-message, .dialog-message .btn-cancel").show();
+            $("#btn-accept, .dialog-message, .dialog-message .btn-cancel").fadeIn(400);
         }
         $(".dialog-message #mesage-text").text(message);
-        $(".dialog-modal, .dialog-message").show();
+        $(".dialog-modal, .dialog-message").fadeIn(400);
     }
 
     /**
@@ -317,10 +331,13 @@
      * Author: LTQuan (28/09/2020)
      * */
     onHideDialog() {
-        $(".dialog-modal, .dialog-detail, .dialog-message").hide();
-        $("#form-data input[type='text'], #form-data input[type='date'], #form-data textarea").val('').removeClass('error').removeAttr('title');
-        $("#txtDateOfBrith").val(null);
-        $("#form-data input[type='radio']:last").prop('checked', true);
+        $(".dialog-modal, .dialog-detail, .dialog-message").fadeOut(400);
+        setTimeout(() => {
+            $("#form-data input[type='text'], #form-data input[type='date'], #form-data textarea").val('').removeClass('error').removeAttr('title');
+            $("#txtDateOfBrith").val(null);
+            $("#form-data input[type='checkbox']").prop('checked', false);
+            $("#form-data input[type='checkbox'][checked]").prop('checked', true);
+        }, 400);
     }
 
     /**
@@ -328,7 +345,7 @@
      * Author: LTQuan (02/10/2020)
      * */
     onHideDialogMessage() {
-        $(".dialog-modal, .dialog-message").hide();
+        $(".dialog-modal, .dialog-message").fadeOut(400);
     }
 
     //#endregion SHOW/HIDE Dialog

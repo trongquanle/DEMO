@@ -25,14 +25,7 @@ namespace MISA.DAO.Dictionary.impl
 
         public IEnumerable<Customer> GetCustomers()
         {
-            try
-            {
-                return this.GetData("PROC_GetCustomers");
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+            return this.GetData("PROC_GetCustomers");
         }
 
         public int UpdateCustomer(Customer customer)

@@ -36,7 +36,8 @@
     height: 50px;
     background-image: url('/content/img/images/icon-left-header.png');
     background-repeat: no-repeat;
-    background-position: center;
+    background-position-x: center;
+    background-position-y: 14px;
     padding-left: 10px;
 }
 .logo .logo-text {
@@ -45,7 +46,7 @@
     background-image: url('/content/img/images/logo-text.png');
     background-repeat: no-repeat;
     background-position-x: center;
-    background-position-y: 12px;
+    background-position-y: center;
 }
 
 /* Menu */

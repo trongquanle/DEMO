@@ -185,6 +185,7 @@ const formatField = {
  * */
 const typeInput = {
     RADIO: 'radio',
+    CHECKBOX: 'checkbox',
     DATE: 'date',
     TEXT: 'text',
     EMAIL: 'email',

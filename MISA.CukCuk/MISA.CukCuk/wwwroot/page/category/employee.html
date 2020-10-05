@@ -287,7 +287,7 @@
     <div class="dialog-modal"></div>
 
     <!--Dialog data-->
-    <div class="dialog dialog-detail" style="height: 350px;">
+    <div class="dialog dialog-detail" style="height: 310px; top: calc(50% - 160px);">
         <div class="dialog-title">
             <div class="dialog-title-text">Thông tin nhân viên</div>
             <div class="dialog-title-cancel"></div>
@@ -315,7 +315,7 @@
                                 <label>Ngày sinh</label>
                             </td>
                             <td colspan="2">
-                                <input type="date" id="txtDateOfBrith" format="date" name="dateOfBrith" style="resize: none;" />
+                                <input type="date" id="txtDateOfBrith" format="date" name="dateOfBrith" />
                             </td>
                             <td colspan="1">
                                 <label>Mức lương</label>
@@ -335,11 +335,11 @@
                                 <label>Giới tính</label>
                             </td>
                             <td colspan="2" style="display: flex;">
-                                <input type="radio" id="checkbox-male" format="number" checked name="gender" value="1" />
-                                <label class="radio-label" for="checkbox-male">Nam</label>
-                                <input type="radio" id="checkbox-female" format="number" name="gender" value="0" />
-                                <label class="radio-label" for="checkbox-female">Nữ</label>
-                                <input type="radio" id="checkbox-none" format="number" name="gender" value="" />
+                                <input type="checkbox" id="checkbox-male" format="number" name="gender" value="1" />
+                                <label class="checkbox-label" for="checkbox-male">Nam</label>
+                                <input type="checkbox" id="checkbox-female" format="number" name="gender" value="0" />
+                                <label class="checkbox-label" for="checkbox-female">Nữ</label>
+                                <input type="checkbox" id="checkbox-none" style="display: none;" format="number" checked name="gender" value="" />
                             </td>
                         </tr>
                         <tr>

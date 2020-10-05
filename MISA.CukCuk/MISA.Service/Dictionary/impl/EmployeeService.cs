@@ -11,6 +11,7 @@ namespace MISA.Service.Dictionary.impl
         {
             try
             {
+                employee.EmployeeID = Guid.NewGuid();
                 Employee.Employees.Add(employee);
                 return 1;
             }

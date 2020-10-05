@@ -279,7 +279,7 @@
     <!--Dialog data-->
     <div class="dialog dialog-detail">
         <div class="dialog-title">
-            <div class="dialog-title-text">Thông tin nhân viên</div>
+            <div class="dialog-title-text">Thông tin khách hàng</div>
             <div class="dialog-title-cancel"></div>
         </div>
         <div class="dialog-body">
@@ -325,11 +325,11 @@
                                 <label>Giới tính</label>
                             </td>
                             <td colspan="2" style="display: flex;">
-                                <input type="radio" id="checkbox-male" format="number" name="gender" value="1" />
-                                <label class="radio-label" for="checkbox-male">Nam</label>
-                                <input type="radio" id="checkbox-female" format="number" name="gender" value="0" />
-                                <label class="radio-label" for="checkbox-female">Nữ</label>
-                                <input type="radio" id="checkbox-none" checked format="number" name="gender" value="" />
+                                <input type="checkbox" id="checkbox-male" format="number" name="gender" value="1" />
+                                <label class="checkbox-label" for="checkbox-male">Nam</label>
+                                <input type="checkbox" id="checkbox-female" format="number" name="gender" value="0" />
+                                <label class="checkbox-label" for="checkbox-female">Nữ</label>
+                                <input type="checkbox" id="checkbox-none" style="display: none;" checked format="number" name="gender" value="" />
                             </td>
                         </tr>
                         <tr>
@@ -352,7 +352,7 @@
                             <td colspan="1">
                                 <label>Tên công ty</label>
                             </td>
-                            <td colspan="4">
+                            <td colspan="5">
                                 <input type="text" id="txtCompanyName" />
                             </td>
                         </tr>
@@ -374,7 +374,7 @@
                             <td colspan="1">
                                 <label>Địa chỉ</label>
                             </td>
-                            <td colspan="4">
+                            <td colspan="5">
                                 <input type="text" id="txtAddress" name="address" />
                             </td>
                         </tr>
@@ -382,7 +382,7 @@
                             <td colspan="1">
                                 <label>Ghi chú</label>
                             </td>
-                            <td colspan="4">
+                            <td colspan="5">
                                 <textarea id="textarea" rows="3" cols="4"></textarea>
                             </td>
                         </tr>
@@ -416,6 +416,7 @@
     <!--End dialog message-->
 
     <!--End dialog-->
+
     <script src="/js/plugins/jquery.min.js"></script>
     <script src="/js/plugins/jquery.validate.min.js"></script>
     <script src="/js/common/common.js"></script>
