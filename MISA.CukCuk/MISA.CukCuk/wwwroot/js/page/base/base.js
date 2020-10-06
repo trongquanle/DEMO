@@ -139,10 +139,10 @@
      * */
     onCheckSelectedRow() {
         if (!$('.row-selected').length) {
-            this.onShowDialogMessage(this.message.DELETE_NONE, iconType.ICON_WARNING);
+            notification.warning(this.message.DELETE_NONE);
         } else {
             this.method = 'DELETE';
-            this.onShowDialogMessage(this.message.COMFIRM_DELETE, iconType.ICON_WARNING, true);
+            this.onShowDialogComfirm(this.message.COMFIRM_DELETE);
         }
     }
 
@@ -151,25 +151,21 @@
      * Author: LTQuan (02/10/2020)
      * */
     onDeleteRow() {
+        this.onHideDialogComfirm();
         $.ajax({
             url: `${this.url}/${commonJS.getId()}`,
             method: this.method,
             dataType: 'text'
         }).done(res => {
             this.fetchData();
-            let messageStatus;
-            let type;
             if (res) {
-                messageStatus = this.message.DELETE_SUCCESS;
-                type = iconType.ICON_SUCCESS;
+                notification.success(this.message.DELETE_SUCCESS);
             } else {
-                messageStatus = this.message.NOT_EXISTS;
-                type = iconType.ICON_WARNING;
+                notification.infor(this.message.NOT_EXISTS);
             }
-            this.onShowDialogMessage(messageStatus, type);
         }).fail(err => {
             console.log(err);
-            this.onShowDialogMessage(message.ERROR, iconType.ICON_WARNING);
+            notification.danger(message.ERROR);
         });
     }
 
@@ -196,25 +192,21 @@
                 dataType: 'json'
             }).done(res => {
                 let messageStatus;
-                let type;
                 if (res) {
                     if (this.method == 'POST') {
                         messageStatus = this.message.ADD_SUCCESS;
-                        type = iconType.ICON_SUCCESS;
                     } else {
                         messageStatus = this.message.EDIT_SUCCESS;
-                        type = iconType.ICON_SUCCESS;
                     }
                 } else {
                     messageStatus = this.message.NOT_EXISTS;
-                    type = iconType.ICON_WARNING;
                 }
                 this.fetchData();
                 this.onHideDialog();
-                this.onShowDialogMessage(messageStatus, type);
+                notification.success(messageStatus);
             }).fail(err => {
                 console.log(err);
-                this.onShowDialogMessage(message.ERROR,iconType.ICON_WARNING);
+                notification.danger(message.ERROR);
             })
         }
     }
@@ -237,7 +229,7 @@
     onEdit() {
         this.method = 'GET';
         if (!$('.row-selected').length) {
-            this.onShowDialogMessage(this.message.EDIT_NONE, iconType.ICON_WARNING);
+            notification.warning(this.message.EDIT_NONE);
         } else {
             $.ajax({
                 url: `${this.url}/${commonJS.getId()}`,
@@ -294,7 +286,6 @@
 
     /**
      * Hàm show dialog
-     * @returns {void}
      * Author: LTQuan (28/09/2020)
      * */
     onShowDialog() {
@@ -305,23 +296,9 @@
     /**
      * Hàm show dialog message, icon: kiểu thông báo
      * @param {string} message
-     * @param {string} icon: loại thông báo
-     * @param {boolean} isComfirm: check các trạng thái thông báo/comfirm
      * Author: LTQuan (02/10/2020)
      */
-    onShowDialogMessage(message, icon, isComfirm = false) {
-        // Set kiểu icon cảnh báo
-        $("#message-icon").removeClass().addClass(icon);
-        // Check để ẩn/hiện btn-accept, btn-cancel, btn-close
-        if (!isComfirm) {
-            $("#btn-accept, .dialog-message .btn-cancel").hide();
-            $(".btn-close").show();
-            // timeOutMessage để check xem sự kiện đóng notification đã được kích hoạt hay chưa
-            this.timeOutMessage = setTimeout(() => this.onHideDialogMessage(), 2000);
-        } else {
-            $(".btn-close").hide();
-            $("#btn-accept, .dialog-message, .dialog-message .btn-cancel").fadeIn(400);
-        }
+    onShowDialogComfirm(message) {
         $(".dialog-message #mesage-text").text(message);
         $(".dialog-modal, .dialog-message").fadeIn(400);
     }
@@ -333,8 +310,6 @@
      * */
     onHideDialog() {
         $(".dialog-modal, .dialog-detail, .dialog-message").fadeOut(400);
-        // hủy sự kiện time out đóng message
-        clearTimeout(this.timeOutMessage);
         setTimeout(() => {
             $("#form-data input[type='text'], #form-data input[type='date'], #form-data textarea").val('').removeClass('error').removeAttr('title');
             $("#txtDateOfBrith").val(null);
@@ -347,7 +322,7 @@
      * Hàm hide dialog message
      * Author: LTQuan (02/10/2020)
      * */
-    onHideDialogMessage() {
+    onHideDialogComfirm() {
         $(".dialog-modal, .dialog-message").fadeOut(400);
     }
 
