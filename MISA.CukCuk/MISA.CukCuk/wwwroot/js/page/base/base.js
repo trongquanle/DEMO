@@ -316,7 +316,8 @@
         if (!isComfirm) {
             $("#btn-accept, .dialog-message .btn-cancel").hide();
             $(".btn-close").show();
-            setTimeout(() => this.onHideDialogMessage(), 2000);
+            // timeOutMessage để check xem sự kiện đóng notification đã được kích hoạt hay chưa
+            this.timeOutMessage = setTimeout(() => this.onHideDialogMessage(), 2000);
         } else {
             $(".btn-close").hide();
             $("#btn-accept, .dialog-message, .dialog-message .btn-cancel").fadeIn(400);
@@ -332,6 +333,8 @@
      * */
     onHideDialog() {
         $(".dialog-modal, .dialog-detail, .dialog-message").fadeOut(400);
+        // hủy sự kiện time out đóng message
+        clearTimeout(this.timeOutMessage);
         setTimeout(() => {
             $("#form-data input[type='text'], #form-data input[type='date'], #form-data textarea").val('').removeClass('error').removeAttr('title');
             $("#txtDateOfBrith").val(null);
