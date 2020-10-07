@@ -393,7 +393,7 @@ li .profile {
     display: none;
 }
 
-.dialog-detail { 
+.dialog-detail {
     width: 800px;
     height: 400px;
     top: calc(50% - 200px);
@@ -406,29 +406,35 @@ li .profile {
     top: calc(50% - 200px);
     left: calc(50% - 200px);
 }
+
     .dialog-message .dialog-message-body {
         display: flex;
         align-items: center;
     }
+
 .dialog-message-body #mesage-text {
     padding-left: 10px;
     font-size: 14px;
     font-weight: 700;
 }
-.dialog-message-body #message-icon{
+
+.dialog-message-body #message-icon {
     width: 70px;
     height: 70px;
 }
+
 .dialog-message-body .icon-warning {
     background-image: url('/content/img/images/icon-warning.png');
     background-repeat: no-repeat;
     background-size: 70px;
 }
+
 .dialog-message-body .icon-success {
     background-image: url('/content/img/images/icon-success.png');
     background-repeat: no-repeat;
     background-size: 70px;
 }
+
 .dialog .dialog-title {
     width: 100%;
     height: 25px;
@@ -438,39 +444,39 @@ li .profile {
     line-height: 25px;
 }
 
-    .dialog .dialog-title-cancel {
-        position: absolute;
-        top: 2px;
-        right: 0;
-        width: 16px;
-        height: 16px;
-        border: 1px solid #fff;
-        border-radius: 50%;
-        cursor: pointer;
-        background-image: url('/content/img/images/cancel.png');
-        background-repeat: no-repeat;
-        background-position: center;
-    }
+.dialog .dialog-title-cancel {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    background-image: url('/content/img/images/cancel.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
-    .dialog .dialog-body {
-        width: calc(100% - 20px);
-        height: calc(100% - 85px);
-        padding: 10px;
-        background-color: #fff;
-    }
+.dialog .dialog-body {
+    width: calc(100% - 20px);
+    height: calc(100% - 85px);
+    padding: 10px;
+    background-color: #fff;
+}
 
-    .dialog table {
-        width: 100%;
-    }
+.dialog table {
+    width: 100%;
+}
 
 #form-data tbody td {
     border: none;
     padding: 2px;
 }
 
-#form-data tbody td:nth-child(3) label {
-    margin-left: 5px;
-}
+    #form-data tbody td:nth-child(3) label {
+        margin-left: 5px;
+    }
 
 #form-data input:focus, textarea:focus {
     border: 1px solid #0973b9;
@@ -493,18 +499,21 @@ li .profile {
     margin-left: -11px;
     resize: vertical;
 }
+
 .dialog input[type="date"] {
     resize: none;
     height: 16px;
 }
-.dialog input[type="radio"] {
+
+.dialog input[type="radio"], .dialog input[type="checkbox"] {
     margin-top: 7px;
     margin-left: 35px;
 }
-.dialog input[type="checkbox"] {
-    margin-top: 7px;
-    margin-left: 35px;
-}
+
+    .dialog input[type="checkbox"]:focus {
+        outline: auto;
+    }
+
 .dialog input[type="radio"]:last-child {
     display: none;
 }
@@ -514,13 +523,15 @@ li .profile {
     margin-left: 5px;
 }
 
-.dialog .cls-money{
+.dialog .cls-money {
     /*display: flex;*/
     /*position: relative;*/
 }
-.dialog .cls-money input {
-    width: 75%;
-}
+
+    .dialog .cls-money input {
+        width: 75%;
+    }
+
     .dialog .cls-money span {
         border: 1px solid #ccc;
         padding: 4px;

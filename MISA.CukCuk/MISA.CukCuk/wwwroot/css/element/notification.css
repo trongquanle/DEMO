@@ -1,4 +1,5 @@
-﻿
+﻿/*Phải có include font-anwesome trước để sử dụng các icon*/
+
 /*Notificatiion*/
 
 .notification {
@@ -10,7 +11,7 @@
     color: #fff;
     display: none;
     cursor: pointer;
-    box-shadow: 0 2px 6px #888888;
+    box-shadow: 0 2px 4px #888888;
 }
 
     .notification:hover {
@@ -47,20 +48,8 @@
         left: 10px;
     }
 
-.notification-icon .icon-success {
-}
-
-.notification-icon .icon-warning {
-}
-
-.notification-icon .icon-infor {
-}
-
-.notification-icon .icon-danger {
-}
-
 .notification .notification-text {
-    padding: 0 15px;
+    padding: 0 13px 0 10px;
 }
 
 /*End notificatiion*/

@@ -9,11 +9,11 @@
      * */
     onShowMessage: (type, icon, message, timeOut = 5000) => {
         let x = $(`<div class="notification notification-${type} center-items">
-                    <div class="notification-icon">
-                        ${icon}
-                    </div>
-                    <div class="notification-text">${message}</div>
-                </div>`);
+                        <div class="notification-icon">
+                            ${icon}
+                        </div>
+                        <div class="notification-text">${message}</div>
+                    </div>`);
         $('.notification').animate({
             top: "-=50"
         }, 400);
@@ -25,7 +25,7 @@
             $(x).fadeOut(400).remove();
             clearTimeout(timer);
         });
-        $(x).fadeIn(400).css('display', 'flex');
+        $(x).fadeIn(600).css('display', 'flex');
     },
 
     /**
@@ -33,9 +33,9 @@
      * @param {string} message
      * Author: LTQUAN (06/10/2020)
      * */
-    success: (message) => {
+    success: (message, timeOut = 5000) => {
         let icon = '<i class="fas fa-check"></i>';
-        notification.onShowMessage('success', icon, message);
+        notification.onShowMessage('success', icon, message, timeOut);
     },
 
     /**
@@ -43,9 +43,9 @@
      * @param {string} message
      * Author: LTQUAN (06/10/2020)
      * */
-    warning: (message) => {
+    warning: (message, timeOut = 5000) => {
         let icon = '<i class="fas fa-exclamation-circle"></i>';
-        notification.onShowMessage('warning', icon, message);
+        notification.onShowMessage('warning', icon, message, timeOut);
     },
 
     /**
@@ -53,9 +53,9 @@
      * @param {string} message
      * Author: LTQUAN (06/10/2020)
      * */
-    infor: (message) => {
+    infor: (message, timeOut = 5000) => {
         let icon = '<i class="fas fa-info-circle"></i>';
-        notification.onShowMessage('infor', icon, message);
+        notification.onShowMessage('infor', icon, message, timeOut);
     },
 
     /**
@@ -63,8 +63,8 @@
      * @param {string} message
      * Author: LTQUAN (06/10/2020)
      * */
-    danger: (message) => {
+    danger: (message, timeOut = 5000) => {
         let icon = '<i class="fas fa-exclamation-triangle"></i>';
-        notification.onShowMessage('danger', icon, message);
+        notification.onShowMessage('danger', icon, message, timeOut);
     }
 }

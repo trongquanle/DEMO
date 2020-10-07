@@ -29,6 +29,33 @@
         $("#form-data input[type='checkbox']").click(this.onChangeSelectedCheckbox);
         //$("input[required]").blur(validate.initRequired);
         this.initValidate();
+        this.initTabEvents();
+    }
+
+    /**
+     * Hàm gán sự kiện form dialog
+     * Author: LTQUAN (07/10/2020)
+     * */
+    initTabEvents() {
+        $(".dialog-detail .btn-cancel").on('keydown', function (e) {
+            var code = e.keyCode || e.which;
+            if (event.shiftKey && code == 9) {
+                $(this).focus();
+            } else if (code === 9) {
+                $(".left-paging ul li select").focus();
+            }
+        });
+        $("#form-data input:first").on('keydown', function (e) {
+            var code = e.keyCode || e.which;
+            if (event.shiftKey && code == 9) {
+                $('.dialog button:first').focus();
+            }
+        });
+        $("#form-data input[type='checkbox']").keypress(function (e) {
+            if ((e.keyCode ? e.keyCode : e.which) == 13) {
+                $(this).trigger('click');
+            }
+        });
     }
 
     /// TODO: vali....
