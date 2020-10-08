@@ -293,7 +293,7 @@
         </div>
         <div class="dialog-body">
             <form id="form-data">
-                <strong>Thông tin chung</strong> <hr style="color: #ccc;" />
+                <strong>Thông tin chung</strong> <hr />
                 <div class="infor-general" style="width: 100%; display: flex">
                     <div class="row">
                         <div class="form-group center-items">
@@ -304,12 +304,12 @@
                             <div class="text-label">Tên nhân viên <span style="color: #f00">(*)</span></div>
                             <input type="text" id="txtEmployeeName" required name="employeeName" />
                         </div>
-                        <div class="form-group center-items" style="position: relative;height: 25px;">
-                            <div class="text-label" style="position: absolute; left: 0px; ">Ngày sinh</div>
-                            <input type="date" id="txtDateOfBrith" format="date" name="dateOfBrith" style=" width: 140px; position: absolute; top: 0; left: 118px;">
-                            <div class="text-label" style="width: 66px; padding-left: 10px; position: absolute; left: 270px;">Giới tính</div>
+                        <div class="form-group form-multi center-items">
+                            <div class="text-label" style="left: 0px; ">Ngày sinh</div>
+                            <input type="date" id="txtDateOfBrith" format="date" name="dateOfBrith" style=" width: 140px; top: 0; left: 117.5px;">
+                            <div class="text-label" style="width: 66px; padding-left: 10px; left: 270px;">Giới tính</div>
                             <!--<input type="date" id="txtDateOfBrith" format="date" name="dateOfBrith" style="width: 140px; position: absolute; top: 0; left: 346px;">-->
-                            <select style="width: 149px; position: absolute; top: 0; left: 346px; padding: 4px; border-color: #ccc;">
+                            <select style="width: 150px; left: 346px;">
                                 <option value="">text</option>
                                 <option value="1">text</option>
                                 <option value="2">text</option>
@@ -323,9 +323,11 @@
                             <div class="text-label">ĐT di động <span style="color: #f00">(*)</span></div>
                             <input type="text" id="txtSDT" name="mobile" />
                         </div>
-                        <div class="form-group center-items">
-                            <div class="text-label">Số CMT/HC</div>
-                            <input type="text" name="identityNumber" />
+                        <div class="form-group form-multi center-items">
+                            <div class="text-label" style="left: 0;">Số CMT/HC</div>
+                            <input type="text" name="identityNumber" style=" width: 140px; top: 0; left: 117.5px;">
+                            <div class="text-label" style="width: 66px; padding-left: 10px; left: 270px;">Ngày cấp</div>
+                            <input type="date" format="date" name="identityDate" style="width: 140px; top: 0; left: 346px;">
                         </div>
                     </div>
                     <div class="avatar-picture" style="width: 25%; padding-left: 10px; text-align: center">
@@ -340,23 +342,39 @@
                     </div>
                 </div>
                 <!--<br />-->
-                <strong>Thông tin công việc</strong> <hr style="color: #ccc;" />
+                <strong>Thông tin công việc</strong> <hr />
                 <div class="row">
                     <div class="form-group center-items">
                         <label class="text-label">Vị trí</label>
-                        <input type="text" name="name" value="" />
+                        <select style="width: 521px;">
+                            <option value="0">text</option>
+                            <option value="1">text</option>
+                            <option value="2">text</option>
+                        </select>
                     </div>
                     <div class="form-group center-items">
                         <div class="text-label">Phòng ban</div>
-                        <input type="text" name="name" value="" />
+                        <select style="width: 521px;">
+                            <option value="0">text</option>
+                            <option value="1">text</option>
+                            <option value="2">text</option>
+                        </select>
                     </div>
-                    <div class="form-group center-items">
-                        <div class="text-label">Mã số thuế cá nhân</div>
-                        <input type="text" name="taxCode" />
+                    <div class="form-group form-multi center-items">
+                        <div class="text-label" style="left: 0;">Mã số thuế cá nhân</div>
+                        <input type="text" name="taxCode" style="width: 195px; top: 0; left: 118px;" />
+                        <div class="text-label" style="width: 66px; padding-left: 10px; left: 333px;">Mức lương</div>
+                        <input type="text" name="identityDate" style="width: 195px; top: 0; left: 425px;">
                     </div>
-                    <div class="form-group center-items">
-                        <div class="text-label">Ngày gia nhập</div>
-                        <input type="text" name="name" value="" />
+                    <div class="form-group form-multi center-items">
+                        <div class="text-label" style="left: 0;">Ngày gia nhập</div>
+                        <input type="date" name="taxCode" style="width: 195px; top: 0; left: 118px;" />
+                        <div class="text-label" style="width: 66px; padding-left: 10px; left: 333px;">Tình trạng</div>
+                        <select style="width: 205px; left: 425px;">
+                            <option value="0">text</option>
+                            <option value="1">text</option>
+                            <option value="2">text</option>
+                        </select>
                     </div>
                 </div>
                 <!--<table>

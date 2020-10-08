@@ -552,6 +552,20 @@ li .profile {
 .form-group .text-label {
     width: 120px;
 }
+.form-group select {
+    border-color: #ccc;
+    padding: 4px;
+    outline: none;
+}
+
+.form-multi {
+    /*width: 496px;*/
+    height: 25px;
+    position: relative;
+}
+    .form-multi .text-label, .form-multi input, .form-multi select {
+        position: absolute;
+    }
 
 .form-group > input {
     width: calc(100% - 120px);
