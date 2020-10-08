@@ -15,7 +15,7 @@ namespace MISA.DAO.Dictionary.impl
 
         public int DeleteCustomer(string id)
         {
-            return this.DeleteByID("PROC_DeleteCustomer", id);
+            return this.DeleteByID("PROC_DeleteCustomerByID", id);
         }
 
         public Customer GetCustomerByID(string id)

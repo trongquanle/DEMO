@@ -31,6 +31,7 @@
     /**
      * Hàm show message success
      * @param {string} message
+     * @param {number} timeOut
      * Author: LTQUAN (06/10/2020)
      * */
     success: (message, timeOut = 5000) => {
@@ -41,6 +42,7 @@
     /**
      * Hàm show message warning
      * @param {string} message
+     * @param {number} timeOut
      * Author: LTQUAN (06/10/2020)
      * */
     warning: (message, timeOut = 5000) => {
@@ -51,6 +53,7 @@
     /**
      * Hàm show message warning
      * @param {string} message
+     * @param {number} timeOut
      * Author: LTQUAN (06/10/2020)
      * */
     infor: (message, timeOut = 5000) => {
@@ -61,6 +64,7 @@
     /**
      * Hàm show message danger
      * @param {string} message
+     * @param {number} timeOut
      * Author: LTQUAN (06/10/2020)
      * */
     danger: (message, timeOut = 5000) => {

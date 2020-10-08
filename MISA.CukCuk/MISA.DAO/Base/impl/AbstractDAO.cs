@@ -57,7 +57,7 @@ namespace MISA.DAO.Base.impl
         {
             sqlCommand.CommandText = query;
             // Gán tham số ID cho store
-            sqlCommand.Parameters.AddWithValue("@ID", id);
+            sqlCommand.Parameters.AddWithValue("ID", id);
             // Mở kết nối
             sqlConnection.Open();
             // Chạy câu lệnh
@@ -111,7 +111,7 @@ namespace MISA.DAO.Base.impl
         {
             sqlCommand.CommandText = query;
             // Gán tham số đầu vào cho store
-            sqlCommand.Parameters.AddWithValue("@ID", id);
+            sqlCommand.Parameters.AddWithValue("ID", id);
             // Mở kết nối
             sqlConnection.Open();
             transaction = sqlConnection.BeginTransaction();
@@ -140,7 +140,7 @@ namespace MISA.DAO.Base.impl
         {
             foreach (var prop in model.GetType().GetProperties())
             {
-                sqlCommand.Parameters.AddWithValue($"@{prop.Name}", prop.GetValue(model, null) ?? DBNull.Value);
+                sqlCommand.Parameters.AddWithValue(prop.Name, prop.GetValue(model, null) ?? DBNull.Value);
             }
         }
 

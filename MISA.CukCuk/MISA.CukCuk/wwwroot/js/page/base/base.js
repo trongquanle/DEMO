@@ -185,7 +185,7 @@
             dataType: 'text'
         }).done(res => {
             this.fetchData();
-            if (res) {
+            if (res == 1) {
                 notification.success(this.message.DELETE_SUCCESS);
             } else {
                 notification.infor(this.message.NOT_EXISTS);

@@ -6,7 +6,7 @@ const commonJS = {
      * Author: LTQuan
      * */
     formatMonney: (money) => {
-        return !money ? "" : `${money.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")} VND`;
+        return !money ? "" : money.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
     },
 
     /**
@@ -24,7 +24,7 @@ const commonJS = {
      * Author: LTQuan
      **/
     formatLimitString: (address) => {
-        return address.length > 26 ? `${address.substr(0, 26)}...` : address;
+        return !address ? "" : address.length > 26 ? `${address.substr(0, 26)}...` : address;
     },
 
     /**
