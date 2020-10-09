@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace MISA.DAO.Dictionary.impl
 {
-    public class EmployeeDAO : AbstractDAO<Employee>, IEmployeeDAO
+    public class EmployeeDAO : BaseDAO<Employee>, IEmployeeDAO
     {
         public Employee GetEmployeeById(string id)
         {

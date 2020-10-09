@@ -5,7 +5,7 @@ using System.Data;
 
 namespace MISA.DAO.Base.impl
 {
-    public class AbstractDAO<T> : IGenericDAO<T>
+    public class BaseDAO<T> : IGenericDAO<T>
     {
 
         private MySqlConnection sqlConnection;
@@ -13,7 +13,7 @@ namespace MISA.DAO.Base.impl
         private MySqlDataReader sqlDataReader;
         private MySqlTransaction transaction;
 
-        public AbstractDAO()
+        public BaseDAO()
         {
             string connectionString = "Server=35.194.166.58;Port=3306;Database=MISACukCuk_F09_LTQUAN;User=nvmanh;Password=12345678@Abc";
             // Khởi tạo phiên làm việc
@@ -81,6 +81,7 @@ namespace MISA.DAO.Base.impl
                 // Thêm đối tượng nhân viên vừa tìm được vào collection
                 yield return entity;
             }
+            //sqlDataReader.Close();
         }
 
         public int Query(string query, T model)

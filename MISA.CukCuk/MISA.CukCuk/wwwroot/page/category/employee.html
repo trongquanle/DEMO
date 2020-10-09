@@ -6,6 +6,7 @@
     <link href="/css/common/layout/main.css" rel="stylesheet" />
     <link href="/css/element/notification.css" rel="stylesheet" />
     <link href="/css/element/table.css" rel="stylesheet" />
+    <link href="/css/element/dialog.css" rel="stylesheet" />
     <link href="/css/common/layout/sidebar.css" rel="stylesheet" />
     <link href="/content/fonts/font-anwesome/css/all.min.css" rel="stylesheet" />
 </head>
@@ -286,7 +287,7 @@
     <div class="dialog-modal"></div>
 
     <!--Dialog data-->
-    <div class="dialog dialog-detail" style="width: 650px; height: 480px; top: calc(50% - 240px); left: calc(50% - 300px);">
+    <div class="dialog dialog-detail" style="width: 650px; height: 480px; top: calc(50% - 240px); left: calc(50% - 325px);">
         <div class="dialog-title">
             <div class="dialog-title-text">Thông tin nhân viên</div>
             <div class="dialog-title-cancel"></div>
@@ -294,7 +295,7 @@
         <div class="dialog-body">
             <form id="form-data">
                 <strong>Thông tin chung</strong> <hr />
-                <div class="infor-general" style="width: 100%; display: flex">
+                <div class="infor-general">
                     <div class="row">
                         <div class="form-group center-items">
                             <label class="text-label">Mã nhân viên <span style="color: #f00">(*)</span></label>
@@ -305,14 +306,14 @@
                             <input type="text" id="txtEmployeeName" required name="employeeName" />
                         </div>
                         <div class="form-group form-multi center-items">
-                            <div class="text-label" style="left: 0px; ">Ngày sinh</div>
-                            <input type="date" id="txtDateOfBrith" format="date" name="dateOfBrith" style=" width: 140px; top: 0; left: 117.5px;">
-                            <div class="text-label" style="width: 66px; padding-left: 10px; left: 270px;">Giới tính</div>
-                            <!--<input type="date" id="txtDateOfBrith" format="date" name="dateOfBrith" style="width: 140px; position: absolute; top: 0; left: 346px;">-->
-                            <select style="width: 150px; left: 346px;">
-                                <option value="">text</option>
-                                <option value="1">text</option>
-                                <option value="2">text</option>
+                            <div class="text-label">Ngày sinh</div>
+                            <input type="date" id="txtDateOfBrith" format="date" name="dateOfBrith" />
+                            <div class="text-label sub-label">Giới tính</div>
+                            <select name="gender" format="number" type="select">
+                                <option value="0">-- Chọn giới tính --</option>
+                                <option value="1">Nữ</option>
+                                <option value="2">Nam</option>
+                                <option value="3">Khác</option>
                             </select>
                         </div>
                         <div class="form-group center-items">
@@ -324,14 +325,14 @@
                             <input type="text" id="txtSDT" name="mobile" />
                         </div>
                         <div class="form-group form-multi center-items">
-                            <div class="text-label" style="left: 0;">Số CMT/HC</div>
-                            <input type="text" name="identityNumber" style=" width: 140px; top: 0; left: 117.5px;">
-                            <div class="text-label" style="width: 66px; padding-left: 10px; left: 270px;">Ngày cấp</div>
-                            <input type="date" format="date" name="identityDate" style="width: 140px; top: 0; left: 346px;">
+                            <div class="text-label">Số CMT/HC</div>
+                            <input type="text" name="identityNumber">
+                            <div class="text-label sub-label">Ngày cấp</div>
+                            <input type="date" format="date" name="identityDate">
                         </div>
                     </div>
-                    <div class="avatar-picture" style="width: 25%; padding-left: 10px; text-align: center">
-                        <img src="/content/img/Images/user-anonymus.png" width="123" />
+                    <div class="avatar-picture">
+                        <img src="/content/img/Images/user-anonymus.png" />
                         <p>Chỉ được upload tệp <strong>.jpg, jpge, .png, .gif</strong></p>
                     </div>
                 </div>
@@ -341,124 +342,41 @@
                         <input type="text" name="identityPlace" />
                     </div>
                 </div>
-                <!--<br />-->
                 <strong>Thông tin công việc</strong> <hr />
-                <div class="row">
+                <div class="row job-information">
                     <div class="form-group center-items">
                         <label class="text-label">Vị trí</label>
-                        <select style="width: 521px;">
-                            <option value="0">text</option>
+                        <select>
+                            <option value="0">-- Chọn vị trí --</option>
                             <option value="1">text</option>
                             <option value="2">text</option>
                         </select>
                     </div>
                     <div class="form-group center-items">
                         <div class="text-label">Phòng ban</div>
-                        <select style="width: 521px;">
-                            <option value="0">text</option>
+                        <select>
+                            <option value="0">-- Chọn phòng ban --</option>
                             <option value="1">text</option>
                             <option value="2">text</option>
                         </select>
                     </div>
                     <div class="form-group form-multi center-items">
-                        <div class="text-label" style="left: 0;">Mã số thuế cá nhân</div>
-                        <input type="text" name="taxCode" style="width: 195px; top: 0; left: 118px;" />
-                        <div class="text-label" style="width: 66px; padding-left: 10px; left: 333px;">Mức lương</div>
-                        <input type="text" name="identityDate" style="width: 195px; top: 0; left: 425px;">
+                        <div class="text-label">Mã số thuế cá nhân</div>
+                        <input type="text" name="taxCode" />
+                        <div class="text-label sub-label">Mức lương</div>
+                        <input type="text" style="text-align: right;" format="number" name="salary" />
                     </div>
                     <div class="form-group form-multi center-items">
-                        <div class="text-label" style="left: 0;">Ngày gia nhập</div>
-                        <input type="date" name="taxCode" style="width: 195px; top: 0; left: 118px;" />
-                        <div class="text-label" style="width: 66px; padding-left: 10px; left: 333px;">Tình trạng</div>
-                        <select style="width: 205px; left: 425px;">
+                        <div class="text-label">Ngày gia nhập</div>
+                        <input type="date" name="taxCode" />
+                        <div class="text-label sub-label">Tình trạng</div>
+                        <select type="select">
                             <option value="0">text</option>
                             <option value="1">text</option>
                             <option value="2">text</option>
                         </select>
                     </div>
                 </div>
-                <!--<table>
-                    <tbody>
-                        <tr>
-                            <td colspan="1">
-                                <label>Mã nhân viên <span style="color: red">(*)</span></label>
-                            </td>
-                            <td colspan="2">
-                                <input type="text" id="txtEmployeeCode" required name="employeeCode" />
-                            </td>
-                            <td>
-                                <label>Tên nhân viên <span style="color: red">(*)</span></label>
-                            </td>
-                            <td colspan="2">
-                                <input type="text" id="txtEmployeeName" required name="employeeName" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <label>Ngày sinh</label>
-                            </td>
-                            <td colspan="2">
-                                <input type="date" id="txtDateOfBrith" format="date" name="dateOfBrith" />
-                            </td>
-                            <td colspan="1">
-                                <label>Mức lương</label>
-                            </td>
-                            <td colspan="2" class="">
-                                <input type="text" style="text-align: right;" id="txtSalary" format="number" name="salary" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <label>Tình trạng công việc</label>
-                            </td>
-                            <td colspan="2">
-                                <input type="text" name="workStatus" />
-                            </td>
-                            <td colspan="1">
-                                <label>Giới tính</label>
-                            </td>
-                            <td colspan="2" style="display: flex;">
-                                <input type="checkbox" id="checkbox-male" format="number" name="gender" value="1" />
-                                <label class="checkbox-label" for="checkbox-male">Nam</label>
-                                <input type="checkbox" id="checkbox-female" format="number" name="gender" value="0" />
-                                <label class="checkbox-label" for="checkbox-female">Nữ</label>
-                                <input type="checkbox" id="checkbox-none" style="display: none;" format="number" checked name="gender" value="" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <label>Số điện thoại</label>
-                            </td>
-                            <td colspan="2">
-                                <input type="text" id="txtSDT" name="mobile" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <label>Tên vị trí</label>
-                            </td>
-                            <td colspan="2">
-                                <input type="text" name="possionName" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <label>Tên bộ phận</label>
-                            </td>
-                            <td colspan="2">
-                                <input type="text" name="departmentName" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <label>Email</label>
-                            </td>
-                            <td colspan="2">
-                                <input type="text" format="email" id="txtEmail" name="email" />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>-->
             </form>
         </div>
         <div class="dialog-footer">

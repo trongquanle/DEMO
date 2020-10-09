@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MISA.DAO.Dictionary;
+using MISA.DAO.Dictionary.impl;
 using MISA.Service.Dictionary;
 using MISA.Service.Dictionary.impl;
 
@@ -29,8 +31,19 @@ namespace MISA.CukCuk
         {
             services.AddControllers();
 
+            #region DAO
+
+            services.AddScoped<ICustomerDAO, CustomerDAO>();
+            services.AddScoped<IEmployeeDAO, EmployeeDAO>();
+
+            #endregion
+
+            #region Service
+
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<ICustomerService, CustomerService>();
+
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

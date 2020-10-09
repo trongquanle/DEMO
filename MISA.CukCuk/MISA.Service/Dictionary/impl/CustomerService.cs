@@ -1,53 +1,42 @@
 ﻿using MISA.DAO.Dictionary;
-using MISA.DAO.Dictionary.impl;
 using MISA.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MISA.Service.Dictionary.impl
 {
     public class CustomerService : ICustomerService
     {
+
+        private readonly ICustomerDAO _customerDAO;
+
+        public CustomerService(ICustomerDAO customerDAO)
+        {
+            _customerDAO = customerDAO;
+        }
+
         public int AddCustomer(Customer customer)
         {
-            using (ICustomerDAO customerDAO = new CustomerDAO())
-            {
-                return customerDAO.AddCustomer(customer);
-            }
+            return _customerDAO.AddCustomer(customer);
         }
 
         public int DeleteCustomer(string id)
         {
-            using(ICustomerDAO customerDAO = new CustomerDAO())
-            {
-                return customerDAO.DeleteCustomer(id);
-            }
+            return _customerDAO.DeleteCustomer(id);
         }
 
         public Customer GetCustomerById(string id)
         {
-            using (ICustomerDAO customerDAO = new CustomerDAO())
-            {
-                return customerDAO.GetCustomerByID(id);
-            }
-            //return Customer.Customers.Where(x => x.CustomerID.ToString() == id).FirstOrDefault();
+            return _customerDAO.GetCustomerByID(id);
         }
 
         public IEnumerable<Customer> GetCustomers()
         {
-            using (ICustomerDAO customerDAO = new CustomerDAO())
-            {
-                return customerDAO.GetCustomers();
-            }
+            return _customerDAO.GetCustomers();
         }
 
         public int UpdateCustomer(Customer customer)
         {
-            using(ICustomerDAO customerDAO = new CustomerDAO())
-            {
-                return customerDAO.UpdateCustomer(customer);
-            }
+            return _customerDAO.UpdateCustomer(customer);
         }
     }
 }

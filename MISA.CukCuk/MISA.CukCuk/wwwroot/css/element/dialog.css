@@ -1,0 +1,355 @@
+﻿/*Dialog*/
+.dialog-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #808080;
+    opacity: .4;
+    display: none;
+}
+
+.dialog {
+    position: absolute;
+    z-index: 1000;
+    background-color: #0973b9;
+    border: 3px solid #0973b9;
+    border-radius: 5px;
+    display: none;
+}
+
+.dialog-detail {
+    width: 800px;
+    height: 372px;
+    top: calc(50% - 186px);
+    left: calc(50% - 401px);
+}
+
+.dialog-message {
+    width: 400px;
+    height: 150px;
+    top: calc(50% - 200px);
+    left: calc(50% - 200px);
+}
+
+    .dialog-message .dialog-message-body {
+        display: flex;
+        align-items: center;
+    }
+
+.dialog-message-body #mesage-text {
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.dialog-message-body #message-icon {
+    width: 70px;
+    height: 70px;
+}
+
+.dialog-message-body .icon-warning {
+    background-image: url('/content/img/images/icon-warning.png');
+    background-repeat: no-repeat;
+    background-size: 70px;
+}
+
+.dialog-message-body .icon-success {
+    background-image: url('/content/img/images/icon-success.png');
+    background-repeat: no-repeat;
+    background-size: 70px;
+}
+
+.dialog .dialog-title {
+    width: 100%;
+    height: 25px;
+    background-color: #0973b9;
+    color: #fff;
+    width: 100%;
+    line-height: 25px;
+}
+
+.dialog .dialog-title-cancel {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    background-image: url('/content/img/images/cancel.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.dialog .dialog-body {
+    width: calc(100% - 20px);
+    height: calc(100% - 85px);
+    padding: 10px;
+    background-color: #fff;
+}
+
+.dialog table {
+    width: 100%;
+}
+
+#form-data tbody td {
+    border: none;
+    padding: 2px;
+}
+
+    #form-data tbody td:nth-child(3) label {
+        margin-left: 5px;
+    }
+
+#form-data input:focus, textarea:focus {
+    border: 1px solid #0973b9;
+}
+
+.error {
+    border: 1px solid #ff0000 !important;
+}
+/*.valid {
+    border: 1px solid green !important;
+}*/
+/*.dialog-body .row {
+    margin-bottom: 8px;
+}*/
+.dialog input[type="text"], input[type="date"], textarea {
+    /*width: 100%;*/
+    border: 1px solid #ccc;
+    padding: 4px;
+    outline: none;
+    /*margin-left: -11px;*/
+    resize: vertical;
+}
+
+.dialog input[type="date"] {
+    resize: none;
+    height: 16px;
+}
+
+.dialog input[type="radio"], .dialog input[type="checkbox"] {
+    margin-top: 7px;
+    margin-left: 25px;
+}
+
+    .dialog input[type="checkbox"]:focus {
+        outline: auto;
+    }
+
+    .dialog input[type="radio"]:last-child {
+        display: none;
+    }
+
+.dialog label.checkbox-label {
+    line-height: 27px;
+    margin-left: 5px;
+}
+
+#form-data .row {
+    width: 100%;
+}
+
+#form-data .row-multi {
+    display: flex;
+}
+
+.row-multi .left-row {
+    width: 50%;
+    padding-right: 5px;
+}
+
+.row-multi .right-row {
+    width: 50%;
+    padding-left: 5px;
+}
+
+.row-multi select {
+    width: 268px;
+}
+
+.row-full .text-label{
+    width: 116.89px !important;
+}
+
+.row-full input, .row-full textarea {
+    width: calc(100% - 125.89px) !important;
+}
+
+.form-multi {
+    /*width: 496px;*/
+    height: 25px;
+    position: relative;
+}
+
+.form-group {
+    display: flex;
+}
+
+.row .form-group {
+    margin-bottom: 4px;
+}
+
+.form-group .text-label {
+    width: 120px;
+}
+
+.form-group input[type="date"] {
+    height: 15px;
+}
+
+.form-group select {
+    height: 25px;
+    padding: 4px;
+    border-color: #ccc;
+    outline: none;
+}
+
+.form-group > input, .form-group > textarea {
+    width: calc(100% - 120px);
+}
+.form-group > select {
+    width: calc(100% - 116.89px);
+}
+
+.infor-general {
+    width: 100%;
+    display: flex;
+}
+
+    .infor-general .avatar-picture {
+        width: 25%;
+        padding-left: 10px;
+        text-align: center;
+    }
+
+        .infor-general .avatar-picture img {
+            width: 123px;
+        }
+
+        .infor-general .avatar-picture p {
+            margin-block-start: .8em;
+            margin-block-end: 0;
+            font-style: italic;
+        }
+
+    .infor-general .form-multi .text-label:first-child {
+        left: 0px;
+    }
+
+    .infor-general .form-multi .sub-label {
+        width: 66px;
+        padding-left: 10px;
+        left: 270px;
+    }
+
+    .infor-general .form-multi input {
+        width: 140px;
+        top: 0;
+    }
+
+    .infor-general .form-multi select {
+        width: 150px;
+    }
+
+    .infor-general .form-multi input {
+        left: 117.5px;
+    }
+
+        .infor-general .form-multi input:last-child,
+        .infor-general .form-multi select:last-child {
+            left: 346px;
+        }
+
+
+.form-multi .text-label, .form-multi input, .form-multi select {
+    position: absolute;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.job-information .form-group select {
+    width: 521px;
+}
+
+.job-information .form-multi select {
+    width: 205px;
+    left: 425px;
+}
+
+.job-information .form-multi input {
+    width: 195px;
+    top: 0;
+    left: 118px;
+}
+
+    .job-information .form-multi input:last-child {
+        left: 425px;
+    }
+
+.job-information .form-multi .text-label:first-child {
+    left: 0;
+}
+
+.job-information .form-multi .sub-label {
+    width: 66px;
+    padding-left: 10px;
+    left: 333px;
+}
+
+.dialog .cls-money {
+    /*display: flex;*/
+    /*position: relative;*/
+}
+
+    .dialog .cls-money input {
+        width: 75%;
+    }
+
+    .dialog .cls-money span {
+        border: 1px solid #ccc;
+        padding: 4px;
+        /*position: absolute;*/
+    }
+
+/*.row label {
+    display: block;
+}*/
+
+.row input:focus {
+    border: 1px solid #0973b9;
+}
+
+.dialog .dialog-footer {
+    width: 100%;
+    height: 40px;
+    /*border-top: 1px solid #ccc;*/
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.dialog-footer button {
+    width: 75px;
+    padding: 4px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+    .dialog-footer button:hover {
+        border: 1px solid #0973b9;
+    }
+
+#btn-save {
+}
+
+#btn-cancel {
+}
+/*End dialog*/

@@ -207,6 +207,9 @@
             let obj = $("#form-data").serializeArray().reduce((result, item) => {
                 /// TODO: ,,,
                 let format = $(`#form-data input[name='${item.name}']`).attr("format");
+                if (!format) {
+                    format = $(`#form-data select[name='${item.name}']`).attr("format");
+                }
                 // Return các properties trong current value và nạp thuộc tính mới
                 return { ...result, [item.name]: commonJS.formatValue(item.value, format) };
             }, { [commonJS.getKeyId()]: commonJS.getId() }); // Giá trị khởi tạo của result
@@ -286,22 +289,30 @@
         x.forEach(item => {
             // Lấy ra thẻ input với name tương ứng
             let element = $(`#form-data input[name='${item.name}']`);
+            if (!element.length) {
+                element = $(`#form-data select[name='${item.name}']`);
+            }
             // Kiểm tra kiểu của các thẻ input để binding dữ liệu phù hợp
             let type = element.attr('type');
             try {
                 // Gán giá trị cho thẻ input
                 switch (type) {
-                    case typeInput.CHECKBOX:
-                        $(`#form-data input[value='${obj.gender}']`).prop('checked', true).siblings(`input[type='${typeInput.CHECKBOX}']`).prop('checked', false);
-                        break;
-                    case typeInput.RADIO:
-                        $(`#form-data input[value='${obj.gender}']`).prop('checked', true);
+                    case typeInput.TEXT:
+                        element.val(obj[item.name]);
                         break;
                     case typeInput.DATE:
-                        element.val(obj.dateOfBrith.split('T')[0]);
+                        element.val(obj[item.name].split('T')[0]);
+                        break;
+                    case typeInput.CHECKBOX:
+                        $(`#form-data input[value='${obj[item.name]}']`).prop('checked', true).siblings(`input[type='${typeInput.CHECKBOX}']`).prop('checked', false);
+                        break;
+                    case typeInput.RADIO:
+                        $(`#form-data input[value='${obj[item.name]}']`).prop('checked', true);
+                        break;
+                    case typeInput.SELECT:
+                        element.val(obj[item.name]);
                         break;
                     default:
-                        element.val(obj[element.attr('name')]);
                         break;
                 }
             }
@@ -341,6 +352,7 @@
             $("#form-data input[type='text'], #form-data input[type='date'], #form-data textarea").val('').removeClass('error').removeAttr('title');
             $("#txtDateOfBrith").val(null);
             $("#form-data input[type='checkbox']").prop('checked', false);
+            $("#form-data select").val(0);
             $("#form-data input[type='checkbox'][checked]").prop('checked', true);
         }, 400);
     }

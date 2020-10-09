@@ -7,6 +7,14 @@ namespace MISA.Service.Dictionary.impl
 {
     public class EmployeeService : IEmployeeService
     {
+
+        //private readonly IEmployeeService _employeeService;
+
+        //public EmployeeService(IEmployeeService employeeService)
+        //{
+        //    _employeeService = employeeService;
+        //}
+
         public int AddEmployee(Employee employee)
         {
             try

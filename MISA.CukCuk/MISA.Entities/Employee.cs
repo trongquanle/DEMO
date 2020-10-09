@@ -41,7 +41,7 @@ namespace MISA.Entities
                 EmployeeID=Guid.NewGuid(),
                 EmployeeCode="NV003",
                 EmployeeName="Trương Xuấn Chiểu",
-                Gender=null,
+                Gender=0,
                 DateOfBrith=DateTime.Now,
                 Mobile="76234717247",
                 PossionName="Nhân viên",

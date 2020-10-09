@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace MISA.DAO.Dictionary.impl
 {
-    public class CustomerDAO : AbstractDAO<Customer>, ICustomerDAO
+    public class CustomerDAO : BaseDAO<Customer>, ICustomerDAO
     {
         public int AddCustomer(Customer customer)
         {

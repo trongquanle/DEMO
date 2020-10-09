@@ -6,6 +6,7 @@
     <link href="/css/common/layout/main.css" rel="stylesheet" />
     <link href="/css/element/notification.css" rel="stylesheet" />
     <link href="/css/element/table.css" rel="stylesheet" />
+    <link href="/css/element/dialog.css" rel="stylesheet" />
     <link href="/css/common/layout/sidebar.css" rel="stylesheet" />
     <link href="/content/fonts/font-anwesome/css/all.min.css" rel="stylesheet" />
 </head>
@@ -284,110 +285,103 @@
         </div>
         <div class="dialog-body">
             <form id="form-data">
-                <table>
-                    <tbody>
-                        <tr>
-                            <td colspan="1">
-                                <label>Mã khách hàng <span style="color: red">(*)</span></label>
-                            </td>
-                            <td colspan="2">
-                                <input type="text" id="txtCustomerCode" name="customerCode" />
-                            </td>
-                            <td colspan="1">
-                                <label>Tên khách hàng <span style="color: red">(*)</span></label>
-                            </td>
-                            <td colspan="2">
-                                <input type="text" id="txtCustomerName" name="customerName" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <label>Mã thẻ thành viên</label>
-                            </td>
-                            <td colspan="2">
-                                <input type="text" />
-                            </td>
-                            <td colspan="1">
-                                <label>Hạng thẻ</label>
-                            </td>
-                            <td colspan="2">
-                                <input type="text" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <label>Nhóm khách hàng</label>
-                            </td>
-                            <td colspan="2">
-                                <input type="text" />
-                            </td>
-                            <td colspan="1">
-                                <label>Giới tính</label>
-                            </td>
-                            <td colspan="2" style="display: flex;">
-                                <input type="checkbox" id="checkbox-male" format="number" name="gender" value="1" />
-                                <label class="checkbox-label" for="checkbox-male">Nam</label>
-                                <input type="checkbox" id="checkbox-female" format="number" name="gender" value="0" />
-                                <label class="checkbox-label" for="checkbox-female">Nữ</label>
-                                <input type="checkbox" id="checkbox-none" style="display: none;" checked format="number" name="gender" value="" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <label>Số điện thoại</label>
-                            </td>
-                            <td colspan="2">
-                                <input type="text" id="txtSDT" name="sdt" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <label>Ngày sinh</label>
-                            </td>
-                            <td colspan="2">
-                                <input type="date" id="txtDateOfBrith" format="date" name="dateOfBrith" style="resize: none;" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <label>Tên công ty</label>
-                            </td>
-                            <td colspan="5">
-                                <input type="text" id="txtCompanyName" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <label>Số tiền nợ</label>
-                            </td>
-                            <td colspan="2">
-                                <input type="text" id="txtDebtMoney" format="number" name="debtMoney" />
-                            </td>
-                            <td colspan="1">
-                                <label>Email</label>
-                            </td>
-                            <td colspan="2">
-                                <input type="text" format="email" id="txtEmail" name="email" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <label>Địa chỉ</label>
-                            </td>
-                            <td colspan="5">
-                                <input type="text" id="txtAddress" name="address" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <label>Ghi chú</label>
-                            </td>
-                            <td colspan="5">
-                                <textarea id="textarea" rows="3" cols="4"></textarea>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="row row-multi">
+                    <div class="left-row">
+                        <div class="form-group center-items">
+                            <div class="text-label">Mã khách hàng <span style="color: red">(*)</span></div>
+                            <input type="text" id="txtCustomerCode" name="customerCode" />
+                        </div>
+                    </div>
+                    <div class="right-row">
+                        <div class="form-group center-items">
+                            <div class="text-label">Tên khách hàng <span style="color: red">(*)</span></div>
+                            <input type="text" id="txtCustomerName" name="customerName" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-multi">
+                    <div class="left-row">
+                        <div class="form-group center-items">
+                            <div class="text-label">Mã thẻ thành viên</div>
+                            <input type="text" />
+                        </div>
+                    </div>
+                    <div class="right-row">
+                        <div class="form-group center-items">
+                            <div class="text-label">Hạng thẻ</div>
+                            <input type="text" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-multi">
+                    <div class="left-row">
+                        <div class="form-group center-items">
+                            <div class="text-label">Nhóm khách hàng</div>
+                            <input type="text" />
+                        </div>
+                    </div>
+                    <div class="right-row">
+                        <div class="form-group center-items">
+                            <div class="text-label" style="width: 116.89px;">Giới tính</div>
+                            <select name="gender" format="number" type="select">
+                                <option value="0">-- Chọn giới tính --</option>
+                                <option value="1">Nữ</option>
+                                <option value="2">Nam</option>
+                                <option value="3">Khác</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-multi">
+                    <div class="left-row">
+                        <div class="form-group center-items">
+                            <div class="text-label">Số điện thoại</div>
+                            <input type="text" id="txtSDT" name="sdt" />
+                        </div>
+                    </div>
+                    <div class="right-row"></div>
+                </div>
+                <div class="row row-multi">
+                    <div class="left-row">
+                        <div class="form-group center-items">
+                            <div class="text-label">Ngày sinh</div>
+                            <input type="date" id="txtDateOfBrith" format="date" name="dateOfBrith" style="resize: none;" />
+                        </div>
+                    </div>
+                    <div class="right-row"></div>
+                </div>
+                <div class="row row-full">
+                    <div class="form-group center-items">
+                        <div class="text-label">Tên công ty</div>
+                        <input type="text" id="txtCompanyName" />
+                    </div>
+                </div>
+                <div class="row row-multi">
+                    <div class="left-row">
+                        <div class="form-group center-items">
+                            <div class="text-label">Số tiền nợ</div>
+                            <input type="text" id="txtDebtMoney" format="number" name="debtMoney" />
+                        </div>
+                    </div>
+                    <div class="right-row">
+                        <div class="form-group center-items">
+                            <div class="text-label">Email</div>
+                            <input type="text" format="email" id="txtEmail" name="email" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-full">
+                    <div class="form-group center-items">
+                        <div class="text-label">Địa chỉ</div>
+                        <input type="text" id="txtAddress" name="address" />
+                    </div>
+                </div>
+                <div class="row row-full">
+                    <div class="form-group center-items">
+                        <div class="text-label">Ghi chú</div>
+                        <textarea id="textarea" rows="3" cols="4"></textarea>
+                    </div>
+                </div>
             </form>
         </div>
         <div class="dialog-footer">

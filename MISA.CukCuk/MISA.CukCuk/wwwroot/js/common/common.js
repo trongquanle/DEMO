@@ -53,7 +53,18 @@ const commonJS = {
      * Author: LTQuan (01/10/2020)
      **/
     setGender: (gender) => {
-        return gender == null ? "" : (gender == 1 ? "Nam" : "Nữ");
+        switch (gender) {
+            case 1:
+                gender = "Nữ";
+                break;
+            case 2:
+                gender = "Nam";
+                break;
+            default:
+                gender = "";
+                break;
+        }
+        return gender;
     },
 
     /**
@@ -184,6 +195,7 @@ const formatField = {
  * Author: LTQuan (28/09/2020)
  * */
 const typeInput = {
+    SELECT: 'select',
     RADIO: 'radio',
     CHECKBOX: 'checkbox',
     DATE: 'date',

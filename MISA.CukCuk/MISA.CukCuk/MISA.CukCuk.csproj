@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MISA.DAO\MISA.DAO.csproj" />
     <ProjectReference Include="..\MISA.Entities\MISA.Entities.csproj" />
     <ProjectReference Include="..\MISA.Service\MISA.Service.csproj" />
   </ItemGroup>
